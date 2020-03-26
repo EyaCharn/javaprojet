@@ -1,0 +1,104 @@
+
+
+.button:hover{
+    -fx-background-color: #B15837;
+    
+}
+.chart {
+    -fx-padding: 10px;
+    
+}
+.chart-content {
+    -fx-padding: 30px;    
+}
+ 
+.chart-title {
+  -fx-text-fill: #4682b4;
+  -fx-font-size: 1.6em;
+}
+ 
+.axis-label {
+  -fx-text-fill: #4682b4;
+}
+ 
+.chart-legend {
+   
+   -fx-padding: 20px;
+}
+ 
+.chart-legend-item-symbol{
+   -fx-background-radius: 0;
+}
+ 
+.chart-legend-item{
+    -fx-text-fill: #191970;
+}
+ 
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+.chart-vertical-grid-lines {
+    -fx-stroke: #3278fa;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: #3278fa;
+}
+.chart-alternative-row-fill {
+    -fx-fill: transparent;
+    -fx-stroke: transparent;
+    -fx-stroke-width: 0;
+}
+
+/*.table-view {
+    -fx-background-color: rgba(153,51,255,0.3);
+}
+
+
+.table-row-cell {
+    -fx-background-color: rgba(0,0,0,0.7);
+    -fx-font-weight:bold;
+    -fx-text-fill: whitesmoke;
+}
+
+
+
+.table-row-cell{
+    
+    -fx-text-fill: whitesmoke;
+}
+
+.table-column {
+    
+     -fx-text-fill: whitesmoke;
+}*/
+.jfx-tab-pane .headers-region {
+    -fx-background-color: #B15837;
+}
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: #B15837;
+}
+
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: #B15837; 
+}
+.table-view .column-header .label{
+   -fx-text-fill: white;
+   -fx-font-weight: bold; 
+   -fx-alignment: CENTER;
+}
+
+
+.table-row-cell{
+     -fx-alignment: CENTER;
+  
+}
+
+.table-row-cell:selected {
+   -fx-background-color: lightblue; 
+   -fx-text-background-color:  #6622CC;
+   
+       
+}
+
+

@@ -87,18 +87,18 @@ public class ServicePublicite implements Iservice<publicite>{
     @Override
     public int update(publicite t, int id) throws SQLException {
          if(chercher(id)){
-        
-        pre=con.prepareStatement("UPDATE publicite SET  image = ? , description = ?  , etat =? , like =? WHERE id = ?");
+       
+        pre=con.prepareStatement("UPDATE publicite SET  image = ? , description = ? , etat = ? WHERE id = ?");
          
     pre.setString(1, t.getImage());
     
     
-    pre.setString(2,t.getDescription());
+    pre.setString(2, t.getDescription());
   
-    pre.setInt(4, t.getLike());
+   
     pre.setBoolean(3, t.isEtat());
-    pre.setInt(7,id);
-    pre.executeUpdate();
+    pre.setInt(4, id);
+             int executeUpdate = pre.executeUpdate();
     return 1;}
         return 0;
     }
@@ -118,7 +118,7 @@ public class ServicePublicite implements Iservice<publicite>{
                
                 ImageView v = new ImageView();
                 
-                v.setImage(new Image(rs.getString(3)));
+                v.setImage(new Image(rs.getString(2)));
                 v.setFitWidth(100);
                 v.setFitHeight(100);
                
