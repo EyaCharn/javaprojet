@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.GUI.AfficherActualiteController">
+   <children>
+      <Label alignment="CENTER" layoutX="199.0" layoutY="8.0" prefHeight="49.0" prefWidth="253.0" text="Les Actualités ">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="search" layoutX="43.0" layoutY="72.0" onAction="#recherche" prefHeight="31.0" prefWidth="240.0" promptText="Rechercher" />
+      <Button layoutX="615.0" layoutY="74.0" mnemonicParsing="false" onAction="#triedate" prefHeight="31.0" prefWidth="115.0" style="-fx-background-color: #B15837;" text="trier par Titre" textFill="#363648">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <ScrollPane fx:id="scroll" layoutY="152.0" prefHeight="416.0" prefWidth="730.0">
+         <content>
+            <VBox fx:id="actualitecontainer" prefHeight="399.0" prefWidth="715.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

@@ -37,11 +37,11 @@ public class ServicePublicite implements Iservice<publicite>{
     @Override
     public void ajouter(publicite t) throws SQLException {
       
-        pre=con.prepareStatement("INSERT INTO `caritass`.`publicite` ( `image`, `description`, `etat`, `like`) VALUES ( ?, ?, ?, ?);");
+        pre=con.prepareStatement("INSERT INTO `caritass`.`publicite` ( `image`, `description`, `etat`) VALUES ( ?, ?, ?);");
     pre.setString(1, t.getImage());
     pre.setString(2, t.getDescription());
     
-    pre.setInt(4, t.getLike());
+
     pre.setBoolean(3, t.isEtat());
     pre.executeUpdate();
    
@@ -123,7 +123,7 @@ public class ServicePublicite implements Iservice<publicite>{
                 v.setFitHeight(100);
                
                 //ystem.out.println(v.getImage().toString());
-                publicite p2=new publicite(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getBoolean(4),rs.getInt(5));
+                publicite p2=new publicite(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getBoolean(4));
                 
                 p2.setPhoto(v);
                 list.add(p2);

@@ -59,15 +59,12 @@ public class PubliciteController implements Initializable {
     private TableColumn<publicite,String> tabviewdescription;
     @FXML
     private TableColumn<publicite,String> etat;
-    @FXML
-    private TableColumn<publicite,String> like;
+    
     String img="";
     List<String> type;
     boolean eta = true;
     private publicite cc=null;
     ObservableList <publicite> data2 ;
-    @FXML
-    private ImageView ss;
     
 
     /**
@@ -124,7 +121,7 @@ public class PubliciteController implements Initializable {
        image.setCellValueFactory(new PropertyValueFactory<>("photo"));
        tabviewdescription.setCellValueFactory(new PropertyValueFactory<>("description"));
        etat.setCellValueFactory(new PropertyValueFactory<>("etat"));
-       like.setCellValueFactory(new PropertyValueFactory<>("like"));
+       
         } catch (SQLException ex) {
             Logger.getLogger(PubliciteController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -142,7 +139,7 @@ public class PubliciteController implements Initializable {
             else {eta=false; }
             
             ServicePublicite sp = new ServicePublicite();
-            publicite e = new publicite(img,descriptionP,eta,0);
+            publicite e = new publicite(img,descriptionP,eta);
             
             sp.ajouter(e);
             JOptionPane.showMessageDialog(null, "ajout avec succes");
@@ -170,9 +167,9 @@ public class PubliciteController implements Initializable {
                 {eta=true;}
                 else {eta=false; }
                 if(img.length()==0)
-                    cs.update(new publicite(img,description.getText(),eta,0),cc.getId());
+                    cs.update(new publicite(img,description.getText(),eta),cc.getId());
                 else
-                    cs.update(new publicite(img,description.getText(),eta,0),cc.getId());
+                    cs.update(new publicite(img,description.getText(),eta),cc.getId());
                 
                 afficher();
                 JOptionPane.showMessageDialog(null, "publicite modifier");
