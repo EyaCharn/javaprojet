@@ -98,9 +98,11 @@ public class ServicePublicite implements Iservice<publicite>{
    
     pre.setBoolean(3, t.isEtat());
     pre.setInt(4, id);
-             int executeUpdate = pre.executeUpdate();
-    return 1;}
-        return 0;
+      pre.executeUpdate();
+      System.out.println("update valide");
+         return true;}
+        System.out.println("update invalid: emploi nexiste pas");
+        return false;
     }
 
     @Override
