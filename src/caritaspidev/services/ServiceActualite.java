@@ -109,7 +109,7 @@ public class ServiceActualite implements Iservice<actualite> {
     }
     
  public List<actualite>trieParDate_D() throws SQLException{
-            String req="select * from actualite  ORDER BY dateajout ";
+            String req="select * from actualite  ORDER BY titre ";
         List<actualite> list = new ArrayList<>();
         
         try {
