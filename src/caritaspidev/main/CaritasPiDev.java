@@ -19,7 +19,11 @@ public class CaritasPiDev extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+<<<<<<< Updated upstream
         Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/main/Front.fxml"));
+=======
+        Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/FXMLDocument.fxml"));
+>>>>>>> Stashed changes
         
         Scene scene = new Scene(root);
         
