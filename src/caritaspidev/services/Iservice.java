@@ -18,7 +18,7 @@ public interface Iservice<T> {
     boolean delete(int id) throws SQLException;
     boolean chercher(int id) throws SQLException;
     boolean chercher_ajout(T t)throws SQLException;
-    int update(T t,int id) throws SQLException;
+    boolean update(T t,int id) throws SQLException;
     List<T> readAll() throws SQLException;
     
 }

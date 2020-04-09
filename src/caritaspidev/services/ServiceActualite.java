@@ -86,27 +86,7 @@ public class ServiceActualite implements Iservice<actualite> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public int update(actualite t, int id) throws SQLException {
-           if(chercher(id)){
-       
-        pre=con.prepareStatement("UPDATE actualite SET   titre =?,contenu =?,image =?,dateajout =?,datemodif =? WHERE id = ?");
-         
-    pre.setString(1, t.getTitre());
-    
-    
-    pre.setString(2, t.getContenu());
-  
-    Date sDate = new java.sql.Date(t.getDateajout().getTime());
-    Date sDate1 = new java.sql.Date(t.getDatemodif().getTime());
-    pre.setString(3, t.getImage());
-    pre.setDate(4, sDate);
-     pre.setDate(5, sDate1);
-    pre.setInt(6, id);
-    pre.executeUpdate();
-    return 1;}
-        return 0;
-    }
+   
     
  public List<actualite>trieParDate_D() throws SQLException{
             String req="select * from actualite  ORDER BY titre ";
@@ -160,4 +140,30 @@ public class ServiceActualite implements Iservice<actualite> {
             
     
 }
-        return list; }}
+        return list; }
+
+    @Override
+    public boolean update(actualite t, int id) throws SQLException {
+      if(chercher(id)){
+       
+        pre=con.prepareStatement("UPDATE actualite SET   titre =?,contenu =?,image =?,dateajout =?,datemodif =? WHERE id = ?");
+         
+    pre.setString(1, t.getTitre());
+    
+    
+    pre.setString(2, t.getContenu());
+  
+    Date sDate = new java.sql.Date(t.getDateajout().getTime());
+    Date sDate1 = new java.sql.Date(t.getDatemodif().getTime());
+    pre.setString(3, t.getImage());
+    pre.setDate(4, sDate);
+     pre.setDate(5, sDate1);
+    pre.setInt(6, id);
+    pre.executeUpdate();
+  pre.executeUpdate();
+      System.out.println("update valide");
+         return true;}
+        System.out.println("update invalid: emploi nexiste pas");
+        return false;  
+    }
+}

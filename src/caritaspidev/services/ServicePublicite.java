@@ -85,7 +85,7 @@ public class ServicePublicite implements Iservice<publicite>{
     }
 
     @Override
-    public int update(publicite t, int id) throws SQLException {
+    public boolean update(publicite t, int id) throws SQLException {
          if(chercher(id)){
        
         pre=con.prepareStatement("UPDATE publicite SET  image = ? , description = ? , etat = ? WHERE id = ?");
@@ -98,9 +98,11 @@ public class ServicePublicite implements Iservice<publicite>{
    
     pre.setBoolean(3, t.isEtat());
     pre.setInt(4, id);
-             int executeUpdate = pre.executeUpdate();
-    return 1;}
-        return 0;
+      pre.executeUpdate();
+      System.out.println("update valide");
+         return true;}
+        System.out.println("update invalid: emploi nexiste pas");
+        return false;
     }
 
     @Override
