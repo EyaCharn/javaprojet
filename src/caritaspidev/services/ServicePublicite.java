@@ -37,11 +37,11 @@ public class ServicePublicite implements Iservice<publicite>{
     @Override
     public void ajouter(publicite t) throws SQLException {
       
-        pre=con.prepareStatement("INSERT INTO `caritass`.`publicite` ( `image`, `description`, `etat`, `like`) VALUES ( ?, ?, ?, ?);");
+        pre=con.prepareStatement("INSERT INTO `caritass`.`publicite` ( `image`, `description`, `etat`) VALUES ( ?, ?, ?);");
     pre.setString(1, t.getImage());
     pre.setString(2, t.getDescription());
     
-    pre.setInt(4, t.getLike());
+
     pre.setBoolean(3, t.isEtat());
     pre.executeUpdate();
    
@@ -87,20 +87,20 @@ public class ServicePublicite implements Iservice<publicite>{
     @Override
     public boolean update(publicite t, int id) throws SQLException {
          if(chercher(id)){
-        
-        pre=con.prepareStatement("UPDATE publicite SET  image = ? , description = ?  , etat =? , like =? WHERE id = ?");
+       
+        pre=con.prepareStatement("UPDATE publicite SET  image = ? , description = ? , etat = ? WHERE id = ?");
          
     pre.setString(1, t.getImage());
     
     
-    pre.setString(2,t.getDescription());
+    pre.setString(2, t.getDescription());
   
-    pre.setInt(4, t.getLike());
+   
     pre.setBoolean(3, t.isEtat());
-    pre.setInt(7,id);
-    pre.executeUpdate();
-    return true;}
-        return false;
+    pre.setInt(4, id);
+             int executeUpdate = pre.executeUpdate();
+    return 1;}
+        return 0;
     }
 
     @Override
@@ -118,12 +118,12 @@ public class ServicePublicite implements Iservice<publicite>{
                
                 ImageView v = new ImageView();
                 
-                v.setImage(new Image(rs.getString(3)));
+                v.setImage(new Image(rs.getString(2)));
                 v.setFitWidth(100);
                 v.setFitHeight(100);
                
                 //ystem.out.println(v.getImage().toString());
-                publicite p2=new publicite(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getBoolean(4),rs.getInt(5));
+                publicite p2=new publicite(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getBoolean(4));
                 
                 p2.setPhoto(v);
                 list.add(p2);

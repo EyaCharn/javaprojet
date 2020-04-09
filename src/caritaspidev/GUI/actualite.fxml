@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1054.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.GUI.ActualiteController">
+   <children>
+      <JFXTabPane prefHeight="710.0" prefWidth="1094.0">
+         <tabs>
+            <Tab text="Actualité">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="table1" layoutX="438.0" layoutY="37.0" prefHeight="638.0" prefWidth="657.0">
+                          <columns>
+                            <TableColumn fx:id="tabletitre" prefWidth="107.0" text="titre" />
+                            <TableColumn fx:id="tablecontenu" prefWidth="122.0" text="contenu" />
+                              <TableColumn fx:id="tableimage" prefWidth="137.0" text="image" />
+                              <TableColumn fx:id="tabledajout" prefWidth="133.0" text="date d'ajout" />
+                              <TableColumn fx:id="tabledmodif" prefWidth="157.0" text="date de modif" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+      <VBox layoutX="-2.0" layoutY="36.0" prefHeight="674.0" prefWidth="442.0" style="-fx-background-color: #065D67;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Gérer Actualités" textFill="WHITE">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="titre" prefHeight="54.0" prefWidth="255.0" promptText="Titre">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="136.0" prefWidth="380.0">
+               <children>
+                  <TextField fx:id="contenu" alignment="TOP_LEFT" prefHeight="106.0" prefWidth="263.0" promptText="Contenu">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="133.0" prefWidth="380.0">
+               <children>
+                  <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#importimage" prefHeight="37.0" prefWidth="117.0" style="-fx-background-color: #B15837;" text="import image" textFill="WHITE" />
+                  <ImageView fx:id="importeimage" fitHeight="105.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <DatePicker fx:id="dateajout" promptText="date d'ajout" style="-fx-background-color: #B15837;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <DatePicker fx:id="datemodif" promptText="date de modification" style="-fx-background-color: #B15837;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="76.0" prefWidth="30.0" />
+                  <Button mnemonicParsing="false" onAction="#ajouter" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: #B15837;" text="ajouter" textFill="WHITE" />
+                  <VBox prefHeight="76.0" prefWidth="44.0" />
+                  <Button mnemonicParsing="false" onAction="#modifier" prefHeight="40.0" prefWidth="96.0" style="-fx-background-color: #B15837;" text="modifier" textFill="WHITE" />
+                  <VBox prefHeight="76.0" prefWidth="55.0" />
+                  <Button mnemonicParsing="false" onAction="#supprimer" prefHeight="40.0" prefWidth="97.0" style="-fx-background-color: #B15837;" text="supprimer" textFill="WHITE" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

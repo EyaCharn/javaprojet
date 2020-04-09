@@ -18,24 +18,24 @@ public class publicite {
     private String image ;
     private String description ;
     private boolean etat;
-    private int like ;
+   
     private ImageView photo;
 
-    public publicite(int id, String image, String description, boolean etat, int like, ImageView photo) {
+    public publicite(int id, String image, String description, boolean etat, ImageView photo) {
         this.id = id;
         this.image = image;
         this.description = description;
         this.etat = etat;
-        this.like = like;
+        
         this.photo = photo;
     }
 
-    public publicite(int id, String image, String description, boolean etat, int like) {
+    public publicite(int id, String image, String description, boolean etat) {
         this.id = id;
         this.image = image;
         this.description = description;
         this.etat = etat;
-        this.like = like;
+        
     }
 
     @Override
@@ -45,14 +45,14 @@ public class publicite {
         hash = 29 * hash + Objects.hashCode(this.image);
         hash = 29 * hash + Objects.hashCode(this.description);
         hash = 29 * hash + (this.etat ? 1 : 0);
-        hash = 29 * hash + this.like;
+      
         hash = 29 * hash + Objects.hashCode(this.photo);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "publicite{" + "id=" + id + ", image=" + image + ", description=" + description + ", etat=" + etat + ", like=" + like + ", photo=" + photo + '}';
+        return "publicite{" + "id=" + id + ", image=" + image + ", description=" + description + ", etat=" + etat +  ", photo=" + photo + '}';
     }
 
     @Override
@@ -76,9 +76,7 @@ public class publicite {
         if (this.etat != other.etat) {
             return false;
         }
-        if (this.like != other.like) {
-            return false;
-        }
+       
         if (!Objects.equals(this.photo, other.photo)) {
             return false;
         }
@@ -117,14 +115,7 @@ public class publicite {
         this.etat = etat;
     }
 
-    public int getLike() {
-        return like;
-    }
-
-    public void setLike(int like) {
-        this.like = like;
-    }
-
+ 
     public ImageView getPhoto() {
         return photo;
     }
@@ -133,19 +124,19 @@ public class publicite {
         this.photo = photo;
     }
 
-    public publicite(String image, String description, boolean etat, int like, ImageView photo) {
+    public publicite(String image, String description, boolean etat, ImageView photo) {
         this.image = image;
         this.description = description;
         this.etat = etat;
-        this.like = like;
+     
         this.photo = photo;
     }
 
-    public publicite(String image, String description, boolean etat, int like) {
+    public publicite(String image, String description, boolean etat) {
         this.image = image;
         this.description = description;
         this.etat = etat;
-        this.like = like;
+        
     }
 
    
