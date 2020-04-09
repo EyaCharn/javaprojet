@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/services/ServicePublicite.java</file>
-            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/entityPublicite/publicite.java</file>
-            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/styles/styles.css</file>
+            <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/caritaspidev/entity/formation/formation.java</file>
+            <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/formationGUI/FormationController.java</file>
+            <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/caritaspidev/services/formationService.java</file>
+            <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/caritaspidev/main/CaritasPiDev.java</file>
+            <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/emploiGUI/EmploiController.java</file>
         </group>
     </open-files>
 </project-private>
