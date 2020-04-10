@@ -132,12 +132,17 @@ List<String> type;
     }
 
     @FXML
-    private void offreemploi(ActionEvent event) {
+    private void offreemploi(ActionEvent event) throws IOException {
+         AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficherEmploi.fxml"));
+        ap.getChildren().setAll(pane); 
     }
+    
 
     @FXML
-    private void gererformation(ActionEvent event) {
-    }
+    private void gererformation(ActionEvent event) throws IOException {
+          AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficherFormation.fxml"));
+        ap.getChildren().setAll(pane); }
+    
 
     @FXML
     private void gererevenement(ActionEvent event) {
@@ -181,6 +186,12 @@ List<String> type;
         }
         imgslider.getChildren().addAll(list);
         startAnimation(imgslider);
+        
+        
+        
+        
+        
+        
       }
      private void startAnimation(final HBox hbox) {
         //error occured on (ActionEvent t) line

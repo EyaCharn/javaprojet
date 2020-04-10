@@ -25,9 +25,14 @@ public class formation {
     private String nbplaces;
     private String lieu;
     private String description;
+   
     private ImageView photo;
+    
+    
+      public formation() {
+    }
 
-    public formation(int id, String titre, String image, Date datedebut, String nbplaces, String lieu, String description, ImageView photo) {
+    public formation(int id, String titre, String image, Date datedebut, String nbplaces, String lieu, String description,ImageView photo) {
         this.id = id;
         this.titre = titre;
         this.image = image;
@@ -35,6 +40,7 @@ public class formation {
         this.nbplaces = nbplaces;
         this.lieu = lieu;
         this.description = description;
+       
         this.photo = photo;
     }
 
@@ -45,6 +51,7 @@ public class formation {
         this.nbplaces = nbplaces;
         this.lieu = lieu;
         this.description = description;
+        
         this.photo = photo;
     }
 
@@ -56,6 +63,7 @@ public class formation {
         this.nbplaces = nbplaces;
         this.lieu = lieu;
         this.description = description;
+      
     }
 
     public formation(String titre, String image, Date datedebut, String nbplaces, String lieu, String description) {
@@ -65,7 +73,42 @@ public class formation {
         this.nbplaces = nbplaces;
         this.lieu = lieu;
         this.description = description;
+       
     }
+
+    
+
+   
+
+    public formation(int id, String titre, String image, Date datedebut, String nbplaces, String description) {
+        this.id = id;
+        this.titre = titre;
+        this.image = image;
+        this.datedebut = datedebut;
+        this.nbplaces = nbplaces;
+        this.description = description;
+       
+    }
+
+    public formation(int id, String image, Date datedebut, String nbplaces, String lieu, String description, ImageView photo) {
+        this.id = id;
+        this.image = image;
+        this.datedebut = datedebut;
+        this.nbplaces = nbplaces;
+        this.lieu = lieu;
+        this.description = description;
+       
+        this.photo = photo;
+    }
+
+  
+   
+
+  
+
+    
+    
+    
 
     public int getId() {
         return id;
@@ -78,6 +121,10 @@ public class formation {
     public String getTitre() {
         return titre;
     }
+
+
+   
+    
 
     public void setTitre(String titre) {
         this.titre = titre;
@@ -141,6 +188,7 @@ public class formation {
         hash = 19 * hash + Objects.hashCode(this.nbplaces);
         hash = 19 * hash + Objects.hashCode(this.lieu);
         hash = 19 * hash + Objects.hashCode(this.description);
+      
         hash = 19 * hash + Objects.hashCode(this.photo);
         return hash;
     }
@@ -175,6 +223,9 @@ public class formation {
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
+        
+        
+        
         if (!Objects.equals(this.photo, other.photo)) {
             return false;
         }
@@ -185,7 +236,6 @@ public class formation {
     public String toString() {
         return "formation{" + "id=" + id + ", titre=" + titre + ", image=" + image + ", datedebut=" + datedebut + ", nbplaces=" + nbplaces + ", lieu=" + lieu + ", description=" + description + ", photo=" + photo + '}';
     }
-     
-    
+
    
 }

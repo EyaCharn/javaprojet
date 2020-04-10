@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -10,57 +12,81 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="formationGUI.FormationController">
    <children>
-      <VBox prefHeight="700.0" prefWidth="413.0" style="-fx-background-color: #065D67;">
-         <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Gérer Formation" textAlignment="CENTER" textFill="#f07605">
-                     <font>
-                        <Font name="Baskerville Old Face" size="33.0" />
-                     </font></Label>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <TextField fx:id="Ftitre" promptText="Titre">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox prefHeight="71.0" prefWidth="374.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#importerformation" text="importer image" textFill="#1b1b1a" />
-                  <ImageView fx:id="imgview" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-               </children></HBox>
-            <DatePicker fx:id="Fdate" promptText="Date " />
-            <HBox prefHeight="38.0" prefWidth="409.0" />
-            <TextField fx:id="Placeformation" promptText="nombre de places" />
-            <TextField fx:id="Flieu" prefHeight="31.0" prefWidth="329.0" promptText="Lieu" />
-            <HBox prefHeight="48.0" prefWidth="413.0" />
-            <HBox prefHeight="38.0" prefWidth="374.0" />
-            <TextField fx:id="Desformation" prefHeight="87.0" prefWidth="374.0" promptText="Description" />
-            <HBox prefHeight="40.0" prefWidth="374.0" />
-            <HBox prefHeight="73.0" prefWidth="374.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
-                  <Button mnemonicParsing="false" onAction="#modifier" text="Modifier" />
-                  <Button mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" />
-      <TableView fx:id="tableview999" layoutX="413.0" layoutY="24.0" prefHeight="432.0" prefWidth="566.0">
-        <columns>
-          <TableColumn fx:id="titre" prefWidth="72.0" text="Titre" />
-            <TableColumn fx:id="image" prefWidth="82.0" text="Images" />
-            <TableColumn fx:id="date" text="Date" />
-            <TableColumn fx:id="nbplaces" prefWidth="89.0" text="nbplaces" />
-            <TableColumn fx:id="lieu" prefWidth="68.0" text="Lieu" />
-            <TableColumn fx:id="description" prefWidth="127.0" text="Description" />
-        </columns>
-      </TableView>
+      <TabPane>
+         <tabs>
+            <Tab fx:id="formation" text="Fomation">
+               <content>
+                  <AnchorPane>
+                     <children>
+                        <TableView fx:id="tableview999" layoutX="413.0" layoutY="24.0" prefHeight="432.0" prefWidth="623.0">
+                          <columns>
+                            <TableColumn fx:id="titre" prefWidth="72.0" text="Titre" />
+                              <TableColumn fx:id="image" prefWidth="82.0" text="Images" />
+                              <TableColumn fx:id="date" text="Date" />
+                              <TableColumn fx:id="nbplaces" prefWidth="89.0" text="nbplaces" />
+                              <TableColumn fx:id="lieu" prefWidth="68.0" text="Lieu" />
+                              <TableColumn fx:id="description" prefWidth="127.0" text="Description" />
+                          </columns>
+                        </TableView>
+                        <VBox prefHeight="700.0" prefWidth="413.0" style="-fx-background-color: #065D67;">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Gérer Formation" textAlignment="CENTER" textFill="#f07605">
+                                       <font>
+                                          <Font name="Baskerville Old Face" size="33.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="Ftitre" promptText="Titre">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="71.0" prefWidth="374.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#importerformation" text="importer image" textFill="#1b1b1a" />
+                                    <ImageView fx:id="imgview" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                              <DatePicker fx:id="Fdate" promptText="Date " />
+                              <HBox prefHeight="38.0" prefWidth="409.0" />
+                              <TextField fx:id="Placeformation" promptText="nombre de places" />
+                              <TextField fx:id="Flieu" prefHeight="31.0" prefWidth="329.0" promptText="Lieu" />
+                              <HBox prefHeight="48.0" prefWidth="413.0" />
+                              <HBox prefHeight="38.0" prefWidth="374.0" />
+                              <TextField fx:id="Desformation" prefHeight="87.0" prefWidth="374.0" promptText="Description" />
+                              <HBox prefHeight="40.0" prefWidth="374.0" />
+                              <HBox prefHeight="73.0" prefWidth="374.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+                                    <Button mnemonicParsing="false" onAction="#modifier" text="Modifier" />
+                                    <Button mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="likes">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <PieChart fx:id="piechart" layoutX="173.0" layoutY="63.0" prefHeight="497.0" prefWidth="712.0" title="Nombre like PUBS" />
+                        <Label fx:id="caption" layoutX="494.0" layoutY="114.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </TabPane>
    </children>
 </AnchorPane>
