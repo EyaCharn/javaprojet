@@ -22,3 +22,4 @@ public interface Iservice<T> {
     List<T> readAll() throws SQLException;
     
 }
+
