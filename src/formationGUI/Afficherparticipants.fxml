@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="1054.0">
+         <children>
+            <VBox layoutX="-13.0" layoutY="-10.0" prefHeight="710.0" prefWidth="426.0" style="-fx-background-color: #065D67;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Gérer Participants" textAlignment="CENTER" textFill="#f07605">
+                           <font>
+                              <Font name="Baskerville Old Face" size="33.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="supprimerP" mnemonicParsing="false" onAction="#supprimerP" text="Supprimer" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="71.0" prefWidth="374.0" />
+                  <HBox prefHeight="38.0" prefWidth="409.0" />
+                  <HBox prefHeight="48.0" prefWidth="413.0" />
+                  <HBox prefHeight="38.0" prefWidth="374.0" />
+                  <HBox prefHeight="40.0" prefWidth="374.0" />
+                  <HBox prefHeight="73.0" prefWidth="374.0" />
+               </children>
+            </VBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <TableView layoutX="479.0" layoutY="34.0" prefHeight="200.0" prefWidth="484.0">
+              <columns>
+                <TableColumn fx:id="idP" prefWidth="75.0" text="id" />
+                <TableColumn fx:id="usernameP" prefWidth="114.0" text="username" />
+                  <TableColumn fx:id="idforamtion" prefWidth="119.0" text="id_formation" />
+                  <TableColumn fx:id="DateP" prefWidth="75.0" text="Date" />
+                  <TableColumn fx:id="confirmerP" prefWidth="100.0" text="Confirmer" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

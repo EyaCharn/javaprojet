@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emploiGUI.EmploiController">
+   <children>
+      <VBox prefHeight="700.0" prefWidth="427.0" style="-fx-background-color: #065D67;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Gérer Emploi" textAlignment="CENTER" textFill="#f07605">
+                     <font>
+                        <Font name="Baskerville Old Face" size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <TextField fx:id="titreE" promptText="Titre" />
+            <HBox prefHeight="36.0" prefWidth="374.0" />
+            <HBox prefHeight="47.0" prefWidth="374.0">
+               <children>
+                  <TextField fx:id="expereience" prefHeight="31.0" prefWidth="303.0" promptText="année d'experience" />
+               </children></HBox>
+            <HBox prefHeight="51.0" prefWidth="374.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#importerEmploi" text="importer image" />
+                  <ImageView fx:id="imgview" fitHeight="125.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+               </children></HBox>
+            <HBox prefHeight="52.0" prefWidth="374.0">
+               <children>
+                  <TextField fx:id="desEmp" promptText="description" />
+               </children></HBox>
+            <HBox prefHeight="48.0" prefWidth="374.0">
+               <children>
+                  <TextField fx:id="emailEmp" promptText="e-mail" />
+               </children></HBox>
+            <HBox prefHeight="51.0" prefWidth="374.0">
+               <children>
+                  <TextField fx:id="lieuE" promptText="lieu" />
+               </children></HBox>
+            <HBox prefHeight="29.0" prefWidth="374.0">
+               <children>
+                  <DatePicker fx:id="debutE" promptText="date debut" />
+               </children></HBox>
+            <HBox prefHeight="67.0" prefWidth="374.0">
+               <children>
+                  <DatePicker fx:id="finE" promptText="date fin" />
+               </children>
+            </HBox>
+            <HBox prefHeight="29.0" prefWidth="374.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#ajouteremploi" text="Ajouter" />
+                  <Button mnemonicParsing="false" onAction="#modifieremploi" text="Modifier" />
+                  <Button mnemonicParsing="false" onAction="#supprimeremploi" text="Supprimer" />
+               </children>
+            </HBox>
+         </children></VBox>
+      <TableView fx:id="tabemploi" layoutX="426.0" layoutY="52.0" prefHeight="644.0" prefWidth="629.0">
+        <columns>
+          <TableColumn fx:id="titre" prefWidth="61.0" text="Titre" />
+            <TableColumn fx:id="exp" prefWidth="78.0" text="experiance" />
+            <TableColumn fx:id="image" prefWidth="78.0" text="Image" />
+            <TableColumn fx:id="des" prefWidth="105.0" text="description" />
+            <TableColumn fx:id="email" prefWidth="63.0" text="email" />
+            <TableColumn fx:id="lieu" prefWidth="73.0" text="Lieu" />
+            <TableColumn fx:id="deb" prefWidth="83.0" text="Debut" />
+            <TableColumn fx:id="fin" prefWidth="78.0" text="Fin" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

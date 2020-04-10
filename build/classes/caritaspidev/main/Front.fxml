@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.paint.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.main.FrontController">
+   <children>
+      <BorderPane prefHeight="700.0" prefWidth="1054.0">
+         <left>
+            <Pane fx:id="pane" prefHeight="614.0" prefWidth="323.0" style="-fx-background-color: #363648;" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutY="131.0" prefHeight="150.0" prefWidth="327.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="-7.0" prefHeight="51.0" prefWidth="320.0" text="Dashboard" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <VBox layoutX="-1.0" layoutY="192.0" prefHeight="454.0" prefWidth="323.0">
+                     <children>
+                        <Button fx:id="ab5" alignment="CENTER" mnemonicParsing="false" onAction="#gererhybergement" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="Service hybergement " textFill="#363648">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="ab6" mnemonicParsing="false" onAction="#gerersante" prefHeight="34.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="Service santé" textFill="#363648">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="ab51" alignment="CENTER" mnemonicParsing="false" onAction="#gererprofile" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="Gerer profile" textFill="#363648">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="ab3" mnemonicParsing="false" onAction="#offreemploi" prefHeight="53.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="Nos offre de emplois" textFill="#363648">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="ab4" mnemonicParsing="false" onAction="#gererformation" prefHeight="44.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="Nos formations" textFill="#363648">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="ab2" mnemonicParsing="false" onAction="#gererevenement" prefHeight="42.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text=" Nos evenements " textFill="#363648">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="ab" mnemonicParsing="false" onAction="#gereractualite" prefHeight="52.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text=" Nos actualités " textFill="#363648">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="ab1" mnemonicParsing="false" onAction="#gererreclamation" prefHeight="47.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="Espace reclamation" textFill="#363648">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <Label layoutX="26.0" layoutY="14.0" prefHeight="64.0" prefWidth="315.0" text="Welcome to our website" textFill="#d54e27">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="-13.0" layoutY="55.0" prefHeight="46.0" prefWidth="347.0" text="Here you will find" textFill="#d54e27">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="94.0" prefHeight="46.0" prefWidth="281.0" text="more information" textFill="#d54e27">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </left>
+         <center>
+            <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ScrollPane fx:id="scroller" layoutX="47.0" layoutY="42.0" prefHeight="193.0" prefWidth="644.0">
+                     <content>
+                        <VBox fx:id="vbox" prefHeight="185.0" prefWidth="624.0">
+                           <children>
+                              <HBox fx:id="imgslider" prefHeight="185.0" prefWidth="624.0" />
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children></AnchorPane>
+         </center>
+         <top>
+            <JFXToolbar fx:id="toolbar" prefHeight="110.0" prefWidth="1054.0" style="-fx-background-color: #363648;" BorderPane.alignment="CENTER">
+               <center>
+                  <Text fill="#d54e27" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME" textAlignment="CENTER" wrappingWidth="242.13671875" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold Italic" size="32.0" />
+                     </font>
+                  </Text>
+               </center>
+               <left>
+                  <ImageView fx:id="imglogo" fitHeight="131.0" fitWidth="245.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@../GUI/Image1.png" />
+                     </image>
+                  </ImageView>
+               </left>
+               <right>
+                  <Button fx:id="singout" mnemonicParsing="false" onAction="#logout" prefHeight="39.0" prefWidth="107.0" style="-fx-background-color: #B15837;" text="sing out" textFill="#363648" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Button>
+               </right>
+            </JFXToolbar>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

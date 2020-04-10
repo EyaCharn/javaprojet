@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="holderPane" prefHeight="700.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.controller.FXMLHomePageController">
+   <children>
+      <Pane fx:id="pane" prefHeight="700.0" prefWidth="323.0" style="-fx-background-color: #363648;">
+         <children>
+            <ImageView fx:id="imglogo" fitHeight="131.0" fitWidth="288.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Image1.png" />
+               </image>
+            </ImageView>
+            <Line fx:id="line1" endX="46.5" layoutX="27.0" layoutY="96.0" startX="-100.0" stroke="#d7d5d5" />
+            <AnchorPane layoutY="131.0" prefHeight="150.0" prefWidth="327.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="-27.0" layoutY="46.0" prefHeight="46.0" prefWidth="347.0" text="Here you will find" textFill="#d54e27">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="84.0" prefHeight="46.0" prefWidth="281.0" text="more information" textFill="#d54e27">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+                  <Label layoutX="14.0" layoutY="-3.0" prefHeight="64.0" prefWidth="315.0" text="Welcome to our website" textFill="#d54e27">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <VBox layoutX="-1.0" layoutY="265.0" prefHeight="432.0" prefWidth="323.0" />
+         </children>
+      </Pane>
+      <JFXToolbar fx:id="toolbar" layoutX="398.0" prefHeight="131.0" prefWidth="696.0" style="-fx-background-color: #363648;">
+         <center>
+            <Text fill="#d54e27" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME" textAlignment="CENTER" wrappingWidth="242.13671875" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="32.0" />
+               </font>
+            </Text>
+         </center>
+      </JFXToolbar>
+      <Label layoutX="381.0" layoutY="206.0" prefHeight="46.0" prefWidth="186.0" text="Dashboard" underline="true">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.11428571428571428" startY="0.13333333333333333">
+               <stops>
+                  <Stop color="#6766bf" />
+                  <Stop color="#fefdfc" offset="0.6494845360824741" />
+                  <Stop color="#d54e27" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnHeberg" layoutX="280.0" layoutY="275.0" onAction="#hebergClick" prefHeight="46.0" prefWidth="244.0" text="Hebergement" textFill="#d54e27">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnSrv" layoutX="351.0" layoutY="337.0" onAction="#servClick" prefHeight="46.0" prefWidth="216.0" text="Service santé" textFill="#d54e27">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="BtnCnt" layoutX="422.0" layoutY="558.0" style="-fx-border-color: #a4a1a1;" text="Contact us" textFill="#d54e27">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
