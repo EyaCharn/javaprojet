@@ -161,7 +161,7 @@ public class ServiceActualite implements Iservice<actualite> {
     pre.setInt(6, id);
     pre.executeUpdate();
   pre.executeUpdate();
-      System.out.println("update valide");
+     
          return true;}
         System.out.println("update invalid: emploi nexiste pas");
         return false;  
