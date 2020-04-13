@@ -98,6 +98,7 @@ public class formationService implements Iservice<formation>{
              pre.setString(4,t.getNbplaces());
              pre.setString(5,t.getLieu());
              pre.setString(6,t.getDescription());
+            
              pre.executeUpdate();
          
             System.out.println("update valide");

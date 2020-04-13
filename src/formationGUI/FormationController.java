@@ -24,7 +24,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -55,6 +58,15 @@ public class FormationController implements Initializable {
     private TextField Desformation;
     @FXML
     private TableView<formation> tableview999;
+  
+ @FXML
+    private Label caption;
+
+    @FXML
+    private Tab formation;
+      @FXML
+    private PieChart piechart;
+
     @FXML
     private TableColumn<formation, String> titre;
     @FXML
@@ -97,6 +109,7 @@ public class FormationController implements Initializable {
                 Placeformation.setText(cc.getNbplaces());
                 Flieu.setText(cc.getLieu());   
                 Desformation.setText(cc.getDescription());
+                
     
                 
                 
@@ -133,11 +146,8 @@ public class FormationController implements Initializable {
             String nbplaces = Placeformation.getText();
             String lieu = Flieu.getText();
             String description = Desformation.getText();
-           
-            
             formationService sp = new formationService();
             formation e = new formation(titre,img,date_Fdate,nbplaces,lieu,description);
-            
             sp.ajouter(e);
             JOptionPane.showMessageDialog(null, "ajout avec succes");
             Ftitre.clear();
@@ -145,7 +155,6 @@ public class FormationController implements Initializable {
             Placeformation.clear();
             Flieu.clear();
             Desformation.clear();
-           
             imgview.setImage(null);
             
           

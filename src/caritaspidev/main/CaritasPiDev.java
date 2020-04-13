@@ -5,6 +5,12 @@
  */
 package caritaspidev.main;
 
+import caritaspidev.entityServicesante.servicesante;
+import caritaspidev.entityHebergement.hebergement;
+import caritaspidev.services.ServiceDoctorrequest;
+import caritaspidev.services.Serviceservicesante;
+import caritaspidev.services.Servicehebergement;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,7 +25,7 @@ public class CaritasPiDev extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/main/Front.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/formationGUI/formation.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -30,8 +36,14 @@ public class CaritasPiDev extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        launch(args);
+    public static void main(String[] args)  {
+        //Servicehebergement sh = new Servicehebergement();
+        //sh.ajouter(new hebergement("6", "7", "sousse", "large", "NULL", "hhh"));
+        
+        //sh.afficher().forEach(System.out::println);
+        //ServiceDoctorrequest dr= new ServiceDoctorrequest();
+        //dr.afficher().forEach(System.out::println);
+          launch(args);
     }
     
 }
