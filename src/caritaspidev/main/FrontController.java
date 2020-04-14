@@ -7,13 +7,19 @@ package caritaspidev.main;
 
 import caritaspidev.connectionBD.DataSource;
 import caritaspidev.controller.UserSession;
+import caritaspidev.entityPublicite.likepublicite;
 import caritaspidev.entityPublicite.publicite;
 import caritaspidev.entityUser.user;
 import caritaspidev.services.ServicePublicite;
+import caritaspidev.services.Servicelikepublicite;
 import com.jfoenix.controls.JFXToolbar;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -160,9 +166,11 @@ List<String> type;
 
     @FXML
     private void gererreclamation(ActionEvent event) {
+        
+        
     }
     public void start1() throws Exception {
-          
+          Servicelikepublicite pa=new Servicelikepublicite();
    String req="select * from publicite  ";
         List<VBox> list = new ArrayList<>();
         
@@ -170,19 +178,39 @@ List<String> type;
             ste=con.createStatement();
             ResultSet rs = ste.executeQuery(req);
             while(rs.next()){
-               
+             
                  publicite p=new publicite(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getBoolean(4));
               ImageView v=new ImageView(new Image(rs.getString(2)));
                  
         v.setFitHeight(129);
         v.setFitWidth(1125);
-       
+       Button bt1=new Button("like");
+        
+
                VBox v1=new VBox();
                v1.setAlignment(Pos.CENTER);
                v1.setSpacing(10);
-               v1.getChildren().addAll(v);
+               v1.getChildren().addAll(v,bt1);
                list.add(v1);
                NUM_OF_IMGS=list.size();
+                   bt1.setOnAction(new EventHandler<ActionEvent>() {
+    @Override public void handle(ActionEvent e) {
+        
+        System.out.println(p.getId());
+        try {
+            
+               
+                pa.ajouter(new likepublicite(p.getId()));
+                bt1.setDisable(true);
+            
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+});
       
             }
         } catch (SQLException ex) {

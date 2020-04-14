@@ -89,7 +89,7 @@ public class ServiceActualite implements Iservice<actualite> {
    
     
  public List<actualite>trieParDate_D() throws SQLException{
-            String req="select * from actualite  ORDER BY dateajout ";
+            String req="select * from actualite  ORDER BY titre ";
         List<actualite> list = new ArrayList<>();
         
         try {
@@ -161,7 +161,7 @@ public class ServiceActualite implements Iservice<actualite> {
     pre.setInt(6, id);
     pre.executeUpdate();
   pre.executeUpdate();
-      System.out.println("update valide");
+     
          return true;}
         System.out.println("update invalid: emploi nexiste pas");
         return false;  
