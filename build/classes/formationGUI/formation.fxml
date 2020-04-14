@@ -46,20 +46,30 @@
                                           <Font size="16.0" />
                                        </font>
                                     </TextField>
+                                    <Label fx:id="error_name" prefHeight="14.0" prefWidth="142.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="71.0" prefWidth="374.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#importerformation" text="importer image" textFill="#1b1b1a" />
+                                    <Label fx:id="error_img" prefHeight="21.0" prefWidth="147.0" />
+                                    <Button fx:id="imagee" mnemonicParsing="false" onAction="#importerformation" text="importer image" textFill="#1b1b1a" />
                                     <ImageView fx:id="imgview" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </HBox>
                               <DatePicker fx:id="Fdate" promptText="Date " />
+                              <Label fx:id="error_date_d" prefHeight="21.0" prefWidth="205.0" />
                               <HBox prefHeight="38.0" prefWidth="409.0" />
                               <TextField fx:id="Placeformation" promptText="nombre de places" />
+                              <Label fx:id="error_nb" prefHeight="21.0" prefWidth="221.0" />
                               <TextField fx:id="Flieu" prefHeight="31.0" prefWidth="329.0" promptText="Lieu" />
-                              <HBox prefHeight="48.0" prefWidth="413.0" />
-                              <HBox prefHeight="38.0" prefWidth="374.0" />
+                              <HBox prefHeight="48.0" prefWidth="413.0">
+                                 <children>
+                                    <Label fx:id="error_lieu" prefHeight="21.0" prefWidth="210.0" />
+                                 </children></HBox>
+                              <HBox prefHeight="38.0" prefWidth="374.0">
+                                 <children>
+                                    <Label fx:id="error_des" prefHeight="21.0" prefWidth="227.0" />
+                                 </children></HBox>
                               <TextField fx:id="Desformation" prefHeight="87.0" prefWidth="374.0" promptText="Description" />
                               <HBox prefHeight="40.0" prefWidth="374.0" />
                               <HBox prefHeight="73.0" prefWidth="374.0">
@@ -80,7 +90,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <PieChart fx:id="piechart" layoutX="173.0" layoutY="63.0" prefHeight="497.0" prefWidth="712.0" title="Nombre like PUBS" />
+                        <PieChart fx:id="piechart" layoutX="173.0" layoutY="63.0" prefHeight="497.0" prefWidth="712.0" title="Nombre like formations" />
                         <Label fx:id="caption" layoutX="494.0" layoutY="114.0" text="Label" />
                      </children>
                   </AnchorPane>

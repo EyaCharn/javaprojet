@@ -6,7 +6,9 @@
 package caritaspidev.main;
 
 import caritaspidev.connectionBD.DataSource;
+import caritaspidev.controller.UserSession;
 import caritaspidev.entityPublicite.publicite;
+import caritaspidev.entityUser.user;
 import caritaspidev.services.ServicePublicite;
 import com.jfoenix.controls.JFXToolbar;
 import java.io.IOException;
@@ -106,6 +108,8 @@ List<String> type;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            user connecte=getUserConnecte();
+            System.out.println("hello ya  "+connecte);
             start1();
             // TODO
         } catch (Exception ex) {
@@ -225,6 +229,26 @@ List<String> type;
         anim.playFromStart();
     } 
 
+                   public user getUserConnecte() throws SQLException
+{
+
+      UserSession n = UserSession.getInstance();
+      user cc=new user();
+                               String s1 = n.getUsername();
+                               Statement stmt1 = con.createStatement();
+                              String SQL1 = "SELECT * FROM user  WHERE username ='" +s1+"'";
+                               ResultSet rs1 = stmt1.executeQuery(SQL1);
+                               while(rs1.next())
+                                {
+                                    cc.setId(rs1.getInt(1));
+                                    cc.setUsername(rs1.getString(3));
+                                   
+                                           
+                                }
+        return cc;
+                              
+    
+}
    
     
 }

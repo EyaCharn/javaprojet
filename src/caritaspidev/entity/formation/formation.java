@@ -22,17 +22,60 @@ public class formation {
     private String titre;
     private String image;
     private Date datedebut;
-    private String nbplaces;
+    private int nbplaces;
     private String lieu;
     private String description;
+    private int repliesnumber;
+    private int likesnumber;
+    private int idUser;
    
     private ImageView photo;
-    
-    
-      public formation() {
+
+    public formation() {
     }
 
-    public formation(int id, String titre, String image, Date datedebut, String nbplaces, String lieu, String description,ImageView photo) {
+    public formation(int id, String titre, String image, Date datedebut, int nbplaces, String lieu, String description, int repliesnumber, int likesnumber, int idUser) {
+        this.id = id;
+        this.titre = titre;
+        this.image = image;
+        this.datedebut = datedebut;
+        this.nbplaces = nbplaces;
+        this.lieu = lieu;
+        this.description = description;
+        this.repliesnumber = repliesnumber;
+        this.likesnumber = likesnumber;
+        this.idUser = idUser;
+    }
+
+    public formation(int id, String titre, String image, Date datedebut, int nbplaces, String lieu, String description, int likesnumber, int idUser) {
+        this.id = id;
+        this.titre = titre;
+        this.image = image;
+        this.datedebut = datedebut;
+        this.nbplaces = nbplaces;
+        this.lieu = lieu;
+        this.description = description;
+        this.likesnumber = likesnumber;
+        this.idUser = idUser;
+    }
+    
+    
+
+    public formation(int id, String titre, String image, Date datedebut, int nbplaces, String lieu, String description, int repliesnumber, int likesnumber, int idUser, ImageView photo) {
+        this.id = id;
+        this.titre = titre;
+        this.image = image;
+        this.datedebut = datedebut;
+        this.nbplaces = nbplaces;
+        this.lieu = lieu;
+        this.description = description;
+        this.repliesnumber = repliesnumber;
+        this.likesnumber = likesnumber;
+        this.idUser = idUser;
+        this.photo = photo;
+    }
+
+     public formation(int id, String titre, String image, Date datedebut, int nbplaces, String lieu, String description,ImageView photo) {
         this.id = id;
         this.titre = titre;
         this.image = image;
@@ -44,7 +87,7 @@ public class formation {
         this.photo = photo;
     }
 
-    public formation(String titre, String image, Date datedebut, String nbplaces, String lieu, String description, ImageView photo) {
+    public formation(String titre, String image, Date datedebut, int nbplaces, String lieu, String description, ImageView photo) {
         this.titre = titre;
         this.image = image;
         this.datedebut = datedebut;
@@ -55,7 +98,7 @@ public class formation {
         this.photo = photo;
     }
 
-    public formation(int id, String titre, String image, Date datedebut, String nbplaces, String lieu, String description) {
+    public formation(int id, String titre, String image, Date datedebut, int nbplaces, String lieu, String description) {
         this.id = id;
         this.titre = titre;
         this.image = image;
@@ -66,7 +109,7 @@ public class formation {
       
     }
 
-    public formation(String titre, String image, Date datedebut, String nbplaces, String lieu, String description) {
+    public formation(String titre, String image, Date datedebut, int nbplaces, String lieu, String description) {
         this.titre = titre;
         this.image = image;
         this.datedebut = datedebut;
@@ -80,7 +123,7 @@ public class formation {
 
    
 
-    public formation(int id, String titre, String image, Date datedebut, String nbplaces, String description) {
+    public formation(int id, String titre, String image, Date datedebut, int nbplaces, String description) {
         this.id = id;
         this.titre = titre;
         this.image = image;
@@ -90,7 +133,7 @@ public class formation {
        
     }
 
-    public formation(int id, String image, Date datedebut, String nbplaces, String lieu, String description, ImageView photo) {
+    public formation(int id, String image, Date datedebut, int nbplaces, String lieu, String description, ImageView photo) {
         this.id = id;
         this.image = image;
         this.datedebut = datedebut;
@@ -100,15 +143,6 @@ public class formation {
        
         this.photo = photo;
     }
-
-  
-   
-
-  
-
-    
-    
-    
 
     public int getId() {
         return id;
@@ -121,10 +155,6 @@ public class formation {
     public String getTitre() {
         return titre;
     }
-
-
-   
-    
 
     public void setTitre(String titre) {
         this.titre = titre;
@@ -146,11 +176,11 @@ public class formation {
         this.datedebut = datedebut;
     }
 
-    public String getNbplaces() {
+    public int getNbplaces() {
         return nbplaces;
     }
 
-    public void setNbplaces(String nbplaces) {
+    public void setNbplaces(int nbplaces) {
         this.nbplaces = nbplaces;
     }
 
@@ -170,6 +200,30 @@ public class formation {
         this.description = description;
     }
 
+    public int getRepliesnumber() {
+        return repliesnumber;
+    }
+
+    public void setRepliesnumber(int repliesnumber) {
+        this.repliesnumber = repliesnumber;
+    }
+
+    public int getLikesnumber() {
+        return likesnumber;
+    }
+
+    public void setLikesnumber(int likesnumber) {
+        this.likesnumber = likesnumber;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
     public ImageView getPhoto() {
         return photo;
     }
@@ -181,15 +235,17 @@ public class formation {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 19 * hash + this.id;
-        hash = 19 * hash + Objects.hashCode(this.titre);
-        hash = 19 * hash + Objects.hashCode(this.image);
-        hash = 19 * hash + Objects.hashCode(this.datedebut);
-        hash = 19 * hash + Objects.hashCode(this.nbplaces);
-        hash = 19 * hash + Objects.hashCode(this.lieu);
-        hash = 19 * hash + Objects.hashCode(this.description);
-      
-        hash = 19 * hash + Objects.hashCode(this.photo);
+        hash = 83 * hash + this.id;
+        hash = 83 * hash + Objects.hashCode(this.titre);
+        hash = 83 * hash + Objects.hashCode(this.image);
+        hash = 83 * hash + Objects.hashCode(this.datedebut);
+        hash = 83 * hash + this.nbplaces;
+        hash = 83 * hash + Objects.hashCode(this.lieu);
+        hash = 83 * hash + Objects.hashCode(this.description);
+        hash = 83 * hash + this.repliesnumber;
+        hash = 83 * hash + this.likesnumber;
+        hash = 83 * hash + this.idUser;
+        hash = 83 * hash + Objects.hashCode(this.photo);
         return hash;
     }
 
@@ -214,7 +270,7 @@ public class formation {
         if (!Objects.equals(this.datedebut, other.datedebut)) {
             return false;
         }
-        if (!Objects.equals(this.nbplaces, other.nbplaces)) {
+        if (this.nbplaces != other.nbplaces) {
             return false;
         }
         if (!Objects.equals(this.lieu, other.lieu)) {
@@ -223,9 +279,15 @@ public class formation {
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        
-        
-        
+        if (this.repliesnumber != other.repliesnumber) {
+            return false;
+        }
+        if (this.likesnumber != other.likesnumber) {
+            return false;
+        }
+        if (this.idUser != other.idUser) {
+            return false;
+        }
         if (!Objects.equals(this.photo, other.photo)) {
             return false;
         }
@@ -234,8 +296,16 @@ public class formation {
 
     @Override
     public String toString() {
-        return "formation{" + "id=" + id + ", titre=" + titre + ", image=" + image + ", datedebut=" + datedebut + ", nbplaces=" + nbplaces + ", lieu=" + lieu + ", description=" + description + ", photo=" + photo + '}';
+        return "formation{" + "id=" + id + ", titre=" + titre + ", image=" + image + ", datedebut=" + datedebut + ", nbplaces=" + nbplaces + ", lieu=" + lieu + ", description=" + description + ", repliesnumber=" + repliesnumber + ", likesnumber=" + likesnumber + ", idUser=" + idUser + ", photo=" + photo + '}';
     }
+    
+    
+
+   
+    
+    
+    
+     
 
    
 }

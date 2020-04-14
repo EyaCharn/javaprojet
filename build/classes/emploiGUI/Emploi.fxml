@@ -22,35 +22,45 @@
                </children>
             </HBox>
             <TextField fx:id="titreE" promptText="Titre" />
-            <HBox prefHeight="36.0" prefWidth="374.0" />
+            <HBox prefHeight="36.0" prefWidth="374.0">
+               <children>
+                  <Label fx:id="error_name" prefHeight="21.0" prefWidth="324.0" />
+               </children></HBox>
             <HBox prefHeight="47.0" prefWidth="374.0">
                <children>
-                  <TextField fx:id="expereience" prefHeight="31.0" prefWidth="303.0" promptText="année d'experience" />
+                  <TextField fx:id="expereience" prefHeight="31.0" prefWidth="195.0" promptText="année d'experience" />
+                  <Label fx:id="error_an" prefHeight="21.0" prefWidth="213.0" />
                </children></HBox>
             <HBox prefHeight="51.0" prefWidth="374.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#importerEmploi" text="importer image" />
+                  <Label fx:id="error_img" prefHeight="21.0" prefWidth="114.0" />
+                  <Button fx:id="imagee" mnemonicParsing="false" onAction="#importerEmploi" text="importer image" />
                   <ImageView fx:id="imgview" fitHeight="125.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                </children></HBox>
             <HBox prefHeight="52.0" prefWidth="374.0">
                <children>
                   <TextField fx:id="desEmp" promptText="description" />
+                  <Label fx:id="error_des" prefHeight="21.0" prefWidth="204.0" />
                </children></HBox>
             <HBox prefHeight="48.0" prefWidth="374.0">
                <children>
                   <TextField fx:id="emailEmp" promptText="e-mail" />
+                  <Label fx:id="error_email" prefHeight="21.0" prefWidth="220.0" />
                </children></HBox>
             <HBox prefHeight="51.0" prefWidth="374.0">
                <children>
                   <TextField fx:id="lieuE" promptText="lieu" />
+                  <Label fx:id="error_lieu" prefHeight="21.0" prefWidth="140.0" />
                </children></HBox>
             <HBox prefHeight="29.0" prefWidth="374.0">
                <children>
                   <DatePicker fx:id="debutE" promptText="date debut" />
+                  <Label fx:id="error_d" prefHeight="21.0" prefWidth="154.0" />
                </children></HBox>
             <HBox prefHeight="67.0" prefWidth="374.0">
                <children>
                   <DatePicker fx:id="finE" promptText="date fin" />
+                  <Label fx:id="error_f" prefHeight="21.0" prefWidth="132.0" />
                </children>
             </HBox>
             <HBox prefHeight="29.0" prefWidth="374.0">

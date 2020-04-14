@@ -7,6 +7,7 @@ package caritaspidev.services;
 
 import caritaspidev.connectionBD.DataSource;
 import caritaspidev.entity.emploi.emploi;
+import caritaspidev.entity.formation.formation;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -114,6 +115,30 @@ public class emploiService implements Iservice<emploi>{
          return true;}
         System.out.println("update invalid: emploi nexiste pas");
         return false;
+    }
+    
+    
+     public void update2(emploi t)  {
+         try{
+                 Date dd=new java.sql.Date(t.getDateDebut().getTime());
+        Date df=new java.sql.Date(t.getDateFin().getTime()); 
+         
+             pre=cnx.prepareStatement("UPDATE offre_emplois SET titre =?,exeperiance =?,image =?,description =?,email =?,lieu=?,dateDebut =?,dateFin =? WHERE id=?");
+             pre.setString(1,t.getTitre());
+             pre.setString(2,t.getExeperiance());
+             pre.setString(3,t.getImage());
+             pre.setString(4,t.getDescription());
+             pre.setString(5,t.getEmail());
+             pre.setString(6,t.getLieu());
+             pre.setDate(7,dd);
+             pre.setDate(8,df);
+             pre.setInt(9,t.getId());
+             pre.executeUpdate();
+         
+            System.out.println("update valide");
+         }catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
 
     @Override
