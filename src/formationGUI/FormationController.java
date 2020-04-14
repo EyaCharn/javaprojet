@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +27,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -58,6 +61,9 @@ public class FormationController implements Initializable {
     private TextField Desformation;
     @FXML
     private TableView<formation> tableview999;
+    
+    @FXML
+    private Button imagee;
   
  @FXML
     private Label caption;
@@ -71,14 +77,28 @@ public class FormationController implements Initializable {
     private TableColumn<formation, String> titre;
     @FXML
     private TableColumn<formation, String> image;
+      @FXML
+    private Label error_name;
     @FXML
     private TableColumn<formation, String> date;
     @FXML
     private TableColumn<formation, String> nbplaces;
+      @FXML
+    private Label error_img;
     @FXML
     private TableColumn<formation, String> lieu;
+      @FXML
+    private Label error_lieu;
     @FXML
     private TableColumn<formation, String> description;
+      @FXML
+    private Label error_des;
+    
+       @FXML
+    private Label error_date_d;
+
+    @FXML
+    private Label error_nb;
 
     
     
@@ -106,7 +126,12 @@ public class FormationController implements Initializable {
                 imgview.setImage(new Image(cc.getImage()));
                 LocalDate d1=cc.getDatedebut().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 Fdate.setValue(d1);
-                Placeformation.setText(cc.getNbplaces());
+                
+                int cprix=cc.getNbplaces();
+                String nb_PPP=String.valueOf(cprix);
+                Placeformation.setText(nb_PPP);
+                
+                
                 Flieu.setText(cc.getLieu());   
                 Desformation.setText(cc.getDescription());
                 
@@ -119,6 +144,110 @@ public class FormationController implements Initializable {
                 
             }            }
          );
+         
+          Ftitre.textProperty().addListener(new ChangeListener<String>()
+            {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                   if(newValue.isEmpty())
+                       error_name.setText("remplir champ titre");
+                   else if(newValue.length()>25)
+                       error_name.setText("Max champ titre 25");
+                   else
+                error_name.setText("");
+                }
+                
+                
+            });
+          
+          
+           Ftitre.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(Ftitre.getText().length()==0)
+                     error_name.setText("remplir champ titre");    
+                    
+                }
+                
+            });
+           Ftitre.textProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue.matches("\\sa-zA-Z*")) {
+            Ftitre.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+        }
+    });
+           
+           
+             Fdate.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(Fdate.getValue()==null)
+                     error_date_d.setText("remplir champ date debut");    
+                   
+                    
+                    
+                }
+                
+            });
+             
+             
+             
+            
+               imagee.textProperty().addListener(new ChangeListener<String>()
+            {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                   if(newValue.isEmpty())
+                       error_img.setText("remplir champ image");
+                   
+                   else
+                error_img.setText("");
+                }
+                
+                
+            });
+               
+               imagee.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(imagee.getText().length()==0)
+                     error_img.setText("remplir champ image");    
+                    
+                }
+                
+            });
+            
+             
+              Flieu.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(Flieu.getText().length()==0)
+                     error_lieu.setText("remplir champ lieu");    
+                    
+                }
+                
+            });
+                Desformation.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(Desformation.getText().length()==0)
+                     error_des.setText("remplir chaamp description");    
+                    
+                }
+                
+            });
+                
+                
+                
+              
+              
+              
+              
+             
          }
 
        
@@ -138,16 +267,17 @@ public class FormationController implements Initializable {
     }
 
     @FXML
-    private void ajouter(ActionEvent event) {
+    private void ajouter(ActionEvent event) throws SQLException {
          try {
             String titre = Ftitre.getText();
              LocalDate dd =Fdate.getValue();
              Date date_Fdate = java.sql.Date.valueOf(dd);
-            String nbplaces = Placeformation.getText();
-            String lieu = Flieu.getText();
+            int nbplaces= Integer.parseInt(Placeformation.getText());            String lieu = Flieu.getText();
             String description = Desformation.getText();
             formationService sp = new formationService();
             formation e = new formation(titre,img,date_Fdate,nbplaces,lieu,description);
+            e.setLikesnumber(0);
+            e.setRepliesnumber(0);
             sp.ajouter(e);
             JOptionPane.showMessageDialog(null, "ajout avec succes");
             Ftitre.clear();
@@ -168,7 +298,7 @@ public class FormationController implements Initializable {
     }
 
     @FXML
-    private void modifier(ActionEvent event) {
+    private void modifier(ActionEvent event) throws SQLException {
          formationService cs = new formationService();
         
         System.out.println(cc);
@@ -179,11 +309,12 @@ public class FormationController implements Initializable {
             try {
                 LocalDate dd=Fdate.getValue();
                 java.util.Date d1=java.sql.Date.valueOf(dd);
+                 int nbplaces= Integer.parseInt(Placeformation.getText());
                 
                 if(img.length()==0)
-                    cs.update(new formation(Ftitre.getText(),cc.getImage(),d1,Placeformation.getText(),Flieu.getText(),Desformation.getText()),cc.getId());
+                    cs.update(new formation(Ftitre.getText(),cc.getImage(),d1,nbplaces,Flieu.getText(),Desformation.getText()),cc.getId());
                 else
-                    cs.update(new formation(Ftitre.getText(),img,d1,Placeformation.getText(),Flieu.getText(),Desformation.getText()),cc.getId());
+                    cs.update(new formation(Ftitre.getText(),img,d1,nbplaces,Flieu.getText(),Desformation.getText()),cc.getId());
                 
                 afficher();
                 JOptionPane.showMessageDialog(null, "formation modifier");

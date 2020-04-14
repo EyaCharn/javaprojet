@@ -208,8 +208,8 @@ public class LoginController implements Initializable {
         pauseTransition.setOnFinished(ev -> {
         System.out.println("hello Volontaire");
         user userConnecter=myServices.chercherUtilisateurByUsername(username);
-    
-         loadWindow(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml"), "Dashboard", null);
+     UserSession.getInstace(userConnecter.getUsername(),userConnecter.getImage());  
+       loadWindow(getClass().getResource("/caritaspidev/main/Front.fxml"), "Dashboard", null);
          labelusername.getScene().getWindow().hide();
          Notifications n = Notifications.create()
         .title("Bienvenue")

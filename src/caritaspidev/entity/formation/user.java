@@ -1,26 +1,18 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package caritaspidev.entityUser;
+package caritaspidev.entity.formation;
 
 import java.sql.Date;
-import java.util.HashMap;
-import java.util.Map;
-import javafx.collections.ObservableList;
 
 /**
  *
- * @author Asus
+ * @author EYA
  */
 public class user {
-
-    public static user getInstance() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
- 
- 
+    
     private int id;
     private String username;
     private String username_canonical;
@@ -37,8 +29,8 @@ public class user {
     private String lastname;
     private String profile_picture;
   
-
-    public user() {
+    
+ public user() {
     }
 
     public user(int id) {
@@ -205,3 +197,4 @@ public class user {
   
 
 }
+
