@@ -5,6 +5,7 @@
  */
 package caritaspidev.entityUser;
 
+import static caritaspidev.connectionBD.DataSource.instance;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +16,8 @@ import javafx.collections.ObservableList;
  * @author Asus
  */
 public class user {
- 
- 
+          private static final Map<Integer, user> USERS = new HashMap<>();
+        private static user instance;
     private int id;
     private String username;
     private String username_canonical;
@@ -28,10 +29,11 @@ public class user {
     //salt
     private Date last_login;
     private String roles;
-
+        private String phone;
     private String firstname;
     private String lastname;
     private String profile_picture;
+      private String id_facebook;
   
 
     public user() {
@@ -40,11 +42,23 @@ public class user {
     public user(int id) {
         this.id = id;
     }
+     public user(String firstname) {
+        this.firstname = firstname;
+       
+    }
+        public static user of(int id) {
+        user user = USERS.get(id);
+        if (user == null) {
+            user = new user(id);
+            USERS.put(id, user);
+        }
+        return user;
+    }
     
     
      
 
-    public user(int id, String username, String username_canonical, String email, String email_canonical, String password, int enabled, Date last_login, String roles, String firstname, String lastname, String profile_picture) {
+    public user(int id, String username, String username_canonical, String email, String email_canonical, String password, int enabled, Date last_login, String roles, String firstname, String lastname, String profile_picture,String phone) {
         this.id = id;
         this.username = username;
         this.username_canonical = username_canonical;
@@ -57,12 +71,13 @@ public class user {
         this.firstname = firstname;
         this.lastname = lastname;
         this.profile_picture = profile_picture;
+        this.phone = phone;
        
     }
     
     
 
-    public user(int id, String username, String username_canonical, String email, String email_canonical, String password, String roles, String firstname, String lastname, String profile_picture) {
+    public user(int id, String username, String username_canonical, String email, String email_canonical, String password, String roles, String firstname, String lastname, String profile_picture, String phone) {
         this.id = id;
         this.username = username;
         this.username_canonical = username_canonical;
@@ -73,13 +88,29 @@ public class user {
         this.firstname = firstname;
         this.lastname = lastname;
         this.profile_picture = profile_picture;
+         this.phone = phone;
+    }
+      
+
+    public user(int id, String username, String email, String password, String roles, String firstname, String lastname, String profile_picture,String phone) {
+        this.id = id;
+        this.username = username;
+        
+        this.email = email;
+   
+        this.password = password;
+        this.roles = roles;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.profile_picture = profile_picture;
+        this.phone = phone;
  
     }
 
-    public user(String username, String username_canonical,String firstname, String lastname, String roles) {
+    public user(String username,String firstname, String lastname, String roles) {
          
         this.username = username;
-        this.username_canonical = username_canonical;
+        
     
         this.roles = roles;
         this.firstname = firstname;
@@ -186,13 +217,33 @@ public class user {
         this.profile_picture = profile_picture;
     }
 
+      public static user getInstance() {
+        return instance;
+    }
     
+      public static void setInstance(user instance) {
+        user.instance = instance;
+    }  
 
-     
+        public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+     public String getId_facebook() {
+        return id_facebook;
+    }
+
+    public void setId_facebook(String id_facebook) {
+        this.id_facebook = id_facebook;
+    }
+    
 
     @Override
     public String toString() {
-        return "user{" + "id=" + id + ", username=" + username + ", username_canonical=" + username_canonical + ", email=" + email + ", email_canonical=" + email_canonical + ", password=" + password + ", enabled=" + enabled + ", last_login=" + last_login + ", roles=" + roles + ", Firstname=" +firstname + ", Last_name=" + lastname +  ", profile_picture=" + profile_picture + '}'+'\n';
+        return "user{" + "id=" + id + ", username=" + username + ", username_canonical=" + username_canonical + ", email=" + email + ", email_canonical=" + email_canonical + ", password=" + password + ", enabled=" + enabled + ", last_login=" + last_login + ", roles=" + roles + ", Firstname=" +firstname + ", Last_name=" + lastname +  ", profile_picture=" + profile_picture + ", phone=" + phone + '}'+'\n';
     }
      
 

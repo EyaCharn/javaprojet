@@ -5,8 +5,10 @@
  */
 package caritaspidev.services;
 import caritaspidev.connectionBD.DataSource;
+import caritaspidev.entityHebergement.avishebergement;
 import caritaspidev.entityHebergement.hebergement;
 import caritaspidev.entityServicesante.servicesante;
+import caritaspidev.entityUser.user;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +19,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
+import javafx.geometry.Pos;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 
 /**
@@ -27,6 +32,7 @@ public class Servicehebergement implements Hservice<hebergement> {
     
 
    Connection cnx = DataSource.getInstance().getConnection();
+   private PreparedStatement ps;
     
    
      @Override
@@ -96,7 +102,7 @@ public class Servicehebergement implements Hservice<hebergement> {
             PreparedStatement pst = cnx.prepareStatement(requete);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                list.add(new hebergement(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getDate(7)));
+                list.add(new hebergement(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6), rs.getString(8)));
             }
 
         } catch (SQLException ex) {
@@ -105,5 +111,129 @@ public class Servicehebergement implements Hservice<hebergement> {
 
         return list;
     }
+    public void rating(int rat, int hebergement) {
+
+        try { // 
+            String requete = "INSERT INTO reviews(stars) VALUES(?) where hebergement=" + hebergement;
+//            String requete = "INSERT INTO bon_plan(longitude,latitude,refcategorie,num_tel_local,libelle ,desciption,image,couverture,addresse,email,overture,fermeture)(?,?,?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setInt(1, rat);
+
+            pst.executeUpdate();
+
+            System.out.println("rating ajouté");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+
+    public void ajoutreview(avishebergement a) {
+
+        try { // 
+            String requete = "INSERT INTO reviews(user_id,hebergement,stars,title,description) VALUES(?,?,?,?,?) ";
+//            String requete = "INSERT INTO bon_plan(longitude,latitude,refcategorie,num_tel_local,libelle ,desciption,image,couverture,addresse,email,overture,fermeture)(?,?,?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst.setInt(1, a.getRefavis().getId());
+            pst.setLong(2, a.getheb());
+            pst.setDouble(3, a.getRating());
+            pst.setString(4, a.getTitre());
+            pst.setString(5, a.getDescription());
+
+            pst.executeUpdate();
+
+            System.out.println("Review ajouté");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+
+     public List<avishebergement> ListeAvis(Long id) {
+        List<avishebergement> myList = new ArrayList<avishebergement>();
+
+        try { // LES var declaré dans le try ne sont vue que dans le try, et inversement pour en dhors du try
+            String requete = "SELECT * from reviews where hebergement=" + id; //MAJUSCULE NON OBLIGATOIRE 
+            Statement pst = cnx.prepareStatement(requete); // import java.sql.Statement
+            ResultSet rs = pst.executeQuery(requete);
+            while (rs.next()) {
+                avishebergement p2 = new avishebergement();
+                p2.setId(rs.getInt(1));
+                user u = new user(rs.getInt(2));
+                p2.setRefavis(u);
+
+                p2.setRating(rs.getDouble(3));
+                p2.setTitre(rs.getString(4));
+                p2.setDescription(rs.getString(5));
+                
+
+                myList.add(p2);
+
+            }
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return myList;
+
+    }
+      public void supprimeravis(Integer r) {
+        user loggedUser = caritaspidev.controller.LoginController.getInstance().getLoggedUser();
+        if (loggedUser.getId() == r) {
+            try {
+
+                String requete = "delete from `reviews` where id=?";
+                PreparedStatement ps;
+                ps = cnx.prepareStatement(requete);
+                ps.setInt(1, r);
+                ps.executeUpdate();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            Notifications n = Notifications.create()
+                    .title("Erreur")
+                    .text("Ce n'est pas votre commentaire")
+                    .graphic(null)
+                    .position(Pos.TOP_CENTER)
+                    .hideAfter(Duration.seconds(5));
+            n.showWarning();
+        }
+
+    }
+      
+      public int GEtMoyRating(int id) {
+
+        int i = 0;
+        try {
+            String sqlStationName = " select AVG(stars) as moyenne from reviews where hebergement="+id;
+            Statement st3 = cnx.createStatement();
+            ResultSet rs = st3.executeQuery(sqlStationName);
+            while (rs.next()) {
+
+                i = (int)rs.getDouble("moyenne");
+              //  System.out.println("i= "+i);
+
+            }
+
+            rs.close();
+            st3.close();
+
+        } catch (SQLException ex) {
+            System.err.println("ERR" + ex);
+        }
+        return i;
+    }
+      
+      public ResultSet statistic() throws SQLException  {
+   
+    String rec="SELECT count(*),adresse FROM `hebergement` group by adresse";
+    ps= cnx.prepareStatement(rec);
+    ResultSet result = ps.executeQuery();
+    return result;
+    } 
+
     
 }

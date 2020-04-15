@@ -6,10 +6,12 @@
 package caritaspidev.controller;
 
 import static caritaspidev.controller.FXMLhebergementController.isInteger;
+import static caritaspidev.controller.RegistrationController.loadWindow;
 import caritaspidev.entityServicesante.servicesante;
 import caritaspidev.services.Serviceservicesante;
 import com.jfoenix.controls.JFXTabPane;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,11 +19,16 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,6 +40,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import javax.swing.JOptionPane;
 import static jdk.nashorn.internal.objects.NativeJava.type;
 import org.controlsfx.control.Notifications;
@@ -228,8 +238,33 @@ public class FXMLServicesanteController implements Initializable {
 
         }  
     }
+       public static void loadWindow(URL loc, String title, Stage parentStage) {
+        try {
+            Parent parent = FXMLLoader.load(loc);
+            Stage stage = null;
+            if (parentStage != null) {
+                stage = parentStage;
+            } else {
+                stage = new Stage(StageStyle.DECORATED);
+            }
+            Scene scene = new Scene(parent);
+
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
+       @FXML
+    void annuler(ActionEvent event) throws IOException{
+              loadWindow(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml"), "User interface", null);
+    }
+      @FXML
+    void stat(ActionEvent event) throws IOException{
+              loadWindow(getClass().getResource("/caritaspidev/GUI/Statsante.fxml"), "Statistique", null);
+    }
     
-     
+    
      @Override
     public void initialize(URL url, ResourceBundle rb) {
          

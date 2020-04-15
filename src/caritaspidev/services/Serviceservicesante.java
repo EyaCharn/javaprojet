@@ -58,6 +58,14 @@ public class Serviceservicesante implements Sservice<servicesante>{
    
     }
     
+     public ResultSet statistic() throws SQLException  {
+   
+    String rec="SELECT count(*),specialite FROM `servicesante` group by specialite";
+    pre= con.prepareStatement(rec);
+    ResultSet result = pre.executeQuery();
+    return result;
+    } 
+    
     
     
 }

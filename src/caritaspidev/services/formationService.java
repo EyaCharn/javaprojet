@@ -95,9 +95,10 @@ public class formationService implements Iservice<formation>{
              pre.setString(1,t.getTitre());
              pre.setString(2,t.getImage());
              pre.setDate(3,dd);
-             pre.setString(4,t.getNbplaces());
+             pre.setInt(4,t.getNbplaces());
              pre.setString(5,t.getLieu());
              pre.setString(6,t.getDescription());
+            
              pre.executeUpdate();
          
             System.out.println("update valide");
@@ -119,7 +120,7 @@ public class formationService implements Iservice<formation>{
                    v.setImage(new Image(rs.getString(3)));
                    v.setFitHeight(100);
                    v.setFitWidth(100);
-                   formation pp=new formation(rs.getInt(1),rs.getString(2),rs.getString(3),dd,rs.getString(5),rs.getString(6),rs.getString(7));
+                   formation pp=new formation(rs.getInt(1),rs.getString(2),rs.getString(3),dd,rs.getInt(5),rs.getString(6),rs.getString(7));
                    pp.setPhoto(v);
         list.add(pp);
                

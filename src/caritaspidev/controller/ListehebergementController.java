@@ -94,6 +94,9 @@ public class ListehebergementController implements Initializable {
 
     @FXML
     private TableColumn<hebergement,String> tablecolonnehebDate;
+      @FXML
+    private TableColumn<hebergement,String> tablecolonnehebReg;
+    public static hebergement heb;
      Servicehebergement services = new Servicehebergement();
       private List<hebergement> listhebergements;//retourner liste de la select
     private ObservableList<hebergement> Observablelistehebergements;//pour la table view
@@ -159,6 +162,11 @@ public class ListehebergementController implements Initializable {
         
 
     }
+      @FXML
+    void back(ActionEvent event)throws IOException {
+           setNode(FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml")));
+
+    }
      private void setNode(Node node) {
         ListeCadeauxBorderPane.getChildren().clear();
         ListeCadeauxBorderPane.getChildren().add((Node) node);
@@ -177,10 +185,28 @@ public class ListehebergementController implements Initializable {
 
 
     }
+      @FXML
+    void avis(ActionEvent event) throws IOException, SQLException  {
+           heb = tableviewhebergements.getSelectionModel().getSelectedItem();
+
+        if (heb != null) {
+                 setNode(FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/rating.fxml")));
+           
+           
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("S'il vous plait selectionner une proposition");
+            alert.show();
+        }
+     
+
+
+    }
 
     @FXML
     void modifierhebergement(ActionEvent event)throws IOException {
-          hebergement heb = tableviewhebergements.getSelectionModel().getSelectedItem();
+           heb = tableviewhebergements.getSelectionModel().getSelectedItem();
 
         if (heb != null) {
 
@@ -200,7 +226,7 @@ public class ListehebergementController implements Initializable {
 
     @FXML
     void supprimerhebergement(ActionEvent event) {
-         hebergement heb = tableviewhebergements.getSelectionModel().getSelectedItem();
+          heb = tableviewhebergements.getSelectionModel().getSelectedItem();
 
         if (heb != null) {
 
@@ -225,7 +251,8 @@ public class ListehebergementController implements Initializable {
        tablecolonnehebnbplaces.setCellValueFactory(new PropertyValueFactory<>("nbplaces"));
        tablecolonnehebDescription.setCellValueFactory(new PropertyValueFactory<>("description_logement"));
         tablecolonnehebImage.setCellValueFactory(new PropertyValueFactory<>("image_logement"));
-         tablecolonnehebDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        //tablecolonnehebDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        tablecolonnehebReg.setCellValueFactory(new PropertyValueFactory<>("reglement_interieur"));
           listhebergements = services.afficher();
          Observablelistehebergements= FXCollections.observableArrayList(listhebergements);//convertir la liste des client en observable liste
         tableviewhebergements.setItems(Observablelistehebergements);

@@ -16,5 +16,11 @@ public class traningparticipation {
     private boolean confirm;
     private Date date;
     
+   public traningparticipation(int formaid,int userid){
+       this.formaid=formaid;
+       this.userid=userid;
+    
+   }
+    
     
 }

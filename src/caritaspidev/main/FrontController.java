@@ -6,7 +6,9 @@
 package caritaspidev.main;
 
 import caritaspidev.connectionBD.DataSource;
+import caritaspidev.entityUser.UserSession;
 import caritaspidev.entityPublicite.publicite;
+import caritaspidev.entityUser.user;
 import caritaspidev.services.ServicePublicite;
 import com.jfoenix.controls.JFXToolbar;
 import java.io.IOException;
@@ -106,6 +108,8 @@ List<String> type;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            user connecte=getUserConnecte();
+            System.out.println("hello ya  "+connecte);
             start1();
             // TODO
         } catch (Exception ex) {
@@ -120,11 +124,15 @@ List<String> type;
     }
 
     @FXML
-    private void gererhybergement(ActionEvent event) {
+    private void gererhybergement(ActionEvent event) throws IOException {
+      AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficherHeb.fxml"));
+        ap.getChildren().setAll(pane); 
     }
 
     @FXML
-    private void gerersante(ActionEvent event) {
+    private void gerersante(ActionEvent event)throws IOException  {
+        AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/servicesante.fxml"));
+        ap.getChildren().setAll(pane); 
     }
 
     @FXML
@@ -132,12 +140,17 @@ List<String> type;
     }
 
     @FXML
-    private void offreemploi(ActionEvent event) {
+    private void offreemploi(ActionEvent event) throws IOException {
+         AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficherEmploi.fxml"));
+        ap.getChildren().setAll(pane); 
     }
+    
 
     @FXML
-    private void gererformation(ActionEvent event) {
-    }
+    private void gererformation(ActionEvent event) throws IOException {
+          AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficherFormation.fxml"));
+        ap.getChildren().setAll(pane); }
+    
 
     @FXML
     private void gererevenement(ActionEvent event) {
@@ -181,6 +194,12 @@ List<String> type;
         }
         imgslider.getChildren().addAll(list);
         startAnimation(imgslider);
+        
+        
+        
+        
+        
+        
       }
      private void startAnimation(final HBox hbox) {
         //error occured on (ActionEvent t) line
@@ -214,6 +233,26 @@ List<String> type;
         anim.playFromStart();
     } 
 
+                   public user getUserConnecte() throws SQLException
+{
+
+      UserSession n = UserSession.getInstance();
+      user cc=new user();
+                               String s1 = n.getUsername();
+                               Statement stmt1 = con.createStatement();
+                              String SQL1 = "SELECT * FROM user  WHERE username ='" +s1+"'";
+                               ResultSet rs1 = stmt1.executeQuery(SQL1);
+                               while(rs1.next())
+                                {
+                                    cc.setId(rs1.getInt(1));
+                                    cc.setUsername(rs1.getString(3));
+                                   
+                                           
+                                }
+        return cc;
+                              
+    
+}
    
     
 }

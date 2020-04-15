@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -21,6 +22,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,9 +43,13 @@ import javax.swing.JOptionPane;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
@@ -92,6 +99,12 @@ public class FXMLhebergementController implements Initializable  {
 
     @FXML
     private Button Btnimage;
+    
+    
+    @FXML
+    private PieChart piechartID;
+    
+    ObservableList piechartlist= FXCollections.observableArrayList();
 
     @FXML
     private ImageView importeimage;
@@ -149,12 +162,28 @@ public class FXMLhebergementController implements Initializable  {
     }
       
        
+    public static void loadWindow(URL loc, String title, Stage parentStage) {
+        try {
+            Parent parent = FXMLLoader.load(loc);
+            Stage stage = null;
+            if (parentStage != null) {
+                stage = parentStage;
+            } else {
+                stage = new Stage(StageStyle.DECORATED);
+            }
+            Scene scene = new Scene(parent);
 
-   @FXML
-    private void annuler(ActionEvent event) throws IOException {
-                 stage.close();
-
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
     }
+       @FXML
+    void annuler(ActionEvent event) throws IOException{
+              loadWindow(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml"), "User interface", null);
+    }
+   
 
     @FXML
     void New(ActionEvent event) {
@@ -260,6 +289,16 @@ public class FXMLhebergementController implements Initializable  {
         }
 
         }
+    
+     
+     
+     
+      @FXML
+    void stat(ActionEvent event) throws IOException {
+            
+        loadWindow(getClass().getResource("/caritaspidev/GUI/Statheb.fxml"), "User interface", null);
+    }
+ 
 
     }
     

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="570.0" prefWidth="730.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.66" fx:controller="caritaspidev.controller.AfficherHebController">
+   <children>
+      <Label layoutX="219.0" layoutY="14.0" text=" Nos propositions d'hébergement">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+     
+      <ScrollPane fx:id="scroll" layoutX="14.0" layoutY="135.0" prefHeight="416.0" prefWidth="730.0">
+         <content>
+            <VBox fx:id="formationcontainer" prefHeight="399.0" prefWidth="715.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
+

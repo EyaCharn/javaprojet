@@ -16,7 +16,7 @@ public class avishebergement {
    Double stars;
    user user_id;
    String title, description ;
-   hebergement heb;
+   Long hebergement;
 
     public avishebergement() {
     
@@ -30,11 +30,11 @@ public class avishebergement {
         this.id = id;
     }
 
-    public Double getStars() {
+    public Double getRating() {
         return stars;
     }
 
-    public void setStars(Double rating) {
+    public void setRating(Double rating) {
         this.stars = rating;
     }
 
@@ -62,23 +62,40 @@ public class avishebergement {
         this.description = description;
     }
 
-    public hebergement getheb() {
-        return heb;
+    public Long getheb() {
+        return hebergement;
     }
 
-    public void setBn(hebergement heb) {
-        this.heb = heb;
+    public void setheb(Long hebergement) {
+        this.hebergement = hebergement;
     }
 
-    public avishebergement(int id, Double stars, user user_id, String title, String description, hebergement heb) {
+    public avishebergement(int id, user user_id, Long hebergement, Double stars, String title, String description) {
         this.id = id;
         this.stars = stars;
         this.user_id = user_id;
         this.title = title;
         this.description = description;
-        this.heb = heb;
+        this.hebergement = hebergement;
     }
     
+    public avishebergement( user user_id, Long hebergement, Double stars, String title, String description) {
+    
+        this.stars = stars;
+        this.user_id = user_id;
+        this.title = title;
+        this.description = description;
+        this.hebergement = hebergement;
+    }
+       
+    public avishebergement(  Long hebergement, Double stars, String title, String description) {
+    
+        this.stars = stars;
+ 
+        this.title = title;
+        this.description = description;
+        this.hebergement = hebergement;
+    } 
    
 
     @Override

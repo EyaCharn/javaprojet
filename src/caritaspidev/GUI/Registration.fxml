@@ -11,10 +11,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="508.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.controller.RegistrationController">
+<AnchorPane id="AnchorPane" prefHeight="508.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.controller.RegistrationController">
    <children>
       <JFXTextField fx:id="username" focusColor="#ababab" labelFloat="true" layoutX="22.0" layoutY="70.0" onKeyReleased="#verifusername" prefHeight="33.0" prefWidth="165.0" promptText="Nom d'utilisateur (*)" />
       <JFXTextField fx:id="email" focusColor="#ababab" labelFloat="true" layoutX="22.0" layoutY="121.0" onKeyReleased="#verifEmail" prefHeight="33.0" prefWidth="165.0" promptText="Email (*)" />
+      <JFXTextField fx:id="phone" focusColor="#ababab" labelFloat="true" layoutX="271.0" layoutY="237.0" onKeyReleased="#controphone" prefHeight="33.0" prefWidth="165.0" promptText="phone(*)" />
+
       <JFXPasswordField fx:id="password" focusColor="#ababab" labelFloat="true" layoutX="271.0" layoutY="121.0" onKeyReleased="#controlMdp" prefHeight="33.0" prefWidth="165.0" promptText="Mot de passe (*)" />
       <Label fx:id="labelusername" layoutX="22.0" layoutY="104.0" prefHeight="25.0" prefWidth="165.0" textFill="RED" />
       <Label fx:id="labelEmail" layoutX="22.0" layoutY="161.0" prefHeight="26.0" prefWidth="208.0" textFill="RED" />
@@ -25,12 +27,12 @@
             <Image url="@../ressources/img/img.png" />
          </image>
       </ImageView>
-      <Label fx:id="inscrirLabel" layoutX="16.0" layoutY="12.0" prefHeight="54.0" prefWidth="179.0" text="Nouveau Utilisateur" textAlignment="CENTER" textFill="LIGHTSKYBLUE">
+      <Label fx:id="inscrirLabel" layoutX="16.0" layoutY="12.0" prefHeight="54.0" prefWidth="179.0" text="Nouveau Utilisateur" textAlignment="CENTER" textFill="#eb9234">
          <font>
             <Font name="Bauhaus 93" size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="addBtn" buttonType="RAISED" layoutX="730.0" layoutY="190.0" onAction="#handleButtonConfirmar" prefHeight="27.0" prefWidth="121.0" ripplerFill="#eb3843" style="-fx-background-color: #87CEFA;" text="Register" textAlignment="CENTER" textFill="WHITE">
+      <JFXButton fx:id="addBtn" buttonType="RAISED" layoutX="730.0" layoutY="190.0" onAction="#handleButtonConfirmar" prefHeight="27.0" prefWidth="121.0" ripplerFill="#eb3843" style="-fx-background-color: #ccb38d;" text="Register" textAlignment="CENTER" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>
@@ -39,7 +41,7 @@
          </font>
       </JFXButton>
       <JFXTextField fx:id="nom" focusColor="#ababab" labelFloat="true" layoutX="22.0" layoutY="187.0" onKeyReleased="#verifNom" prefHeight="33.0" prefWidth="165.0" promptText="Nom (*)" />
-      <JFXButton fx:id="annulerBtn" buttonType="RAISED" layoutX="530.0" layoutY="190.0" onAction="#handleButtonCancelar" prefHeight="27.0" prefWidth="121.0" ripplerFill="#eb3843" style="-fx-background-color: #87CEFA;" text="Annuler" textAlignment="CENTER" textFill="WHITE">
+      <JFXButton fx:id="annulerBtn" buttonType="RAISED" layoutX="530.0" layoutY="190.0" onAction="#handleButtonCancelar" prefHeight="27.0" prefWidth="121.0" ripplerFill="#eb3843" style="-fx-background-color: #ccb38d;" text="Annuler" textAlignment="CENTER" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>
@@ -54,7 +56,7 @@
       </ImageView>
       <Label fx:id="labelPhone" layoutX="284.0" layoutY="287.0" prefHeight="25.0" prefWidth="165.0" textFill="LIME" />
       <JFXTextField fx:id="prenom" focusColor="#ababab" labelFloat="true" layoutX="271.0" layoutY="184.0" onKeyReleased="#verifPrenom" prefHeight="33.0" prefWidth="165.0" promptText="Prenom (*)" />
-       <JFXButton fx:id="ImporterImagePath" buttonType="RAISED" layoutX="29.0" layoutY="361.0" onAction="#image" prefHeight="27.0" prefWidth="152.0" ripplerFill="#eb3843" style="-fx-background-color: #87CEFA;" text=" Ajouter une image" textAlignment="CENTER" textFill="WHITE">
+       <JFXButton fx:id="ImporterImagePath" buttonType="RAISED" layoutX="29.0" layoutY="361.0" onAction="#image" prefHeight="27.0" prefWidth="152.0" ripplerFill="#eb3843" style="-fx-background-color: #B15837;" text=" Ajouter une image" textAlignment="CENTER" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>

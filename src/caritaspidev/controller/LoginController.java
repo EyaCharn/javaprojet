@@ -6,13 +6,22 @@
 package caritaspidev.controller;
 
 import caritaspidev.entityUser.user;
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.types.User;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import caritaspidev.entityUser.UserSession;
 import caritaspidev.services.Serviceuser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -34,6 +43,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 /**
  *
@@ -60,6 +70,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private JFXButton btnlogin;
+      @FXML
+    private Label message;
 
     @FXML
     private ImageView imgProgress;
@@ -125,15 +137,18 @@ public class LoginController implements Initializable {
     void Pagelogin(ActionEvent event) {
 
     }
-
+ 
     @FXML
-    void Pagerecupmdp(ActionEvent event) {
-
+    private void Pagerecupmdp(ActionEvent event) {
+         labelusername.getScene().getWindow().hide();
+            loadWindow(getClass().getResource("/caritaspidev/GUI/Resetmdp.fxml"), "Resetmdp", null);
+        
     }
 
     @FXML
     void Pageregister(ActionEvent event) {
-
+        
+          loadWindow(getClass().getResource("/caritaspidev/GUI/Registration.fxml"), "Registration", null);
     }
 
     @FXML
@@ -177,8 +192,8 @@ public class LoginController implements Initializable {
           
        if (myServices.chercherUtilisateurBylogin(username) && pas==true) {
 
-          if (myServices.Gettype(username).equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {
-                                imgProgress.setVisible(true);
+          if (myServices.Gettype(username).equals("a:1:{i:0;s:17:\"ROLE_ADMIN\";}")) {
+         imgProgress.setVisible(true);
         PauseTransition pauseTransition = new PauseTransition();
         pauseTransition.setDuration(Duration.seconds(3));
         pauseTransition.setOnFinished(ev -> {
@@ -186,8 +201,8 @@ public class LoginController implements Initializable {
                 
                 
                 user userConnecter=myServices.chercherUtilisateurByUsername(username);
-          
-              loadWindow(getClass().getResource("/caritaspidev/GUI/AdminMenu.fxml"), "Dashboard", null);
+                  UserSession.getInstace(userConnecter.getUsername(),userConnecter.getImage()); 
+              loadWindow(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml"), "Dashboard", null);
                 
                 labelusername.getScene().getWindow().hide();
                     Notifications n = Notifications.create()
@@ -196,6 +211,7 @@ public class LoginController implements Initializable {
                         .graphic(null)
                         .position(Pos.TOP_CENTER)
                         .hideAfter(Duration.seconds(5));
+                      n.showInformation();
            });
                pauseTransition.play();
             }
@@ -208,8 +224,8 @@ public class LoginController implements Initializable {
         pauseTransition.setOnFinished(ev -> {
         System.out.println("hello Volontaire");
         user userConnecter=myServices.chercherUtilisateurByUsername(username);
-    
-         loadWindow(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml"), "Dashboard", null);
+        UserSession.getInstace(userConnecter.getUsername(),userConnecter.getImage());  
+       loadWindow(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml"), "Dashboard", null);
          labelusername.getScene().getWindow().hide();
          Notifications n = Notifications.create()
         .title("Bienvenue")
@@ -224,7 +240,7 @@ public class LoginController implements Initializable {
             }
           
           
-           if (myServices.Gettype(username).equals("a:1:{i:0;s:17:\"ROLE_Refugie\";}")) {
+           if (myServices.Gettype(username).equals("a:1:{i:0;s:11:\"ROLE_Refugie\";}")) {
              
         imgProgress.setVisible(true);
         PauseTransition pauseTransition = new PauseTransition();
@@ -251,7 +267,7 @@ public class LoginController implements Initializable {
                   });
            pauseTransition.play();
             }   
-              if (myServices.Gettype(username).equals("a:1:{i:0;s:11:\"ROLE_Medecin\";}")) {
+              if (myServices.Gettype(username).equals("a:1:{i:0;s:12:\"ROLE_Medecin\";}")) {
         imgProgress.setVisible(true);
         PauseTransition pauseTransition = new PauseTransition();
         pauseTransition.setDuration(Duration.seconds(3));
@@ -292,6 +308,82 @@ public class LoginController implements Initializable {
          }
     
 
+    }
+    
+   @FXML
+    void AuthUser(ActionEvent event) throws IOException {
+        String domain = "https://google.com";
+        String appId = "2514990381939040";
+       // String appSecret="fd680e1b441e26a328a8554a8e494153";
+        //String authUrl = "https://www.facebook.com/dialog/oauth?type=user_agent&client_id=" + appId + "&client_secret "+appSecret+ "&redirect_uri=" + domain + "&scope=public_profile";
+          String authURL="https://graph.facebook.com/oauth/authorize?type=user_agent&client_id="+appId+"&redirect_uri="+domain
+                 +"&scope=ads_management,publish_actions";
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        	ChromeOptions options = new ChromeOptions();
+		options.addArguments("disable-infobars");
+		
+
+        WebDriver driver = new ChromeDriver ();
+        driver.get(authURL);
+        String accessToken="fd680e1b441e26a328a8554a8e494153";
+        while (true) {
+
+            if (!driver.getCurrentUrl().contains("facebook.com")) {
+                String url = driver.getCurrentUrl();
+                  System.out.println(accessToken);
+
+                driver.quit();
+
+                FacebookClient fbClient = new DefaultFacebookClient(accessToken);
+                User user = fbClient.fetchObject("me", User.class);
+
+                message.setText(user.getName());
+                //changescene("/GUI/Menu_General.fxml",event); 
+                Serviceuser MS = new Serviceuser();
+                List<user> la = MS.afficherlisteUtilisateurs();
+                Boolean test = false;
+                for (user d : la) {
+                    if (user.getId().equals(d.getId_facebook())) {
+                       
+                        UserSession.setId_Connected_Member(d.getId());
+                        System.out.println(UserSession.getId_Connected_Member());
+                        test = true;
+
+                        Stage stage = new Stage();
+                        Parent root = FXMLLoader.load(getClass().getResource("caritaspidev/GUI/Registration.fxml"));
+                        Scene scene = new Scene(root);
+                        //scene.getStylesheets().add("/CSS/register.css");
+                       // stage = (Stage) RegisterButton.getScene().getWindow();
+                        stage.close();
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                    if (!test) {
+
+                        user M = new user(user.getFirstName());
+                        MS.add(M);
+                        List<user> la2 = MS.afficherlisteUtilisateurs();
+                        for (user d2 : la2) {
+                            if (user.getId().equals(d2.getId_facebook())) {
+                                UserSession.setId_Connected_Member(d2.getId());
+                            }
+                        }
+                        System.out.println(UserSession.getId_Connected_Member());
+
+                        Stage stage = new Stage();
+                        Parent root = FXMLLoader.load(getClass().getResource("caritaspidev/GUI/Registration.fxml"));
+                        Scene scene = new Scene(root);
+                       // scene.getStylesheets().add("/CSS/register.css");
+                        //stage = (Stage) RegisterButton.getScene().getWindow();
+                        stage.close();
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+
+                }
+
+            }
+        }
     }
      @Override
     public void initialize(URL url, ResourceBundle rb) {

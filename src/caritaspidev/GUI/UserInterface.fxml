@@ -15,9 +15,9 @@
 <AnchorPane fx:id="parent" prefHeight="600" prefWidth="1024.0" styleClass="parent" stylesheets="@styles/stylesheet.css" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.controller.UserinterfaceController">
     <children>
     
-        <VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="700.0" prefWidth="300.0" style="-fx-background-size: 900 600;" styleClass="sidebar">
+        <VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="700.0" prefWidth="300.0" style="-fx-background-size: #363648;" styleClass="sidebar">
             <children>
-                <Label prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #87CEFA; -fx-background-color: ;" text=" Caritas" textFill="WHITE">
+                <Label prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #363648; -fx-background-color: ;" text=" Caritas" textFill="WHITE">
                     <padding>
                         <Insets left="10.0" />
                     </padding>
@@ -36,9 +36,9 @@
                      </image>
                   </ImageView>
                         
-                        <Label prefHeight="21.0" prefWidth="69.0" text="Accueil" textFill="#008cff">
+                        <Label onMouseClicked="#accueil" prefHeight="21.0" prefWidth="69.0" text="Accueil" textFill="#d54e27">
                             <font>
-                                <Font name="Calibri Light Italic" size="18.0" />
+                                <Font name="Arial Rounded MT Bold" size="14.0" />
                             </font>
                             <HBox.margin>
                                 <Insets left="10.0" />
@@ -63,9 +63,9 @@
                      </image>
                   </ImageView>
                         
-                        <Label fx:id="categorie" onMouseClicked="#hebergement" text="Mes propositions d'hébergement" textFill="#008cff">
+                        <Label fx:id="categorie" onMouseClicked="#hebergement" text="Mes propositions d'hébergement" textFill="#d54e27">
                             <font>
-                                <Font name="Calibri Light Italic" size="18.0" />
+                                <Font name="Arial Rounded MT Bold" size="14.0" />
                             </font>
                             <HBox.margin>
                                 <Insets left="10.0" />
@@ -87,9 +87,9 @@
                      </image>
                   </ImageView>
                    
-                        <Label onMouseClicked="#servicesante" text="service santé" textFill="#008cff">
+                        <Label onMouseClicked="#servicesante" text="service santé" textFill="#d54e27">
                             <font>
-                                 <Font name="Calibri Light Italic" size="18.0" />
+                                 <Font name="Arial Rounded MT Bold" size="14.0" />
                             </font>
                             <HBox.margin>
                                 <Insets left="10.0" />
@@ -111,9 +111,9 @@
                      </image>
                   </ImageView>
                    
-                        <Label onMouseClicked="#doctorrequest" text="Doctorrequests" textFill="#008cff">
+                        <Label onMouseClicked="#doctorrequest" text="Doctorrequests" textFill="#d54e27">
                             <font>
-                                 <Font name="Calibri Light Italic" size="18.0" />
+                                 <Font name="Arial Rounded MT Bold" size="14.0" />
                             </font>
                             <HBox.margin>
                                 <Insets left="10.0" />
@@ -141,9 +141,9 @@
                      </image>
                   </ImageView>
                   
-                  <Label fx:id="partenaire" onMouseClicked="#profil" text="Profile" textFill="#008cff">
+                  <Label fx:id="partenaire" onMouseClicked="#profil" text="Profile" textFill="#d54e27">
                      <font>
-                        <Font name="Calibri Light Italic" size="18.0" />
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="10.0" />
@@ -151,7 +151,7 @@
                   </Label>
                </children>
                 </HBox>
-                <JFXButton fx:id="btnclose" buttonType="RAISED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#quitter" prefHeight="45.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to top, #ff3356, #ff3653, #ff3950, #ff3c4e, #ff3f4b);" text="Quitter" textFill="WHITE">
+                <JFXButton fx:id="btnclose" buttonType="RAISED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#quitter" prefHeight="39.0" prefWidth="194.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to top, #ff3356, #ff3653, #ff3950, #ff3c4e, #ff3f4b);" text="Quitter" textFill="WHITE">
                     <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </VBox.margin>
@@ -174,9 +174,9 @@
                         <DropShadow blurType="ONE_PASS_BOX" color="#e8e4e4" height="10.0" radius="4.5" width="10.0" />
                     </effect>
                     <children>
-                        <Label layoutX="14.0" layoutY="24.0" text="Accueil" textFill="#7c8184">
+                        <Label layoutX="14.0" layoutY="25.0" text="Accueil" textFill="#d77b25">
                             <font>
-                                <Font size="18.0" />
+                                <Font name="System Bold" size="24.0" />
                             </font>
                         </Label>
                         
