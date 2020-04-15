@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" fx:id="usercontainer" prefHeight="700.0" prefWidth="1054.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="caritaspidev.GUI.AfficheUserController">
+   <children>
+      <VBox prefHeight="700.0" prefWidth="427.0" style="-fx-background-color: #065D67;">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Gerer Utilisateur" textAlignment="CENTER">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView fx:id="id_tableUser" layoutX="490.0" layoutY="78.0" prefHeight="360.0" prefWidth="493.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="username" prefWidth="75.0" text="USERNAME" />
+            <TableColumn fx:id="email" prefWidth="75.0" text="EMAIL" />
+            <TableColumn fx:id="roles" prefWidth="255.0" text="ROLES" />
+        </columns>
+      </TableView>
+      <Button fx:id="btn2" layoutX="639.0" layoutY="490.0" mnemonicParsing="false" onAction="#SupprimerUser" text="Supprimer un utilisateur" />
+   </children>
+</AnchorPane>
