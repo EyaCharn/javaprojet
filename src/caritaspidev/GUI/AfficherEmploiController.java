@@ -4,12 +4,20 @@
  * and open the template in the editor.
  */
 package caritaspidev.GUI;
-
 import caritaspidev.connectionBD.DataSource;
+import caritaspidev.controller.UserSession;
 import caritaspidev.entity.emploi.emploi;
-import caritaspidev.entity.formation.formation;
+import caritaspidev.entity.formation.participation;
+import caritaspidev.entityUser.user;
+import caritaspidev.main.CaritasPiDev;
 import caritaspidev.services.emploiService;
-import caritaspidev.services.formationService;
+import com.itextpdf.text.DocumentException;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,16 +29,28 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Application;
+import static javafx.application.Application.launch;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.Stage;
+import net.glxn.qrgen.QRCode;
+import net.glxn.qrgen.image.ImageType;
 
 /**
  * FXML Controller class
@@ -77,7 +97,9 @@ public class AfficherEmploiController implements Initializable {
         // TODO
         // TODO
     }    
-
+    
+    
+   
     private void displayEmploi()  throws SQLException{
  emploiService pa = new emploiService();
         String req = "select * from offre_emplois  ";
@@ -107,7 +129,42 @@ public class AfficherEmploiController implements Initializable {
             
             Label datef = new Label("La date de fin d'embauchement : " + a1.getDateFin());
 
-           
+            Button bt2=new Button("QR");
+            
+            
+            
+             bt2.setOnAction(new EventHandler<ActionEvent>() {
+                 @Override
+                 public void handle(ActionEvent event) { //bitha heki chas
+                     
+                         String details ="eyya";
+        java.io.ByteArrayOutputStream out = QRCode.from(details).to(ImageType.PNG).stream();
+        
+        File f =new File ("C:\\Users\\EYA\\Pictures\\A_text,_your_name,_a_number_or_anything..._;)_as_QRcode.png");
+        FileOutputStream fos = null;
+                     try {
+                         fos = new FileOutputStream(f);
+                     } catch (FileNotFoundException ex) {
+                         Logger.getLogger(AfficherEmploiController.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+        
+                     try {
+                         fos.write(out.toByteArray());
+                     } catch (IOException ex) {
+                         Logger.getLogger(AfficherEmploiController.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+                     try { 
+                         fos.flush();
+                     } catch (IOException ex) {
+                         Logger.getLogger(AfficherEmploiController.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+                      
+              
+
+
+                      
+                 }
+             });
 
             HBox h1 = new HBox();
             h1.setSpacing(10);
@@ -137,11 +194,42 @@ public class AfficherEmploiController implements Initializable {
             h7.setSpacing(10);
             h7.setAlignment(Pos.CENTER);
             h7.getChildren().addAll(datef);
+            
+             bt2.setOnAction(new EventHandler<ActionEvent>() {
+                  @Override
+                 public void handle(ActionEvent event) { //bitha heki chas
+                     
+                         QRCodeGenerator qrcode  = new QRCodeGenerator();
+                     System.out.println("c button mouhage tsir creation houniiii  ");
+                      try {
+                         
+                         qrcode.qrcode(a1);
+                     } catch (IOException ex) {
+                         Logger.getLogger(AfficherActualiteController.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+                     
+                               bt2.setDisable(true); 
+                      
+              
 
+
+                      
+                 }
+             });
+             
+            
+            
+              
             VBox v = new VBox();
             v.setAlignment(Pos.CENTER);
             v.setSpacing(10);
-            v.getChildren().addAll(h1, h2,h3,h4,h5,h6,h7);
+            
+            v.getChildren().addAll(h1, h2,h3,h4,h5,h6,h7,bt2);
+            
+            
+            
+            
+                          
 
             VBox vv = new VBox();
             vv.setAlignment(Pos.CENTER);
@@ -157,10 +245,42 @@ public class AfficherEmploiController implements Initializable {
             v1.setSpacing(10);
             v1.getChildren().addAll(No);
             list.add(v1);
-
+            
+            
         }
-        emploicontainer.getChildren().addAll(list);    }   
+            
 
-}
+       
+        
+        
+        emploicontainer.getChildren().addAll(list);    }   
+    
+    
+
+    
+ 
+
+      public user getUserConnecte() throws SQLException
+{
+
+      UserSession n = UserSession.getInstance();
+      user cc=new user();
+                               String s1 = n.getUsername();
+                               Statement stmt1 = con.createStatement();
+                              String SQL1 = "SELECT * FROM user  WHERE username ='" +s1+"'";
+                               ResultSet rs1 = stmt1.executeQuery(SQL1);
+                               while(rs1.next())
+                                {
+                                    cc.setId(rs1.getInt(1));
+                                    cc.setUsername(rs1.getString(3));
+                                   
+                                           
+                                }
+        return cc;
+                              
+    
+    }
+
+             }
     
 

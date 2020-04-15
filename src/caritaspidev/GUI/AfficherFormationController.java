@@ -50,6 +50,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -198,7 +200,21 @@ public class AfficherFormationController implements Initializable {
                  participer.setOnAction(new EventHandler<ActionEvent>(){
                    @Override
                    public void handle(ActionEvent event) {
-                         
+                           Notifications notificationBuilder=Notifications.create()
+                                   .title("VOUS AVEZ PARTICIPER A UNE FORMATION")
+                                   .text("FELICITATION")
+                                   .graphic(null)
+                                   .hideAfter(Duration.seconds(5))
+                                   .position(Pos.BOTTOM_CENTER)
+                                   .onAction(new EventHandler<ActionEvent>(){
+                                       @Override
+                               public void handle(ActionEvent event) {
+                                   System.out.println("Clicked on notif");
+                               }
+                                        });
+                                    
+                               notificationBuilder.showConfirm();
+                                   
                          a1.setNbplaces(a1.getNbplaces() - 1);
                         System.out.println("le nombre des places  ====>"+a1.getNbplaces());
                     
@@ -215,6 +231,8 @@ public class AfficherFormationController implements Initializable {
                        } catch (SQLException ex) {
                            Logger.getLogger(AfficherFormationController.class.getName()).log(Level.SEVERE, null, ex);
                        }
+
+                              
                           
                           
                    
@@ -256,6 +274,9 @@ public class AfficherFormationController implements Initializable {
                          
                          
                          ;
+                         
+                         
+                         
                  
                  
                  
