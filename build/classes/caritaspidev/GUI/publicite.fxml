@@ -99,7 +99,6 @@
                         <TableView fx:id="liketable" layoutX="275.0" layoutY="44.0" prefHeight="526.0" prefWidth="500.0">
                           <columns>
                             <TableColumn fx:id="titrepub" prefWidth="181.0" text="titre de publicite" />
-                            <TableColumn fx:id="datelike" prefWidth="142.0" text="date de like " />
                               <TableColumn fx:id="nomutilisateur" prefWidth="171.0" text="nom d'utilisateur" />
                           </columns>
                         </TableView>

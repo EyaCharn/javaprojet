@@ -5,6 +5,7 @@
  */
 package caritaspidev.entityPublicite;
 
+import caritaspidev.entityUser.user;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -16,8 +17,56 @@ public class likepublicite {
     private int id ;
     private int idpublicite ;
     private Date datelike ;
-  
+    private user user; 
     private int idUser ;
+    private String username;
+    private String nom;
+
+    public likepublicite(int id, int idpublicite, int idUser) {
+        this.id = id;
+        this.idpublicite = idpublicite;
+        this.idUser = idUser;
+    }
+
+    public likepublicite(int id, String nom,int idUser ) {
+        this.id = id;
+        this.idUser = idUser;
+        this.nom = nom;
+    }
+
+    public user getUser() {
+        return user;
+    }
+
+    public likepublicite(int idpublicite, String username) {
+        this.idpublicite = idpublicite;
+        this.username = username;
+    }
+
+    public void setUser(user user) {
+        this.user = user;
+    }
+
+    public likepublicite(int idpublicite, int idUser) {
+        this.idpublicite = idpublicite;
+        this.idUser = idUser;
+    }
+    
+    
+    
+
+    public likepublicite(int idpublicite, user user, int idUser) {
+        this.idpublicite = idpublicite;
+        this.user = user;
+        this.idUser = idUser;
+    }
+
+    public likepublicite(int idpublicite, user user) {
+        this.idpublicite = idpublicite;
+        this.user = user;
+    }
+  
+   
 
     public likepublicite(int id, int idpublicite, Date datelike,  int idUser) {
         this.id = id;

@@ -30,6 +30,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -84,6 +85,8 @@ public class LoginController implements Initializable {
             System.out.println(ex);
         }
     }  
+    @FXML
+    private AnchorPane pane;
 
   
 
@@ -132,7 +135,9 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    void Pageregister(ActionEvent event) {
+    void Pageregister(ActionEvent event) throws IOException {
+        AnchorPane page=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/Registration.fxml"));
+        pane.getChildren().setAll(page);
 
     }
 
@@ -178,25 +183,24 @@ public class LoginController implements Initializable {
        if (myServices.chercherUtilisateurBylogin(username) && pas==true) {
 
           if (myServices.Gettype(username).equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {
-                                imgProgress.setVisible(true);
+                     imgProgress.setVisible(true);
         PauseTransition pauseTransition = new PauseTransition();
         pauseTransition.setDuration(Duration.seconds(3));
         pauseTransition.setOnFinished(ev -> {
-                System.out.println("hello Admin");
-                
-                
-                user userConnecter=myServices.chercherUtilisateurByUsername(username);
-          
-              loadWindow(getClass().getResource("/caritaspidev/GUI/AdminMenu.fxml"), "Dashboard", null);
-                
-                labelusername.getScene().getWindow().hide();
-                    Notifications n = Notifications.create()
-                        .title("Bienvenue")
-                        .text("Vous étes connecté en tant que Administrateur!")
-                        .graphic(null)
-                        .position(Pos.TOP_CENTER)
-                        .hideAfter(Duration.seconds(5));
-           });
+        System.out.println("hello admin");
+        user userConnecter=myServices.chercherUtilisateurByUsername(username);
+     UserSession.getInstace(userConnecter.getUsername(),userConnecter.getImage());  
+       loadWindow(getClass().getResource("/caritaspidev/main/Back.fxml"), "Dashboard", null);
+         labelusername.getScene().getWindow().hide();
+         Notifications n = Notifications.create()
+        .title("Bienvenue")
+        .text("Vous étes connecté en tant que admin!")
+        .graphic(null)
+        .position(Pos.TOP_CENTER)
+        .hideAfter(Duration.seconds(5));
+          n.showInformation();
+           
+               });
                pauseTransition.play();
             }
           
@@ -237,7 +241,7 @@ public class LoginController implements Initializable {
                 System.out.println("hello Refugie");
                  user userConnecter=myServices.chercherUtilisateurByUsername(username);
               
-                loadWindow(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml"), "Dashboard", null);
+                loadWindow(getClass().getResource("/caritaspidev/main/Front.fxml"), "Dashboard", null);
                    
                 labelusername.getScene().getWindow().hide();
            Notifications n = Notifications.create()
@@ -259,7 +263,7 @@ public class LoginController implements Initializable {
         System.out.println("hello Medecin");
         user userConnecter=myServices.chercherUtilisateurByUsername(username);
     
-         loadWindow(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml"), "Dashboard", null);
+         loadWindow(getClass().getResource("/caritaspidev/main/Front.fxml"), "Dashboard", null);
          labelusername.getScene().getWindow().hide();
          Notifications n = Notifications.create()
         .title("Bienvenue")

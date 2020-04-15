@@ -44,6 +44,12 @@ public class user {
     public user(int id) {
         this.id = id;
     }
+
+    public user(String username) {
+        this.username = username;
+    }
+
+   
     
     
      
