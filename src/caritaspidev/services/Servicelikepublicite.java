@@ -6,6 +6,7 @@
 package caritaspidev.services;
 import caritaspidev.connectionBD.DataSource;
 import caritaspidev.entityPublicite.likepublicite;
+import caritaspidev.entityUser.user;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -37,7 +38,7 @@ public class Servicelikepublicite implements Iservice<likepublicite>{
     public void ajouter(likepublicite t) throws SQLException {
         
        
-         String req=("INSERT INTO `caritass`.`likepublicite` ( `idpublicite`) VALUES ('"+t.getIdpublicite()+"');");
+         String req=("INSERT INTO `caritass`.`likepublicite` ( `idpublicite`,`idUser`) VALUES ('"+t.getIdpublicite()+"','"+t.getUser().getId()+"');");
     try {
             
             ste=con.createStatement();
@@ -80,15 +81,15 @@ public class Servicelikepublicite implements Iservice<likepublicite>{
 
     @Override
     public boolean chercher_ajout(likepublicite t) throws SQLException {
-         String req="select * from likepublicite where idpublicite= '"+t.getIdpublicite()+ "' AND idUser ='"+t.getIdUser()+ "'";
+         String req="select * from likepublicite where idpublicite= '"+t.getIdpublicite()+ "' AND idUser ='"+t.getUser().getId()+ "'";
         List<likepublicite> list = new ArrayList<>();
        
         try {
             ste=con.createStatement();
             ResultSet rs = ste.executeQuery(req);
             while(rs.next()){
-                 java.sql.Date d1 = new java.sql.Date(rs.getDate(3).getTime());
-                list.add(new likepublicite(rs.getInt(1),rs.getInt(2),d1,rs.getInt(4)));
+                 
+                list.add(new likepublicite(rs.getInt(1),rs.getInt(2),rs.getInt(3)));
                 
                 
             }
@@ -103,7 +104,23 @@ public class Servicelikepublicite implements Iservice<likepublicite>{
     public boolean update(likepublicite t, int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+ public String chercher_nom_pub(int id) throws SQLException {
+                 String req="select * from publicite where id= '"+id+ "'";
+       String nom = null;
+        
+        try {
+            ste=con.createStatement();
+            ResultSet rs = ste.executeQuery(req);
+            while(rs.next()){
+                nom=rs.getString(2);
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Servicelikepublicite.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return nom;
+    }
     @Override
     public List<likepublicite> readAll() throws SQLException {
              String req="select * from  likepublicite ";
@@ -115,7 +132,7 @@ public class Servicelikepublicite implements Iservice<likepublicite>{
             while(rs.next()){
                 
               
-                list.add(new likepublicite(rs.getInt(2)));
+                list.add(new likepublicite(rs.getInt(1),rs.getInt(2),rs.getInt(3)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Servicelikepublicite.class.getName()).log(Level.SEVERE, null, ex);

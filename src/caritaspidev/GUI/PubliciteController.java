@@ -73,8 +73,6 @@ public class PubliciteController implements Initializable {
     @FXML
     private TableColumn<likepublicite,String> titrepub;
     @FXML
-    private TableColumn<likepublicite,String> datelike;
-    @FXML
     private TableColumn<likepublicite,String> nomutilisateur;
     
 
@@ -257,12 +255,13 @@ public class PubliciteController implements Initializable {
     }
       private void afficherlike()
    {    try {
-       ServicePublicite sp = new ServicePublicite();
+       Servicelikepublicite sp = new Servicelikepublicite();
        List events=sp.readAll();
        ObservableList et=FXCollections.observableArrayList(events);
        liketable.setItems(et);
        
        titrepub.setCellValueFactory(new PropertyValueFactory<>("idpublicite"));
+       nomutilisateur.setCellValueFactory(new PropertyValueFactory<>("idUser"));
        
         } catch (SQLException ex) {
             Logger.getLogger(PubliciteController.class.getName()).log(Level.SEVERE, null, ex);

@@ -39,6 +39,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -56,6 +57,7 @@ import javafx.util.Duration;
  * @author asus
  */
 public class FrontController implements Initializable {
+     UserSession n = UserSession.getInstance();
     @FXML
     private JFXToolbar toolbar;
     @FXML
@@ -89,7 +91,9 @@ public class FrontController implements Initializable {
  private Connection con;
     @FXML
     private ScrollPane scroller;
-   
+   String s1="";
+    @FXML
+    private AnchorPane panne;
 
     public FrontController() {
         con = DataSource.getInstance().getConnection();
@@ -113,6 +117,8 @@ List<String> type;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         UserSession n = UserSession.getInstance();
+                                s1 = n.getUsername();
         try {
             user connecte=getUserConnecte();
             System.out.println("hello ya  "+connecte);
@@ -126,7 +132,13 @@ List<String> type;
    
   
     @FXML
-    private void logout(ActionEvent event) {
+    private void logout(ActionEvent event) throws IOException {
+        
+         n.cleanUserSession(); 
+       
+       
+            AnchorPane page=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/login.fxml"));
+        panne.getChildren().setAll(page);
     }
 
     @FXML
@@ -169,9 +181,13 @@ List<String> type;
         
         
     }
+    
+    
+    
     public void start1() throws Exception {
           Servicelikepublicite pa=new Servicelikepublicite();
    String req="select * from publicite  ";
+   user connecte=getUserConnecte();
         List<VBox> list = new ArrayList<>();
         
         try {
@@ -180,12 +196,16 @@ List<String> type;
             while(rs.next()){
              
                  publicite p=new publicite(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getBoolean(4));
+                 user u=new user(rs.getInt(1));
               ImageView v=new ImageView(new Image(rs.getString(2)));
                  
         v.setFitHeight(129);
         v.setFitWidth(1125);
        Button bt1=new Button("like");
-        
+        if (pa.chercher_ajout(new likepublicite(p.getId(),connecte)))
+                         {
+                   bt1.setDisable(true);
+              }
 
                VBox v1=new VBox();
                v1.setAlignment(Pos.CENTER);
@@ -198,11 +218,11 @@ List<String> type;
         
         System.out.println(p.getId());
         try {
-            
+            if (!pa.chercher_ajout(new likepublicite(p.getId(),new user(85)))){
                
-                pa.ajouter(new likepublicite(p.getId()));
+                pa.ajouter(new likepublicite(p.getId(),connecte));
                 bt1.setDisable(true);
-            
+            }else System.out.println("PUB DEJA AIMER");
             
            
         } catch (SQLException ex) {
