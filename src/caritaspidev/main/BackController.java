@@ -63,7 +63,9 @@ public class BackController implements Initializable {
     }
 
     @FXML
-    private void gereroffreemploi(ActionEvent event) {
+    private void gereroffreemploi(ActionEvent event) throws IOException {
+          AnchorPane page=FXMLLoader.load(getClass().getResource("/emploiGUI/Emploi.fxml"));
+        pane.getChildren().setAll(page);
     }
 
     @FXML
@@ -71,7 +73,9 @@ public class BackController implements Initializable {
     }
 
     @FXML
-    private void gererformations(ActionEvent event) {
+    private void gererformations(ActionEvent event) throws IOException {
+          AnchorPane page=FXMLLoader.load(getClass().getResource("/formationGUI/formation.fxml"));
+        pane.getChildren().setAll(page);
     }
 
     @FXML
