@@ -4,6 +4,37 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/caritaspidev/GUI/PDF.java</file>
+            <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/caritaspidev/GUI/AfficherEmploiController.java</file>
+            <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/caritaspidev/GUI/AfficherFormationController.java</file>
+            <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/caritaspidev/GUI/AfficherActualiteController.java</file>
+            <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/caritaspidev/main/CaritasPiDev.java</file>
+            <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/caritaspidev/GUI/JavaFX_QRCodeWriter.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/services/Servicelikepublicite.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/formation/Service/Serviceuser.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/formation/Service/participationService.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/controller/LoginController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/entity/formation/user.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/formation/Service/formationlikeService.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/GUI/FormationController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/main/FrontController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/entity/formation/participation.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/entityPublicite/likepublicite.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/GUI/AfficherFormationController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/main/CaritasPiDev.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/services/formationService.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/services/Password.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/main/Back.fxml</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/entityUser/user.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/GUI/AfficherEmploiController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/main/BackController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/GUI/PubliciteController.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/main/CaritasPiDev.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/controller/LoginController.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/caritaspidev/GUI/PDF.java</file>
             <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/caritaspidev/GUI/QRCodeGenerator.java</file>
             <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/caritaspidev/GUI/AfficherEmploiController.java</file>
             <file>file:/C:/Users/EYA/Desktop/pi/javaprojet/src/caritaspidev/GUI/AfficherFormationController.java</file>
