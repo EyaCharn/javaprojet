@@ -256,6 +256,37 @@ public class RegistrationController implements Initializable{
             return false;
         }
 
+        }
+@FXML
+    private void controphone(KeyEvent event) {
+        if (phone.getText().trim().length() == 8) {
+            int nbChar = 0;
+            for (int i = 1; i < phone.getText().trim().length(); i++) {
+                char ch = phone.getText().charAt(i);
+
+                if (Character.isLetter(ch)) {
+
+                    nbChar++;
+
+                }
+                System.out.println(nbChar);
+            }
+
+            if (nbChar == 0) {
+                labelPhone.setText("number valide");
+             
+                verificationUserPhone = true;
+            } else {              
+                labelPhone.setText("invalide number \n"
+                        + " Il exist des char");
+                verificationUserPhone = false;
+
+            }
+
+        } else { 
+            labelPhone.setText("Il faut 8 chiffres");
+            verificationUserPhone = false;
+        }
     }
 
     @FXML
@@ -276,16 +307,16 @@ public class RegistrationController implements Initializable{
                 
                 if ((String.valueOf(roles.getValue())).equals("volontaire")) {
                        u.setRoles("a:1:{i:0;s:11:\"ROLE_volontaire\";}");
-                } else if ((String.valueOf(roles.getValue())).equals("Admin")) {
-                    u.setRoles("a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+                } else if ((String.valueOf(roles.getValue())).equals("Réfugié")) {
+                    u.setRoles("a:1:{i:0;s:12:\"ROLE_Refugie\";}");
                 }
-                else if ((String.valueOf(roles.getValue())).equals("Medecib")) {
+                else if ((String.valueOf(roles.getValue())).equals("Medecin")) {
                     u.setRoles("a:1:{i:0;s:10:\"ROLE_Medecin\";}");
                 }
                 
                 else
                 {
-                u.setRoles("a:1:{i:0;s:17:\"ROLE_Refugie\";}");
+                u.setRoles("a:1:{i:0;s:17:\"ROLE_ADMIN\";}");
                 }
                 u.setFirstname(nom.getText().trim());
                 u.setLastname(prenom.getText().trim());
@@ -294,6 +325,7 @@ public class RegistrationController implements Initializable{
                 // u.setDate_inscription(date_inscrit.getValue().format(DateTimeFormatter.BASIC_ISO_DATE));
                
                 u.setImage(path);
+               // u.setPhone(phone.getText().trim());
                 
                 if (selectedFile != null)
             {
