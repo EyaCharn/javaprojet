@@ -63,6 +63,12 @@ public class UserinterfaceController implements Initializable {
         Parent root = loader.load();
         categorie.getScene().setRoot(root);
     }
+      @FXML
+    void formation(MouseEvent event) throws IOException{
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("/caritaspidev/GUI/AfficherFormation.fxml"));
+        Parent root = loader.load();
+        categorie.getScene().setRoot(root);
+    }
      private void setNode(Node node) {
         AnchorPane.getChildren().clear();
         AnchorPane.getChildren().add((Node) node);

@@ -18,6 +18,12 @@ import javafx.collections.ObservableList;
 public class user {
           private static final Map<Integer, user> USERS = new HashMap<>();
         private static user instance;
+
+    public static user getInstance() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+ 
+ 
     private int id;
     private String username;
     private String username_canonical;
@@ -54,6 +60,12 @@ public class user {
         }
         return user;
     }
+
+    public user(String username) {
+        this.username = username;
+    }
+
+   
     
     
      

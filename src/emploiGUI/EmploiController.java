@@ -23,6 +23,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,6 +33,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -64,6 +67,25 @@ public class EmploiController implements Initializable {
     @FXML
     private TextField emailEmp;
     @FXML
+    private Label error_name;
+     @FXML
+    private Label error_img;
+
+    @FXML
+    private Label error_lieu;
+   @FXML
+    private Label error_des;
+
+    @FXML
+    private Label error_an;
+ @FXML
+    private Label error_d;
+ @FXML
+    private Button imagee;
+ @FXML
+    private Label error_f;
+
+    @FXML
     private TableView<emploi> tabemploi;
     @FXML
     private TableColumn<emploi,String> titre;
@@ -79,6 +101,10 @@ public class EmploiController implements Initializable {
     private TableColumn<emploi,String> lieu;
     @FXML
     private TableColumn<emploi,String> deb;
+    
+      @FXML
+    private Label error_email;
+
     @FXML
     private TableColumn<emploi,String> fin;
     private emploi cc=null;
@@ -117,6 +143,207 @@ public class EmploiController implements Initializable {
             
         }      
         );
+         
+          
+       titreE.textProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue.matches("\\sa-zA-Z*")) {
+            titreE.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+        }
+    });
+       expereience.textProperty().addListener(new ChangeListener<String>() {
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
+                    expereience.setText(oldValue);
+                   
+                }
+              
+                  
+            }
+            
+
+              
+        });
+       titreE.textProperty().addListener(new ChangeListener<String>()
+            {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                   if(newValue.isEmpty())
+                        error_name.setText("remplir champ titre");
+                   else if(newValue.length()>25)
+                       error_name.setText("Max champ titre 25");
+                   else
+                error_name.setText("");
+                }
+                
+                
+            });
+            titreE.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(titreE.getText().length()==0)
+                     error_name.setText("remplir champ titre");    
+                    
+                }
+                
+            });
+                titreE.textProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue.matches("\\sa-zA-Z*")) {
+            titreE.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+        }
+    });
+                
+                
+                 debutE.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(debutE.getValue()==null)
+                     error_d.setText("remplir champ date debut");    
+                   
+                    
+                    
+                }
+                
+            });
+            finE.valueProperty().addListener((ov, oldValue, newValue) -> {
+                 if(newValue==null)
+                       error_d.setText("remplir champ date debut");
+                 
+                   else
+                error_d.setText("");
+                
+            
+        });
+            finE.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                   
+                   
+                    if(finE.getValue()==null)
+                    {error_f.setText("remplir champ date fin");    
+                    }
+                    if(debutE.getValue()==null)
+                      error_d.setText("remplir champ date debut");
+                    
+              
+                    
+                     
+                  
+                         
+                }
+                
+            });
+            finE.valueProperty().addListener((ov, oldValue, newValue) -> {
+                 if(newValue==null)
+                 {
+                     error_f.setText("remplir champ date fin");
+                }
+                 
+                
+                  
+                 else
+                 error_f.setText("");
+                
+            
+        });
+         
+            
+             expereience.textProperty().addListener(new ChangeListener<String>()
+            {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                   if(newValue.isEmpty())
+                       error_an.setText("remplir champ nombre place");
+                   else if(newValue.length()>10)
+                       error_an.setText("Max champ nombre place  10 nombre");
+                   else
+                error_an.setText("");
+                }
+                
+                
+            });
+            expereience.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(expereience.getText().length()==0)
+                     error_an.setText("remplir champ nombre d'année");    
+                    
+                }
+                
+            });
+            
+             imagee.textProperty().addListener(new ChangeListener<String>()
+            {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                   if(newValue.isEmpty())
+                       error_img.setText("remplir champ image");
+                   
+                   else
+                error_img.setText("");
+                }
+                
+                
+            });
+            imagee.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(imagee.getText().length()==0)
+                     error_img.setText("remplir champ image");    
+                    
+                }
+                
+            });
+            
+            
+             emailEmp.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(emailEmp.getText().length()==0)
+                     error_email.setText("remplir champ email");    
+                    
+                }
+                
+            });
+             
+              
+              lieuE.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(lieuE.getText().length()==0)
+                     error_lieu.setText("remplir champ lieu");    
+                    
+                }
+                
+            });
+              
+                 
+              
+              desEmp.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(desEmp.getText().length()==0)
+                     error_des.setText("remplir champ description");    
+                    
+                }
+                
+            });
+              
+            
+            
+            
+            
+         
+         
+         
+         
     }
 
     @FXML

@@ -127,6 +127,30 @@
                        
                     </cursor>
                 </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                    <children>
+                  <ImageView fitHeight="32.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/img/share.png" />
+                     </image>
+                  </ImageView>
+                   
+                        <Label onMouseClicked="#formation" text="Mes formations" textFill="#008cff">
+                            <font>
+                                 <Font name="Calibri Light Italic" size="18.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <cursor>
+                       
+                    </cursor>
+                </HBox>
                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
                     <padding>
                         <Insets left="10.0" />

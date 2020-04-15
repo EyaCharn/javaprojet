@@ -267,7 +267,7 @@ public class FormationController implements Initializable {
     }
 
     @FXML
-    private void ajouter(ActionEvent event) {
+    private void ajouter(ActionEvent event) throws SQLException {
          try {
             String titre = Ftitre.getText();
              LocalDate dd =Fdate.getValue();
@@ -276,6 +276,8 @@ public class FormationController implements Initializable {
             String description = Desformation.getText();
             formationService sp = new formationService();
             formation e = new formation(titre,img,date_Fdate,nbplaces,lieu,description);
+            e.setLikesnumber(0);
+            e.setRepliesnumber(0);
             sp.ajouter(e);
             JOptionPane.showMessageDialog(null, "ajout avec succes");
             Ftitre.clear();
@@ -296,7 +298,7 @@ public class FormationController implements Initializable {
     }
 
     @FXML
-    private void modifier(ActionEvent event) {
+    private void modifier(ActionEvent event) throws SQLException {
          formationService cs = new formationService();
         
         System.out.println(cc);

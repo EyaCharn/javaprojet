@@ -8,6 +8,8 @@ package caritaspidev.services;
 import caritaspidev.connectionBD.DataSource;
 import caritaspidev.entityUser.user;
 import caritaspidev.entityHebergement.hebergement;
+import java.awt.AWTException;
+import java.awt.SystemTray;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +17,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -629,6 +633,31 @@ try{
 
         return myListe;
 
+    }
+     
+     
+     
+      public void deleteUser(user u) {
+
+        String requete2 = "DELETE FROM user WHERE id= ?";
+
+        try {
+
+            PreparedStatement pst = con.prepareStatement(requete2);
+            pst.setInt(1, u.getId());
+
+            pst.executeUpdate();
+            System.out.println("User deleted");
+            //if (SystemTray.isSupported()) {
+              //  TrayIconDemo td = new TrayIconDemo();
+                //td.displayTraysupprimerUser();
+            //} else {
+             //   System.err.println("Erreur!!!!");
+         //   }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
      
      

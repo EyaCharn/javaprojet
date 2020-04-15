@@ -327,6 +327,7 @@ public class RegistrationController implements Initializable{
                 u.setImage(path);
                 u.setPhone(phone.getText().trim());
                 u.setId_facebook(Integer.toString(1));
+               // u.setPhone(phone.getText().trim());
                 
                 if (selectedFile != null)
             {

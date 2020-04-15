@@ -34,7 +34,7 @@ public class formationService implements Iservice<formation>{
     public void ajouter(formation t) throws SQLException {
         Date dd=new java.sql.Date(t.getDatedebut().getTime());
        
-        String req="INSERT INTO `caritass`.`formation` (`titre`, `image`, `datedebut`, `nbplaces`, `lieu`, `description`) VALUES ('"+t.getTitre()+"','"+t.getImage()+"','"+t.getDatedebut()+"','"+t.getNbplaces()+"','"+t.getLieu()+"','"+t.getDescription()+"');";
+        String req="INSERT INTO `caritass`.`formation` (`titre`, `image`, `datedebut`, `nbplaces`, `lieu`, `description`,`repliesnumber`,`likesnumber`) VALUES ('"+t.getTitre()+"','"+t.getImage()+"','"+t.getDatedebut()+"','"+t.getNbplaces()+"','"+t.getLieu()+"','"+t.getDescription()+"','"+0+"','"+0+"');";
         try {
             
             st=cnx.createStatement();
@@ -105,6 +105,39 @@ public class formationService implements Iservice<formation>{
          return true;}
         System.out.println("update invalid: formation nexiste pas");
         return false;
+    }
+      public void update2(formation t)  {
+         try{
+               Date dd=new java.sql.Date(t.getDatedebut().getTime());
+         
+             pre=cnx.prepareStatement("UPDATE formation SET titre =?,image =?,datedebut =?,nbplaces =?,lieu =?,description=? WHERE id=?");
+             pre.setString(1,t.getTitre());
+             pre.setString(2,t.getImage());
+             pre.setDate(3,dd);
+             pre.setInt(4,t.getNbplaces());
+             pre.setString(5,t.getLieu());
+             pre.setString(6,t.getDescription());
+              pre.setInt(7,t.getId());
+             pre.executeUpdate();
+         
+            System.out.println("update valide");
+         }catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+            public void updateLike(formation t)  {
+         try{
+               Date dd=new java.sql.Date(t.getDatedebut().getTime());
+         
+             pre=cnx.prepareStatement("UPDATE formation SET likesnumber =? WHERE id=?");
+             pre.setInt(1,t.getLikesnumber());
+              pre.setInt(2,t.getId());
+             pre.executeUpdate();
+         
+            System.out.println("update valide");
+         }catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
 
     @Override

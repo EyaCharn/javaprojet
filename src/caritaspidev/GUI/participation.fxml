@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="page" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1094.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.GUI.ParticipationController">
+   <children>
+      <VBox layoutX="6.0" layoutY="3.0" prefHeight="600.0" prefWidth="307.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="100.0" prefWidth="316.0" text="Gerer Participation">
+                     <font>
+                        <Font size="36.0" />
+                     </font></Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="supprimerP" mnemonicParsing="false" onAction="#supprimerP" prefHeight="37.0" prefWidth="93.0" text="Supprimer">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="110.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Bauhaus 93" size="12.0" />
+                     </font></Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="retourner" mnemonicParsing="false" onAction="#retourner" prefHeight="37.0" prefWidth="93.0" text="Retour">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="110.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Bauhaus 93" size="12.0" />
+                     </font></Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView fx:id="table" layoutX="352.0" layoutY="7.0" prefHeight="190.0" prefWidth="567.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="id_event" prefWidth="75.0" text="id_event" />
+            <TableColumn fx:id="id_user" minWidth="40.0" text="id_utilisateur" />
+        </columns>
+      </TableView>
+      <BarChart fx:id="chart" layoutX="311.0" layoutY="203.0" prefHeight="464.0" prefWidth="591.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Button fx:id="stat" layoutX="535.0" layoutY="671.0" mnemonicParsing="false" onAction="#loadChart" prefHeight="35.0" prefWidth="72.0" text="Statistique">
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

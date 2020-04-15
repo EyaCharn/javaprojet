@@ -5,8 +5,10 @@
  */
 package caritaspidev.GUI;
 
+import caritaspidev.entityPublicite.likepublicite;
 import caritaspidev.entityPublicite.publicite;
 import caritaspidev.services.ServicePublicite;
+import caritaspidev.services.Servicelikepublicite;
 import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
@@ -64,7 +66,14 @@ public class PubliciteController implements Initializable {
     List<String> type;
     boolean eta = true;
     private publicite cc=null;
+    private likepublicite cc1=null;
     ObservableList <publicite> data2 ;
+    @FXML
+    private TableView<likepublicite> liketable;
+    @FXML
+    private TableColumn<likepublicite,String> titrepub;
+    @FXML
+    private TableColumn<likepublicite,String> nomutilisateur;
     
 
     /**
@@ -74,6 +83,7 @@ public class PubliciteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         afficher();
+        afficherlike();
         type =new ArrayList();
         type.add("*.jpg");
          type.add("*.png");
@@ -84,6 +94,7 @@ public class PubliciteController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 cc = (publicite)table.getSelectionModel().getSelectedItem();
+                
                 System.out.println(cc);
                 description.setText(cc.getDescription());
                 importeimage.setImage(new Image(cc.getImage()));
@@ -128,7 +139,8 @@ public class PubliciteController implements Initializable {
        
    
    }
-
+     
+     
     @FXML
     private void ajouter(ActionEvent event) {
         try {
@@ -213,5 +225,49 @@ public class PubliciteController implements Initializable {
     }
            
     }
+
+    @FXML
+    private void supprimerlike(ActionEvent event) {
+        
+           Servicelikepublicite cs = new Servicelikepublicite();
+         likepublicite cc1 = (likepublicite)liketable.getSelectionModel().getSelectedItem();
+        System.out.println(cc1);
+        if(cc1== null){
+            JOptionPane.showMessageDialog(null, "choisir publicite");
+                   
+        }else{
+             try {
+                 cs.delete(cc.getId());
+                 
+                 afficherlike();
+                 
+                 JOptionPane.showMessageDialog(null, "publicite supprimer");
+                
+                 
+                 
+                 cc=null;
+             } catch (SQLException ex) {
+                 Logger.getLogger(PubliciteController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+    }
+           
+        
+    }
+      private void afficherlike()
+   {    try {
+       Servicelikepublicite sp = new Servicelikepublicite();
+       List events=sp.readAll();
+       ObservableList et=FXCollections.observableArrayList(events);
+       liketable.setItems(et);
+       
+       titrepub.setCellValueFactory(new PropertyValueFactory<>("idpublicite"));
+       nomutilisateur.setCellValueFactory(new PropertyValueFactory<>("idUser"));
+       
+        } catch (SQLException ex) {
+            Logger.getLogger(PubliciteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+   
+   }
     
 }

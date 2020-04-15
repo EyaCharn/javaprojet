@@ -7,13 +7,20 @@ package caritaspidev.main;
 
 import caritaspidev.connectionBD.DataSource;
 import caritaspidev.entityUser.UserSession;
+import caritaspidev.controller.UserSession;
+import caritaspidev.entityPublicite.likepublicite;
 import caritaspidev.entityPublicite.publicite;
 import caritaspidev.entityUser.user;
 import caritaspidev.services.ServicePublicite;
+import caritaspidev.services.Servicelikepublicite;
 import com.jfoenix.controls.JFXToolbar;
+//import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+//import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+//import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,6 +40,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -50,6 +58,7 @@ import javafx.util.Duration;
  * @author asus
  */
 public class FrontController implements Initializable {
+     UserSession n = UserSession.getInstance();
     @FXML
     private JFXToolbar toolbar;
     @FXML
@@ -83,7 +92,9 @@ public class FrontController implements Initializable {
  private Connection con;
     @FXML
     private ScrollPane scroller;
-   
+   String s1="";
+    @FXML
+    private AnchorPane panne;
 
     public FrontController() {
         con = DataSource.getInstance().getConnection();
@@ -107,6 +118,8 @@ List<String> type;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         UserSession n = UserSession.getInstance();
+                                s1 = n.getUsername();
         try {
             user connecte=getUserConnecte();
             System.out.println("hello ya  "+connecte);
@@ -120,7 +133,13 @@ List<String> type;
    
   
     @FXML
-    private void logout(ActionEvent event) {
+    private void logout(ActionEvent event) throws IOException {
+        
+         n.cleanUserSession(); 
+       
+       
+            AnchorPane page=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/login.fxml"));
+        panne.getChildren().setAll(page);
     }
 
     @FXML
@@ -164,29 +183,59 @@ List<String> type;
 
     @FXML
     private void gererreclamation(ActionEvent event) {
+        
+        
     }
+    
+    
+    
     public void start1() throws Exception {
-          
+          Servicelikepublicite pa=new Servicelikepublicite();
    String req="select * from publicite  ";
+   user connecte=getUserConnecte();
         List<VBox> list = new ArrayList<>();
         
         try {
             ste=con.createStatement();
             ResultSet rs = ste.executeQuery(req);
             while(rs.next()){
-               
+             
                  publicite p=new publicite(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getBoolean(4));
+                 user u=new user(rs.getInt(1));
               ImageView v=new ImageView(new Image(rs.getString(2)));
                  
         v.setFitHeight(129);
         v.setFitWidth(1125);
-       
+       Button bt1=new Button("like");
+        if (pa.chercher_ajout(new likepublicite(p.getId(),connecte)))
+                         {
+                   bt1.setDisable(true);
+              }
+
                VBox v1=new VBox();
                v1.setAlignment(Pos.CENTER);
                v1.setSpacing(10);
-               v1.getChildren().addAll(v);
+               v1.getChildren().addAll(v,bt1);
                list.add(v1);
                NUM_OF_IMGS=list.size();
+                   bt1.setOnAction(new EventHandler<ActionEvent>() {
+    @Override public void handle(ActionEvent e) {
+        
+        System.out.println(p.getId());
+        try {
+            if (!pa.chercher_ajout(new likepublicite(p.getId(),new user(85)))){
+               
+                pa.ajouter(new likepublicite(p.getId(),connecte));
+                bt1.setDisable(true);
+            }else System.out.println("PUB DEJA AIMER");
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+});
       
             }
         } catch (SQLException ex) {

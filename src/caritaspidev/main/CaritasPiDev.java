@@ -28,6 +28,30 @@ public class CaritasPiDev extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/login.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficherFormation.fxml"));
+       // Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/login.fxml"));
+        
+                              // Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficherActualite.fxml"));
+
+        
+           //  Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/login.fxml"));
+        
+                //Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/publicite.fxml"));
+        
+         //Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficheUser.fxml"));
+                          //Parent root = FXMLLoader.load(getClass().getResource("/formationGUI/formation.fxml"));
+                           // Parent root = FXMLLoader.load(getClass().getResource("/formationGUI/Afficherparticipants.fxml"));
+                            
+                         
+                        // Parent root = FXMLLoader.load(getClass().getResource("/emploiGUI/Emploi.fxml"));
+
+
+               //Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/main/Front.fxml"));
+               Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/participation.fxml"));
+               //Parent root = FXMLLoader.load(getClass().getResource("Back.fxml"));
+               
+                       // Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficherFormation.fxml"));
+                
+        
         Scene scene = new Scene(root);
         
         stage.setScene(scene);

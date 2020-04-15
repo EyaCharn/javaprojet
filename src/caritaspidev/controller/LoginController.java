@@ -13,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import caritaspidev.entityUser.UserSession;
+
+import caritaspidev.controller.UserSession;
 import caritaspidev.services.Serviceuser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -39,6 +41,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -67,6 +70,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private Hyperlink labelmdo;
+    @FXML
+    private AnchorPane pane;
 
     @FXML
     private JFXButton btnlogin;
@@ -78,6 +83,16 @@ public class LoginController implements Initializable {
       private user loggedUser;
        private static LoginController instance;
  public static final Map<Integer, user> USERS = new HashMap<>();
+    private static int idCnx;
+
+    public static int getIdCnx() {
+         return idCnx;
+    }
+      private static String usernameCnx;
+
+    public static String getUsernameCnx() {
+        return usernameCnx;
+    }
     
      public static void loadWindow(URL loc, String title, Stage parentStage) {
         try {
@@ -149,6 +164,11 @@ public class LoginController implements Initializable {
     void Pageregister(ActionEvent event) {
         
           loadWindow(getClass().getResource("/caritaspidev/GUI/Registration.fxml"), "Registration", null);
+   
+ void Pageregister(ActionEvent event) throws IOException {
+        AnchorPane page=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/Registration.fxml"));
+        pane.getChildren().setAll(page);
+
     }
 
     @FXML
@@ -203,6 +223,8 @@ public class LoginController implements Initializable {
                 user userConnecter=myServices.chercherUtilisateurByUsername(username);
                   UserSession.getInstace(userConnecter.getUsername(),userConnecter.getImage()); 
               loadWindow(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml"), "Dashboard", null);
+                  UserSession.getInstace(userConnecter.getUsername(),userConnecter.getImage()); 
+              loadWindow(getClass().getResource("/caritaspidev/main/Back.fxml"), "Dashboard", null);
                 
                 labelusername.getScene().getWindow().hide();
                     Notifications n = Notifications.create()
@@ -226,6 +248,8 @@ public class LoginController implements Initializable {
         user userConnecter=myServices.chercherUtilisateurByUsername(username);
         UserSession.getInstace(userConnecter.getUsername(),userConnecter.getImage());  
        loadWindow(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml"), "Dashboard", null);
+        UserSession.getInstace(userConnecter.getUsername(),userConnecter.getImage());  
+       loadWindow(getClass().getResource("/caritaspidev/GUI/Front.fxml"), "Dashboard", null);
          labelusername.getScene().getWindow().hide();
          Notifications n = Notifications.create()
         .title("Bienvenue")
@@ -253,7 +277,7 @@ public class LoginController implements Initializable {
                 System.out.println("hello Refugie");
                  user userConnecter=myServices.chercherUtilisateurByUsername(username);
               
-                loadWindow(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml"), "Dashboard", null);
+                loadWindow(getClass().getResource("/caritaspidev/GUI/Front.fxml"), "Dashboard", null);
                    
                 labelusername.getScene().getWindow().hide();
            Notifications n = Notifications.create()
@@ -275,7 +299,7 @@ public class LoginController implements Initializable {
         System.out.println("hello Medecin");
         user userConnecter=myServices.chercherUtilisateurByUsername(username);
     
-         loadWindow(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml"), "Dashboard", null);
+         loadWindow(getClass().getResource("/caritaspidev/GUI/Front.fxml"), "Dashboard", null);
          labelusername.getScene().getWindow().hide();
          Notifications n = Notifications.create()
         .title("Bienvenue")
@@ -385,6 +409,8 @@ public class LoginController implements Initializable {
             }
         }
     }
+    
+  
      @Override
     public void initialize(URL url, ResourceBundle rb) {
    imgProgress.setVisible(false);

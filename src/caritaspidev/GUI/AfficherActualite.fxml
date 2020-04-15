@@ -15,7 +15,7 @@
          </font>
       </Label>
       <TextField fx:id="search" layoutX="43.0" layoutY="72.0" onAction="#recherche" prefHeight="31.0" prefWidth="240.0" promptText="Rechercher" />
-      <Button layoutX="615.0" layoutY="74.0" mnemonicParsing="false" onAction="#triedate" prefHeight="31.0" prefWidth="115.0" style="-fx-background-color: #B15837;" text="trier par Titre" textFill="#363648">
+      <Button fx:id="bt1" layoutX="615.0" layoutY="74.0" mnemonicParsing="false" onAction="#triedate" prefHeight="31.0" prefWidth="115.0" style="-fx-background-color: #B15837;" text="trier par Titre" textFill="#363648">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

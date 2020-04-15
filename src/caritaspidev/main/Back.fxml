@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="700.0" prefWidth="1054.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.main.BackController">
+   <children>
+      <JFXToolbar fx:id="toolbar" layoutY="-2.0" prefHeight="141.0" prefWidth="1064.0" style="-fx-background-color: #363648;">
+         <center>
+            <Text fill="#d54e27" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBOARD ADMIN" textAlignment="CENTER" wrappingWidth="364.13671875" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="32.0" />
+               </font>
+            </Text>
+         </center>
+         <left>
+            <ImageView fx:id="imglogo" fitHeight="131.0" fitWidth="245.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../GUI/Image1.png" />
+               </image>
+            </ImageView>
+         </left>
+         <right>
+            <Button fx:id="singout" mnemonicParsing="false" onAction="#logout" prefHeight="39.0" prefWidth="107.0" style="-fx-background-color: #B15837;" text="sing out" textFill="#363648" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Button>
+         </right>
+      </JFXToolbar>
+      <AnchorPane layoutY="138.0" prefHeight="562.0" prefWidth="1064.0">
+         <children>
+            <VBox layoutX="52.0" layoutY="14.0" prefHeight="166.0" prefWidth="277.0" style="-fx-background-color: #363648;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="121.0" prefWidth="277.0">
+                     <children>
+                        <ImageView fitHeight="114.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/img/television-ads-1509086-1276653.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="277.0">
+                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#gererpublicites" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="Gerer publicités" textFill="#363648">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="406.0" layoutY="14.0" prefHeight="166.0" prefWidth="277.0" style="-fx-background-color: #363648;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="121.0" prefWidth="277.0">
+                     <children>
+                        <ImageView fitHeight="114.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/img/Circle-icons-news.svg.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="277.0">
+                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#gereractualités" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="Gerer actualités" textFill="#363648">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+      <VBox layoutX="742.0" layoutY="152.0" prefHeight="166.0" prefWidth="277.0" style="-fx-background-color: #363648;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="121.0" prefWidth="277.0">
+               <children>
+                  <ImageView fitHeight="114.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/img/1458512.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="277.0">
+               <children>
+                  <Button fx:id="ab512" alignment="CENTER" mnemonicParsing="false" onAction="#gererevenements" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="Gerer evenement" textFill="#363648">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="52.0" layoutY="335.0" prefHeight="166.0" prefWidth="277.0" style="-fx-background-color: #363648;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="121.0" prefWidth="277.0">
+               <children>
+                  <ImageView fitHeight="114.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/img/icon-recrutement.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="277.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#gereroffreemploi" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="Gerer offre d'emplois" textFill="#363648">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="52.0" layoutY="519.0" prefHeight="166.0" prefWidth="277.0" style="-fx-background-color: #363648;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="121.0" prefWidth="277.0">
+               <children>
+                  <ImageView fitHeight="114.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/img/d8c12692.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="277.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#gererreclamation" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="Gerer reclamations" textFill="#363648">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="406.0" layoutY="336.0" prefHeight="166.0" prefWidth="277.0" style="-fx-background-color: #363648;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="121.0" prefWidth="277.0">
+               <children>
+                  <ImageView fitHeight="114.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/img/training-icon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="277.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#gererformations" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="Gerer formations" textFill="#363648">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="406.0" layoutY="521.0" prefHeight="166.0" prefWidth="277.0" style="-fx-background-color: #363648;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="121.0" prefWidth="277.0">
+               <children>
+                  <ImageView fitHeight="114.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/img/Membre.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="277.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#gererutilisateur" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="Gerer utilisateur" textFill="#363648">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="742.0" layoutY="337.0" prefHeight="166.0" prefWidth="277.0" style="-fx-background-color: #363648;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="121.0" prefWidth="277.0">
+               <children>
+                  <ImageView fitHeight="114.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/img/friend-icon-request-icon-social-media-icon-png-favpng-GNwhkWhB4ivVjhWyMqSc8hDYy.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="277.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#gererdemandeservice" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="demandes de service santé" textFill="#363648">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="742.0" layoutY="522.0" prefHeight="166.0" prefWidth="277.0" style="-fx-background-color: #363648;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="121.0" prefWidth="277.0">
+               <children>
+                  <ImageView fitHeight="114.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/img/1967185.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="277.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#gererparticipation" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #B15837; -fx-border-color: #363648;" text="afficher participations" textFill="#363648">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
