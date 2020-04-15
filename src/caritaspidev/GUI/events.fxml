@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="page" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="766.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.GUI.EventsController">
+   <children>
+      <VBox fx:id="eventcontainer" layoutY="157.0" prefHeight="467.0" prefWidth="724.0">
+         <children>
+            <JFXButton fx:id="myevent" onAction="#myevent" prefHeight="43.0" prefWidth="126.0" text="mes Evenements" />
+         </children></VBox>
+      <Label layoutX="253.0" layoutY="28.0" text="les evenements">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <TextField fx:id="search" layoutX="143.0" layoutY="107.0" onAction="#recherche" prefHeight="36.0" prefWidth="236.0" promptText="ecire le nom d'evenement  ici" />
+      <Label layoutX="14.0" layoutY="110.0" text="Rechercher :" AnchorPane.bottomAnchor="632.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="595.0" AnchorPane.topAnchor="110.0">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="recherche" layoutX="610.0" layoutY="122.0" mnemonicParsing="false" onAction="#recherchee" prefHeight="24.0" prefWidth="70.0" text="NOM" AnchorPane.bottomAnchor="632.0">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></CheckBox>
+      <CheckBox fx:id="recherchee" layoutX="512.0" layoutY="122.0" mnemonicParsing="false" onAction="#rechercheee" prefHeight="24.0" prefWidth="79.0" text="DATE" AnchorPane.bottomAnchor="632.0">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></CheckBox>
+      <Label layoutX="415.0" layoutY="122.0" text="Tri par :" AnchorPane.bottomAnchor="632.0">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font>
+      </Label>
+     
+   </children>
+</AnchorPane>

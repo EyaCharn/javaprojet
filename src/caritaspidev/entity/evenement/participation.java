@@ -3,32 +3,54 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package caritaspidev.entityevenement;
+package caritaspidev.entity.evenement ;
+
+import caritaspidev.entityUser.user;
 
 /**
  *
  * @author asus
  */
 public class participation {
+    
       private int id;
     private int idEvent;
     private int idUtilisateur ; 
     
     
     public participation(){}
-    
-    
 
-    public participation(int id, int idEvent, int idUtilisateur) {
+   
+    public participation(evenement id_evenement , user id_user) {
+        this.idEvent =idEvent;
+        this.idUtilisateur=idUtilisateur;
+        
+    }
+   
+
+   
+
+    public participation( int id, int idEvent, int idUtilisateur) {
+       
         this.id = id;
         this.idEvent = idEvent;
         this.idUtilisateur = idUtilisateur;
     }
 
+    public participation( int idUtilisateur) {
+        
+        this.idUtilisateur = idUtilisateur;
+    }
+    
+    
+    
+
+
     public participation(int idEvent,int idUtilisateur) {
         this.idEvent = idEvent;
         this.idUtilisateur = idUtilisateur;
     }
+
 
   
 
@@ -56,6 +78,9 @@ public class participation {
     public void setIdUtilisateur(int idUtilisateur) {
         this.idUtilisateur = idUtilisateur;
     }
+  
+    
+    
 
    
 

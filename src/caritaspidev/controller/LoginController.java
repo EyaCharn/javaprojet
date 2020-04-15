@@ -71,6 +71,16 @@ public class LoginController implements Initializable {
       private user loggedUser;
        private static LoginController instance;
  public static final Map<Integer, user> USERS = new HashMap<>();
+    private static int idCnx;
+
+    public static int getIdCnx() {
+         return idCnx;
+    }
+      private static String usernameCnx;
+
+    public static String getUsernameCnx() {
+        return usernameCnx;
+    }
     
      public static void loadWindow(URL loc, String title, Stage parentStage) {
         try {

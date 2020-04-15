@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package caritaspidev.entityevenement ;
+package caritaspidev.entity.evenement;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import java.sql.Date;
 import javafx.scene.image.ImageView;
 
 /**
@@ -14,34 +13,68 @@ import javafx.scene.image.ImageView;
  * @author asus
  */
 public class evenement {
-     private int id;
-    private String NomEvenement;
-    private String image;
-    private String description;
-       private int NbDeParticipants ;
-    private String dateEvenement ;
-     private ImageView photo; 
+      public int id ;
+      public int id_theme;
+      
+   public String NomEvenement ;
+    public String image ;
+ public String description ;
+ public int NbDeParticipants ; 
+ public Date dateEvenement ; 
+ private ImageView photo;
 
-    public evenement(int id, String NomEvenement, String description, int NbDeParticipants, String dateEvenement, ImageView photo) {
+    public evenement(int id, int id_theme, String NomEvenement, String image, String description, int NbDeParticipants, Date dateEvenement, ImageView photo) {
         this.id = id;
+        this.id_theme = id_theme;
         this.NomEvenement = NomEvenement;
+        this.image = image;
         this.description = description;
         this.NbDeParticipants = NbDeParticipants;
         this.dateEvenement = dateEvenement;
         this.photo = photo;
+      
     }
 
-    public evenement(int id, String NomEvenement, String image, String description, int NbDeParticipants, String dateEvenement) {
+    public evenement(int id, String NomEvenement, String image, String description, Date dateEvenement) {
         this.id = id;
+        this.NomEvenement = NomEvenement;
+        this.image = image;
+        this.description = description;
+        this.dateEvenement = dateEvenement;
+    }
+
+  
+
+    public evenement(String NomEvenement, String image, String description, Date dateEvenement) {
+        this.NomEvenement = NomEvenement;
+        this.image = image;
+        this.description = description;
+        this.dateEvenement = dateEvenement;
+    }
+    
+
+    public evenement(int id, int id_theme, String NomEvenement, String image, String description, int NbDeParticipants, Date dateEvenement) {
+        this.id = id;
+        this.id_theme = id_theme;
         this.NomEvenement = NomEvenement;
         this.image = image;
         this.description = description;
         this.NbDeParticipants = NbDeParticipants;
         this.dateEvenement = dateEvenement;
     }
-    
 
-    public evenement(String NomEvenement, String image, String description, int NbDeParticipants, String dateEvenement) {
+    public evenement(int id_theme, String NomEvenement, String image, String description, int NbDeParticipants, Date dateEvenement, ImageView photo) {
+        this.id_theme = id_theme;
+        this.NomEvenement = NomEvenement;
+        this.image = image;
+        this.description = description;
+        this.NbDeParticipants = NbDeParticipants;
+        this.dateEvenement = dateEvenement;
+        this.photo = photo;
+    }
+
+    public evenement(int id_theme, String NomEvenement, String image, String description, int NbDeParticipants, Date dateEvenement) {
+        this.id_theme = id_theme;
         this.NomEvenement = NomEvenement;
         this.image = image;
         this.description = description;
@@ -49,28 +82,32 @@ public class evenement {
         this.dateEvenement = dateEvenement;
     }
 
-    public evenement(String NomEvenement, String description, int NbDeParticipants, String dateEvenement, ImageView photo) {
-        this.NomEvenement = NomEvenement;
-        this.description = description;
-        this.NbDeParticipants = NbDeParticipants;
-        this.dateEvenement = dateEvenement;
-        this.photo = photo;
-    }
-    
+   
 
     public evenement() {
+        
     }
 
-    public evenement(int aInt, String string, String string0, int aInt0, String string1) {
+    public evenement(int i) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-  public int getId() {
+ 
+
+    public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getId_theme() {
+        return id_theme;
+    }
+
+    public void setId_theme(int id_theme) {
+        this.id_theme = id_theme;
     }
 
     public String getNomEvenement() {
@@ -105,11 +142,11 @@ public class evenement {
         this.NbDeParticipants = NbDeParticipants;
     }
 
-    public String getDateEvenement() {
+    public Date getDateEvenement() {
         return dateEvenement;
     }
 
-    public void setDateEvenement(String dateEvenement) {
+    public void setDateEvenement(Date dateEvenement) {
         this.dateEvenement = dateEvenement;
     }
 
@@ -122,39 +159,12 @@ public class evenement {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + this.id;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final evenement other = (evenement) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "evenement{" + "id=" + id + ", NomEvenement=" + NomEvenement + ", image=" + image + ", description=" + description + ", NbDeParticipants=" + NbDeParticipants + ", dateEvenement=" + dateEvenement + ", photo=" + photo + '}';
+        return "evenement{" + "id=" + id + ", id_theme=" + id_theme + ", NomEvenement=" + NomEvenement + ", image=" + image + ", description=" + description + ", NbDeParticipants=" + NbDeParticipants + ", dateEvenement=" + dateEvenement + ", photo=" + photo + '}';
     }
-     
-     
- 
-  
+
     
-     
+    
+
     
 }
