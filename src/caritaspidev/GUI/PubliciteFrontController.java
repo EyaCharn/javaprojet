@@ -3,23 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package caritaspidev.main;
+package caritaspidev.GUI;
 
 import caritaspidev.connectionBD.DataSource;
 import caritaspidev.controller.UserSession;
 import caritaspidev.entityPublicite.likepublicite;
 import caritaspidev.entityPublicite.publicite;
 import caritaspidev.entityUser.user;
+import caritaspidev.main.FrontController;
 import caritaspidev.services.ServicePublicite;
 import caritaspidev.services.Servicelikepublicite;
-import com.jfoenix.controls.JFXToolbar;
-//import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-//import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-//import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,19 +31,14 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
 /**
@@ -56,46 +46,17 @@ import javafx.util.Duration;
  *
  * @author asus
  */
-public class FrontController implements Initializable {
-     UserSession n = UserSession.getInstance();
+public class PubliciteFrontController implements Initializable {
     @FXML
-    private JFXToolbar toolbar;
-    @FXML
-    private ImageView imglogo;
-    @FXML
-    private Pane pane;
-    @FXML
-    private Button ab5;
-    @FXML
-    private Button ab6;
-    @FXML
-    private Button ab3;
-    @FXML
-    private Button ab4;
-    @FXML
-    private Button ab2;
-    @FXML
-    private Button ab;
-    @FXML
-    private Button ab1;
-    @FXML
-    private AnchorPane ap;
-    @FXML
-    private Button singout;
-    @FXML
-    private Button ab51;
+    private ScrollPane scrolier;
     @FXML
     private VBox vbox;
     @FXML
     private HBox imgslider;
- private Connection con;
-    @FXML
-    private ScrollPane scroller;
-   String s1="";
-    @FXML
-    private AnchorPane panne;
-
-    public FrontController() {
+     private Connection con;
+     String s1="";
+    
+      public PubliciteFrontController() {
         con = DataSource.getInstance().getConnection();
     }
 List<String> type;
@@ -112,82 +73,21 @@ List<String> type;
          
     private Statement ste;
     private PreparedStatement pre;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         UserSession n = UserSession.getInstance();
-                                s1 = n.getUsername();
+        
         try {
-            user connecte=getUserConnecte();
-            System.out.println("hello ya  "+connecte);
             start1();
-            // TODO
         } catch (Exception ex) {
-            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PubliciteFrontController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
-
-   
-  
-    @FXML
-    private void logout(ActionEvent event) throws IOException {
-        
-         n.cleanUserSession(); 
-       
-       
-            AnchorPane page=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/login.fxml"));
-        panne.getChildren().setAll(page);
-    }
-
-    @FXML
-    private void gererhybergement(ActionEvent event) {
-    }
-
-    @FXML
-    private void gerersante(ActionEvent event) {
-    }
-
-    @FXML
-    private void gererprofile(ActionEvent event) throws IOException {
-          AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/Gererprofil.fxml"));
-        ap.getChildren().setAll(pane); 
-        
-    }
-
-    @FXML
-    private void offreemploi(ActionEvent event) throws IOException {
-         AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficherEmploi.fxml"));
-        ap.getChildren().setAll(pane); 
-    }
+    }   
     
-
-    @FXML
-    private void gererformation(ActionEvent event) throws IOException {
-          AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficherFormation.fxml"));
-        ap.getChildren().setAll(pane); }
-    
-
-    @FXML
-    private void gererevenement(ActionEvent event) {
-    }
-
-    @FXML
-    private void gereractualite(ActionEvent event) throws IOException {
-     AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficherActualite.fxml"));
-        ap.getChildren().setAll(pane); }
-    
-
-    @FXML
-    private void gererreclamation(ActionEvent event) {
-        
-        
-    }
-    
-    
-    
-    public void start1() throws Exception {
+       public void start1() throws Exception {
           Servicelikepublicite pa=new Servicelikepublicite();
    String req="select * from publicite  ";
    user connecte=getUserConnecte();
@@ -205,7 +105,7 @@ List<String> type;
         v.setFitHeight(129);
         v.setFitWidth(1125);
        Button bt1=new Button("like");
-       if(rs.getBoolean(4)==true){
+       if( rs.getBoolean(4)== true){
         if (pa.chercher_ajout(new likepublicite(p.getId(),connecte)))
                          {
                    bt1.setDisable(true);
@@ -302,11 +202,6 @@ List<String> type;
     
 }
 
-    @FXML
-    private void dashboard(ActionEvent event) throws IOException {
-        AnchorPane page=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/PubliciteFront.fxml"));
-        ap.getChildren().setAll(page);
-    }
-   
+    
     
 }

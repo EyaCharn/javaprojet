@@ -10,6 +10,7 @@ import caritaspidev.services.ServiceActualite;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 
@@ -21,13 +22,18 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -35,6 +41,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javax.swing.JOptionPane;
 
@@ -70,6 +78,23 @@ public class ActualiteController implements Initializable {
     List<String> type;
 
     private actualite cc=null;
+    @FXML
+    private AnchorPane ap;
+    
+    @FXML
+    private Label erreurcontenu;
+    @FXML
+    private Label erreurimg;
+    @FXML
+    private Label erreurdateajout;
+    @FXML
+    private Label erreurdatemodif;
+    @FXML
+    private Label erreurtitre;
+    @FXML
+    private Button imagee;
+    
+    
 
     /**
      * Initializes the controller class.
@@ -97,6 +122,127 @@ public class ActualiteController implements Initializable {
                
             }
           });
+           titre.textProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue.matches("\\sa-zA-Z*")) {
+            titre.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+        }
+    });
+           titre.textProperty().addListener(new ChangeListener<String>()
+            {
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                   if(newValue.isEmpty())
+                       erreurtitre.setText("remplir champ titre");
+                   else if(newValue.length()>200)
+                       erreurtitre.setText("Max champ titre 200");
+                   else
+                erreurtitre.setText("");
+                }
+                
+                
+            });
+           titre.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(titre.getText().length()==0)
+                     erreurtitre.setText("remplir champ titre");    
+                    
+                }
+                
+            });
+            contenu.textProperty().addListener(new ChangeListener<String>()
+            {
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                   if(newValue.isEmpty())
+                       erreurcontenu.setText("remplir champ contenu");
+                   else if(newValue.length()>200)
+                       erreurcontenu.setText("Max champ contenu 200");
+                   else
+                erreurcontenu.setText("");
+                }
+                
+                
+            });
+           contenu.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(contenu.getText().length()==0)
+                     erreurcontenu.setText("remplir champ contenu");    
+                    
+                }
+                
+            });
+           dateajout.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(dateajout.getValue()==null)
+                     erreurdateajout.setText("remplir champ date debut");    
+                   
+                    
+                    
+                }
+                
+            });
+            dateajout.valueProperty().addListener((ov, oldValue, newValue) -> {
+                 if(newValue==null)
+                       erreurdateajout.setText("remplir champ date debut");
+                 
+                   else
+                erreurdateajout.setText("");
+                
+            
+        });
+        
+            
+          datemodif.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(datemodif.getValue()==null)
+                     erreurdatemodif.setText("remplir champ date modification");    
+                   
+                    
+                    
+                }
+                
+            });
+            datemodif.valueProperty().addListener((ov, oldValue, newValue) -> {
+                 if(newValue==null)
+                       erreurdatemodif.setText("remplir champ date modification");
+                 
+                   else
+                erreurdatemodif.setText("");
+                
+            
+        });
+            imagee.textProperty().addListener(new ChangeListener<String>()
+            {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                   if(newValue.isEmpty())
+                       erreurimg.setText("remplir champ image");
+                   
+                   else
+                erreurimg.setText("");
+                }
+                
+                
+            });
+            imagee.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(imagee.getText().length()==0)
+                     erreurimg.setText("remplir champ image");    
+                    
+                }
+                
+            }); 
+           
+           
+          
     }    
 
     @FXML
@@ -117,6 +263,13 @@ public class ActualiteController implements Initializable {
     @FXML
     private void ajouter(ActionEvent event) {
          try {
+              if(titre.getText().isEmpty() ||(img.isEmpty()&&cc.getImage().isEmpty())  || contenu.getText().isEmpty() )
+        
+        {
+           
+             
+         JOptionPane.showMessageDialog(null, "verifer les champs");   
+        }else{
             String titre1 = titre.getText();
             String contenu1 = contenu.getText();
             LocalDate dd =dateajout.getValue();
@@ -134,7 +287,7 @@ public class ActualiteController implements Initializable {
             dateajout.setValue(null);
             datemodif.setValue(null);
             importeimage.setImage(null);
-            afficher();
+            afficher();}
         } catch (SQLException ex) {
             Logger.getLogger(PubliciteController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -230,5 +383,11 @@ public class ActualiteController implements Initializable {
        
    
    }
+
+    @FXML
+    private void retourner(ActionEvent event) throws IOException {
+           AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/main/Back.fxml"));
+        ap.getChildren().setAll(pane);
+    }
     
 }

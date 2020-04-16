@@ -10,6 +10,7 @@ import caritaspidev.entityPublicite.publicite;
 import caritaspidev.services.ServicePublicite;
 import caritaspidev.services.Servicelikepublicite;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,13 +23,17 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -36,6 +41,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javax.swing.JOptionPane;
 
@@ -74,6 +81,15 @@ public class PubliciteController implements Initializable {
     private TableColumn<likepublicite,String> titrepub;
     @FXML
     private TableColumn<likepublicite,String> nomutilisateur;
+    @FXML
+    private Label erreur_description;
+    @FXML
+    private Label erreur_image;
+    @FXML
+    private Label erreur_enable;
+    @FXML
+    private AnchorPane ap;
+   
     
 
     /**
@@ -105,6 +121,31 @@ public class PubliciteController implements Initializable {
                 
             }
           });
+           description.textProperty().addListener(new ChangeListener<String>()
+            {
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                   if(newValue.isEmpty())
+                       erreur_description.setText("remplir champ description");
+                   else if(newValue.length()>200)
+                       erreur_description.setText("Max champ description 200");
+                   else
+                erreur_description.setText("");
+                }
+                
+                
+            });
+           description.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(description.getText().length()==0)
+                     erreur_description.setText("remplir champ description");    
+                    
+                }
+                
+            });
+           
+           
     }    
 
     @FXML
@@ -146,6 +187,13 @@ public class PubliciteController implements Initializable {
         try {
             String descriptionP = description.getText();
             String etatt = enable.getText();
+            if(description.getText().isEmpty() ||(img.isEmpty()&&cc.getImage().isEmpty()) )
+        
+        {
+           
+             
+         JOptionPane.showMessageDialog(null, "verifer les champs");   
+        }else{
             if (enable.isSelected())
             {eta=true;}
             else {eta=false; }
@@ -157,7 +205,7 @@ public class PubliciteController implements Initializable {
             JOptionPane.showMessageDialog(null, "ajout avec succes");
             description.clear();
             importeimage.setImage(null);
-            afficher();
+            afficher();}
         } catch (SQLException ex) {
             Logger.getLogger(PubliciteController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -269,5 +317,11 @@ public class PubliciteController implements Initializable {
        
    
    }
+
+    @FXML
+    private void retourner(ActionEvent event) throws IOException {
+           AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/main/Back.fxml"));
+        ap.getChildren().setAll(pane);
+    }
     
 }

@@ -25,12 +25,12 @@
             <Image url="@../ressources/img/divert.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="inscrirLabel" layoutX="528.0" layoutY="78.0" prefHeight="54.0" prefWidth="179.0" text="Inscrivez-vous maintenant!" textAlignment="CENTER" textFill="LIGHTSKYBLUE">
+      <Label fx:id="inscrirLabel" layoutX="528.0" layoutY="78.0" prefHeight="54.0" prefWidth="179.0" text="Inscrivez-vous maintenant!" textAlignment="CENTER" textFill="#363648">
          <font>
             <Font name="Bauhaus 93" size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="login" buttonType="RAISED" layoutX="475.0" layoutY="57.0" onAction="#Pagelogin" prefHeight="27.0" prefWidth="128.0" ripplerFill="#eb3843" style="-fx-background-color: #87CEFA;" text="Login" textAlignment="CENTER" textFill="WHITE">
+      <JFXButton fx:id="login" buttonType="RAISED" layoutX="475.0" layoutY="57.0" onAction="#Pagelogin" prefHeight="27.0" prefWidth="128.0" ripplerFill="#eb3843" style="-fx-background-color: #B15837;" text="Login" textAlignment="CENTER" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>
@@ -38,7 +38,7 @@
             <Font name="Bauhaus 93" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="signup" buttonType="RAISED" layoutX="639.0" layoutY="58.0" onAction="#Pageregister" onMouseClicked="#Signup" prefHeight="25.0" prefWidth="136.0" ripplerFill="#d76c2e" style="-fx-background-color: #87CEFA;" text="Register" textAlignment="CENTER" textFill="WHITE">
+      <JFXButton fx:id="signup" buttonType="RAISED" layoutX="639.0" layoutY="58.0" onAction="#Pageregister" onMouseClicked="#Signup" prefHeight="25.0" prefWidth="136.0" ripplerFill="#d76c2e" style="-fx-background-color: #B15837;" text="Register" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Bauhaus 93" size="12.0" />
          </font>
@@ -57,12 +57,7 @@
          </font>
       </JFXPasswordField>
       <Hyperlink fx:id="labelmdo" layoutX="555.0" layoutY="456.0" onAction="#Pagerecupmdp" text="Mot de passe oublié ?" textFill="#eb3843" />
-      <ImageView fitHeight="38.0" fitWidth="66.0" layoutX="788.0" layoutY="20.0" onMouseClicked="#closeApplication" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../ressources/img/close.png" />
-         </image>
-      </ImageView>
-      <JFXButton fx:id="btnlogin" buttonType="RAISED" layoutX="493.0" layoutY="332.0" onAction="#handleLoginButtonAction" prefHeight="27.0" prefWidth="229.0" ripplerFill="#eb3843" style="-fx-background-color: #87CEFA;" text="Login" textAlignment="CENTER" textFill="WHITE">
+      <JFXButton fx:id="btnlogin" buttonType="RAISED" layoutX="493.0" layoutY="332.0" onAction="#handleLoginButtonAction" prefHeight="27.0" prefWidth="229.0" ripplerFill="#eb3843" style="-fx-background-color: #B15837;" text="Login" textAlignment="CENTER" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>

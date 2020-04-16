@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="parent" prefHeight="570.0" prefWidth="392.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.GUI.GererprofilController">
+   <children>
+      <Label fx:id="labeldate_naissance" layoutX="656.0" layoutY="279.0" prefHeight="26.0" prefWidth="208.0" textFill="RED" />
+      <Label fx:id="labeldate_inscrit" layoutX="655.0" layoutY="362.0" prefHeight="26.0" prefWidth="208.0" textFill="RED" />
+      <Label fx:id="labelprenom" layoutX="275.0" layoutY="343.0" prefHeight="26.0" prefWidth="190.0" textFill="RED" />
+      <Label fx:id="labelnom" layoutX="22.0" layoutY="358.0" prefHeight="26.0" prefWidth="190.0" textFill="RED" />
+      <ImageView fx:id="ImporterImageCheck" fitHeight="34.0" fitWidth="38.0" layoutX="167.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="date_inscritCheck" fitHeight="34.0" fitWidth="38.0" layoutX="828.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="date_naissanceCheck" fitHeight="34.0" fitWidth="38.0" layoutX="828.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Confirmation_passwordCheck" fitHeight="34.0" fitWidth="38.0" layoutX="828.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="rolesCheck" fitHeight="34.0" fitWidth="38.0" layoutX="836.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="prenomCheck" fitHeight="34.0" fitWidth="38.0" layoutX="447.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="phoneCheck" fitHeight="34.0" fitWidth="38.0" layoutX="451.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="passwordCheck" fitHeight="34.0" fitWidth="38.0" layoutX="470.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="genreCheck" fitHeight="34.0" fitWidth="38.0" layoutX="470.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="nomCheck" fitHeight="34.0" fitWidth="38.0" layoutX="198.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="ccnfirmation_emailCheck" fitHeight="34.0" fitWidth="38.0" layoutX="205.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="emailCheck" fitHeight="34.0" fitWidth="38.0" layoutX="205.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="usernameCheck" fitHeight="34.0" fitWidth="38.0" layoutX="205.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXTextField fx:id="prenom" focusColor="#ababab" labelFloat="true" layoutX="281.0" layoutY="194.0" onKeyReleased="#verifPrenom" prefHeight="33.0" prefWidth="165.0" promptText="Prenom (*)" />
+      <Label fx:id="labelPhone" layoutX="294.0" layoutY="297.0" prefHeight="25.0" prefWidth="165.0" textFill="LIME" />
+      <JFXTextField fx:id="nom" focusColor="#ababab" labelFloat="true" layoutX="32.0" layoutY="197.0" onKeyReleased="#verifNom" prefHeight="33.0" prefWidth="165.0" promptText="Nom (*)" />
+      <JFXButton fx:id="addBtn" buttonType="RAISED" layoutX="535.0" layoutY="179.0" onAction="#handleButtonConfirmar" prefHeight="27.0" prefWidth="121.0" ripplerFill="#eb3843" style="-fx-background-color: #B15837;" text="Register" textAlignment="CENTER" textFill="WHITE">
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font name="Bauhaus 93" size="12.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="inscrirLabel" layoutX="26.0" layoutY="22.0" prefHeight="54.0" prefWidth="179.0" text="modifier profil" textAlignment="CENTER" textFill="#b15837">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelconfEmail" layoutX="32.0" layoutY="262.0" prefHeight="26.0" prefWidth="246.0" textFill="LIME" />
+      <Label fx:id="labelEmail" layoutX="32.0" layoutY="171.0" prefHeight="26.0" prefWidth="208.0" textFill="RED" />
+      <Label fx:id="labelusername" layoutX="32.0" layoutY="114.0" prefHeight="25.0" prefWidth="165.0" textFill="RED" />
+      <JFXPasswordField fx:id="password" focusColor="#ababab" labelFloat="true" layoutX="281.0" layoutY="131.0" onKeyReleased="#controlMdp" prefHeight="33.0" prefWidth="165.0" promptText="Mot de passe (*)" />
+      <JFXTextField fx:id="email" focusColor="#ababab" labelFloat="true" layoutX="32.0" layoutY="131.0" onKeyReleased="#verifEmail" prefHeight="33.0" prefWidth="165.0" promptText="Email (*)" />
+      <JFXTextField fx:id="username" focusColor="#ababab" labelFloat="true" layoutX="32.0" layoutY="80.0" onKeyReleased="#verifusername" prefHeight="33.0" prefWidth="165.0" promptText="Nom d'utilisateur (*)" />
+   </children>
+</AnchorPane>

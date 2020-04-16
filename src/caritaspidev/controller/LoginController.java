@@ -220,7 +220,7 @@ public class LoginController implements Initializable {
         System.out.println("hello Volontaire");
         user userConnecter=myServices.chercherUtilisateurByUsername(username);
         UserSession.getInstace(userConnecter.getUsername(),userConnecter.getImage());  
-       loadWindow(getClass().getResource("/caritaspidev/GUI/Front.fxml"), "Dashboard", null);
+       loadWindow(getClass().getResource("/caritaspidev/main/Front.fxml"), "Dashboard", null);
          labelusername.getScene().getWindow().hide();
          Notifications n = Notifications.create()
         .title("Bienvenue")

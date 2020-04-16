@@ -69,6 +69,17 @@ public class user {
         this.profile_picture = profile_picture;
        
     }
+
+    public user(int id, String username, String email, String password, String firstname, String lastname) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+    
+    
     
     
 
@@ -86,7 +97,19 @@ public class user {
  
     }
 
-    public user(String username, String username_canonical,String firstname, String lastname, String roles) {
+    public user(int id, String username, String email, String password, String roles, String firstname, String lastname, String profile_picture) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.profile_picture = profile_picture;
+    }
+    
+
+   /* public user(String username, String username_canonical,String firstname, String lastname, String roles) {
          
         this.username = username;
         this.username_canonical = username_canonical;
@@ -95,7 +118,25 @@ public class user {
         this.firstname = firstname;
         this.lastname = lastname;
         
+    }*/
+
+    public user(String username, String email, String password, String firstname, String lastname, String profile_picture) {
+        this.username = username;
+        this.email = email;
+         this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.profile_picture = profile_picture;
     }
+
+    public user(String username, String email, String password, String firstname, String lastname) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+    
 
     
 

@@ -25,7 +25,7 @@ public class CaritasPiDev extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/login.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/login.fxml"));
         
                               // Parent root = FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficherActualite.fxml"));
 

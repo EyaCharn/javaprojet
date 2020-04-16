@@ -5,6 +5,7 @@
  */
 package caritaspidev.main;
 
+import caritaspidev.controller.UserSession;
 import com.jfoenix.controls.JFXToolbar;
 import java.io.IOException;
 import java.net.URL;
@@ -33,6 +34,7 @@ public class BackController implements Initializable {
     private Button ab512;
     @FXML
     private AnchorPane pane;
+     UserSession n = UserSession.getInstance();
 
     /**
      * Initializes the controller class.
@@ -43,7 +45,12 @@ public class BackController implements Initializable {
     }    
 
     @FXML
-    private void logout(ActionEvent event) {
+    private void logout(ActionEvent event) throws IOException {
+           n.cleanUserSession(); 
+       
+       
+            AnchorPane page=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/login.fxml"));
+        pane.getChildren().setAll(page);
     }
 
     @FXML

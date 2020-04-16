@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1054.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.GUI.ActualiteController">
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="700.0" prefWidth="1054.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.GUI.ActualiteController">
    <children>
       <JFXTabPane prefHeight="710.0" prefWidth="1094.0">
          <tabs>
@@ -17,7 +17,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="table1" layoutX="438.0" layoutY="37.0" prefHeight="638.0" prefWidth="657.0">
+                        <TableView fx:id="table1" layoutX="438.0" layoutY="37.0" prefHeight="532.0" prefWidth="657.0">
                           <columns>
                             <TableColumn fx:id="tabletitre" prefWidth="107.0" text="titre" />
                             <TableColumn fx:id="tablecontenu" prefWidth="122.0" text="contenu" />
@@ -26,6 +26,11 @@
                               <TableColumn fx:id="tabledmodif" prefWidth="157.0" text="date de modif" />
                           </columns>
                         </TableView>
+                        <Button layoutX="924.0" layoutY="597.0" mnemonicParsing="false" onAction="#retourner" prefHeight="37.0" prefWidth="96.0" style="-fx-background-color: #B15837;" text="retourner" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
               </content>
@@ -52,6 +57,10 @@
                   </TextField>
                </children>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="erreurtitre" prefHeight="34.0" prefWidth="317.0" />
+               </children></HBox>
             <HBox alignment="CENTER" prefHeight="136.0" prefWidth="380.0">
                <children>
                   <TextField fx:id="contenu" alignment="TOP_LEFT" prefHeight="106.0" prefWidth="263.0" promptText="Contenu">
@@ -61,12 +70,20 @@
                   </TextField>
                </children>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="erreurcontenu" prefHeight="35.0" prefWidth="311.0" />
+               </children></HBox>
             <HBox alignment="CENTER" prefHeight="133.0" prefWidth="380.0">
                <children>
-                  <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#importimage" prefHeight="37.0" prefWidth="117.0" style="-fx-background-color: #B15837;" text="import image" textFill="WHITE" />
+                  <Button fx:id="imagee" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#importimage" prefHeight="37.0" prefWidth="117.0" style="-fx-background-color: #B15837;" text="import image" textFill="WHITE" />
                   <ImageView fx:id="importeimage" fitHeight="105.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="erreurimg" prefHeight="33.0" prefWidth="291.0" />
+               </children></HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <DatePicker fx:id="dateajout" promptText="date d'ajout" style="-fx-background-color: #B15837;" />
@@ -74,9 +91,17 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
+                  <Label fx:id="erreurdateajout" prefHeight="29.0" prefWidth="310.0" />
+               </children></HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
                   <DatePicker fx:id="datemodif" promptText="date de modification" style="-fx-background-color: #B15837;" />
                </children>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="erreurdatemodif" prefHeight="31.0" prefWidth="331.0" />
+               </children></HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <VBox prefHeight="76.0" prefWidth="30.0" />

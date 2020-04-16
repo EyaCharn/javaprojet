@@ -467,7 +467,28 @@ public class Serviceuser {
         return s1;
     }
      
-   
+    public boolean update(user t, int id) throws SQLException {
+
+        PreparedStatement pre;
+
+        pre = con.prepareStatement("UPDATE caritass.`user` SET username = ? , email = ?, password= ? , firstname= ?, lastname= ? WHERE id = ? ;");
+        pre.setString(4, t.getFirstname());
+            pre.setString(5, t.getLastname());
+        
+        pre.setString(3, t.getPassword());
+        pre.setString(1, t.getUsername());
+        
+        pre.setString(2, t.getEmail());
+        pre.setInt(6, id);
+        pre.executeUpdate();
+
+        if (pre.executeUpdate() != 0) {
+            return true;
+        }
+        return false;
+
+        //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
      public void changepassword(String s1, String email) {
         try {
             String requete = "update user set password=? where email=? ";
@@ -558,6 +579,35 @@ public class Serviceuser {
 
     }
      
-     
+     public user getuser(user u) throws SQLException {   
+        user us = new user();
+        PreparedStatement pre = con.prepareStatement("SELECT * FROM user WHERE username LIKE ? ;");
+
+        pre.setString(1, u.getUsername());
+        ResultSet rs = pre.executeQuery();
+        while (rs.next()) {
+            int id_user = rs.getInt(1);
+            String nom = rs.getString(14);
+            String prenom = rs.getString(15);
+            
+            String username = rs.getString(3);
+            String mot_de_passe = rs.getString(9);
+            String email = rs.getString(5);
+           
+          
+                    
+            us.setId(id_user);
+            us.setFirstname(nom);
+            us.setLastname(prenom);
+      
+            us.setUsername(username);
+            
+            us.setEmail(email);
+            us.setPassword(mot_de_passe);
+           
+        }
+        return us;
+
+    }
     
 }
