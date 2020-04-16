@@ -2,13 +2,39 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group/>
+        <group/>
+        <group/>
         <group>
             <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/GUI/PubliciteFront.fxml</file>
             <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/GUI/GererprofilController.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/entity/formation/formation.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/services/Serviceuser.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/controller/UserinterfaceController.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/services/formationService.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/controller/ProfileMembreController.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/GUI/ProfileMembre.fxml</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/services/Servicehebergement.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/services/Serviceservicesante.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/controller/ListehebergementController.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/entityHebergement/avishebergement.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/main/CaritasPiDev.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/controller/LoginController.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/GUI/UserInterface.fxml</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/controller/RatingController.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/entityUser/user.java</file>
+            <file>file:/C:/Users/Maissa/Documents/javaprojet/src/caritaspidev/controller/ModifierhebergemntController.java</file>
+            <file>file:/C:/Users/asus/Desktop/ekherwahed/src/caritaspidev/GUI/AfficherFormationController.java</file>
+            <file>file:/C:/Users/asus/Desktop/ekherwahed/src/caritaspidev/GUI/ParticipationController.java</file>
+            <file>file:/C:/Users/asus/Desktop/ekherwahed/src/caritaspidev/services/Serviceevenement.java</file>
+            <file>file:/C:/Users/asus/Desktop/ekherwahed/src/caritaspidev/main/CaritasPiDev.java</file>
         </group>
         <group>
             <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/main/FrontController.java</file>
             <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/entityPublicite/publicite.java</file>
+            <file>file:/C:/Users/asus/Desktop/ekherwahed/src/caritaspidev/main/CaritasPiDev.java</file>
+            <file>file:/C:/Users/asus/Desktop/ekherwahed/src/caritaspidev/GUI/addevenementController.java</file>
+            <file>file:/C:/Users/asus/Desktop/ekherwahed/src/caritaspidev/GUI/ParticipationController.java</file>
         </group>
         <group>
             <file>file:/C:/Users/asus/Documents/NetBeansProjects/CaritasPiDev/src/caritaspidev/main/FrontController.java</file>

@@ -296,7 +296,7 @@ public class RegistrationController implements Initializable{
                 String passCrypt = Password.hashPassword(password.getText().trim());
 
                 u.setUsername(username.getText().trim());
-                u.setUsername_canonical(username.getText().trim());
+               // u.setUsername_canonical(username.getText().trim());
                 u.setEmail(email.getText().trim());
              
                 u.setEnabled(1);
@@ -325,6 +325,8 @@ public class RegistrationController implements Initializable{
                 // u.setDate_inscription(date_inscrit.getValue().format(DateTimeFormatter.BASIC_ISO_DATE));
                
                 u.setImage(path);
+                u.setPhone(phone.getText().trim());
+                u.setId_facebook(Integer.toString(1));
                // u.setPhone(phone.getText().trim());
                 
                 if (selectedFile != null)

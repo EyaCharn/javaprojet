@@ -23,22 +23,22 @@ public class hebergement {
     private Date date ;
     private String reglement_interieur;
     
-    public hebergement (Long id , String duree_max ,String nbplaces , String adresse , String description_logement , String image_logement ,Date date, String reglement_interieur){
+    public hebergement (Long id , String duree_max , String adresse,String nbplaces  , String description_logement , String image_logement ,Date date, String reglement_interieur){
     this.id=id; 
     this.duree_max=duree_max;
-    this.nbplaces=nbplaces ;
     this.adresse=adresse;
+    this.nbplaces=nbplaces ;
     this.description_logement=description_logement;
     this.image_logement=image_logement;
     this.date=date;
     this.reglement_interieur=reglement_interieur;
     
 }
-     public hebergement ( String duree_max ,String nbplaces , String adresse , String description_logement , String image_logement ,Date date, String reglement_interieur){
+     public hebergement ( String duree_max  , String adresse,String nbplaces , String description_logement , String image_logement ,Date date, String reglement_interieur){
   
     this.duree_max=duree_max;
-    this.nbplaces=nbplaces ;
     this.adresse=adresse;
+    this.nbplaces=nbplaces ;
     this.description_logement=description_logement;
     this.image_logement=image_logement;
     this.date=date;
@@ -47,34 +47,24 @@ public class hebergement {
 }
      public hebergement(){}
      
-     public hebergement ( String duree_max ,String nbplaces , String adresse , String description_logement , String image_logement , String reglement_interieur){
+     public hebergement ( String duree_max, String adresse  ,String nbplaces , String description_logement , String image_logement , String reglement_interieur){
   
     this.duree_max=duree_max;
+     this.adresse=adresse;
     this.nbplaces=nbplaces ;
-    this.adresse=adresse;
     this.description_logement=description_logement;
     this.image_logement=image_logement;
    
     this.reglement_interieur=reglement_interieur;
     
 }
-        public hebergement ( Long id,String duree_max , String adresse ,String nbplaces, String description_logement , String image_logement , Date date){
-    this.id=id;
-    this.duree_max=duree_max;
-    this.nbplaces=nbplaces ;
-    this.adresse=adresse;
-    this.description_logement=description_logement;
-    this.image_logement=image_logement;
-    this.date=date;
-   
-    
-}
+  
         
-        public hebergement ( Long id,String duree_max , String adresse ,String nbplaces, String description_logement , String image_logement,String reglement_interieur){
+        public hebergement ( Long id,String duree_max , String adresse,String nbplaces , String description_logement , String image_logement,String reglement_interieur){
     this.id=id;
     this.duree_max=duree_max;
+     this.adresse=adresse;
     this.nbplaces=nbplaces ;
-    this.adresse=adresse;
     this.description_logement=description_logement;
     this.image_logement=image_logement;
     this.reglement_interieur=reglement_interieur;
@@ -87,8 +77,8 @@ public class hebergement {
         public hebergement ( String duree_max , String adresse ,String nbplaces, String description_logement , String reglement_interieur){
     
     this.duree_max=duree_max;
-    this.nbplaces=nbplaces ;
     this.adresse=adresse;
+    this.nbplaces=nbplaces ;
     this.description_logement=description_logement;
     this.reglement_interieur=reglement_interieur;
  
@@ -98,7 +88,7 @@ public class hebergement {
      
       @Override
     public String toString() {
-        return "hebergement{" + "id=" + id + ", duree_max=" + duree_max + ", nb places=" + nbplaces + ", adresse=" + adresse + ", description_logement=" + description_logement+ ", image_logement=" + image_logement+ ",date=" + date +", reglement_interieur=" + reglement_interieur +'}';
+        return "hebergement{" + "id=" + id + ", duree_max=" + duree_max +", adresse=" + adresse + ", nb places=" + nbplaces +  ", description_logement=" + description_logement+ ", image_logement=" + image_logement+ ",date=" + date +", reglement_interieur=" + reglement_interieur +'}';
     }
 
     @Override

@@ -26,6 +26,9 @@ public class traningparticipation {
        this.userid=userid;
     
    }
+    
+    
+   }
 
     public int getId() {
         return id;

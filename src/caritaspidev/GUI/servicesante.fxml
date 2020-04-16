@@ -12,19 +12,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.controller.FXMLServicesanteController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.controller.FXMLServicesanteController">
    <children>
       <JFXTabPane fx:id="Tabpane" prefHeight="600.0" prefWidth="800.0">
          <tabs>
             <Tab fx:id="Tabsrv" text="servicesante">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="1044.0">
                      <children>
-                        <VBox layoutY="-5.0" prefHeight="571.0" prefWidth="800.0" style="-fx-background-color: #065D67;">
+                        <VBox layoutY="-5.0" prefHeight="580.0" prefWidth="800.0" style="-fx-background-color: #a49490;">
                            <children>
                               <HBox fx:id="hbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label fx:id="Lblsrv" opacity="0.85" text="Proposer un service santé" textAlignment="CENTER" textFill="#f07605">
+                                    <Label fx:id="Lblsrv" opacity="0.85" text="Proposer un service santé" textAlignment="CENTER" textFill="#4d3d2e">
                                        <font>
                                           <Font name="Baskerville Old Face" size="33.0" />
                                        </font>
@@ -67,21 +67,26 @@
                               </HBox>
                               <HBox fx:id="hbox5" alignment="CENTER" prefHeight="50.0" prefWidth="772.0">
                                  <children>
-                                    <VBox fx:id="vbox" prefHeight="61.0" prefWidth="133.0">
-                                       <children>
-                                          <Button fx:id="Btnajouter" mnemonicParsing="false" onAction="#OnClicknew" prefHeight="38.0" prefWidth="133.0" style="-fx-background-color: #B15837;" text="Ajouter" textAlignment="CENTER" />
-                                       </children>
-                                    </VBox>
+                                    <Button fx:id="Btnstat" mnemonicParsing="false" onAction="#stat" prefHeight="38.0" prefWidth="133.0" style="-fx-background-color: #B15837;" text="Statistique" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Button>
+                                    <VBox fx:id="vbox" prefHeight="61.0" prefWidth="133.0" />
+                                    <Button fx:id="Btnannuler" mnemonicParsing="false" onAction="#annuler" prefHeight="38.0" prefWidth="133.0" style="-fx-background-color: #B15837;" text="Annuler" textAlignment="CENTER" textFill="#eeeeee">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="Btnajouter1" layoutX="211.0" layoutY="16.0" mnemonicParsing="false" onAction="#OnClicknew" prefHeight="38.0" prefWidth="133.0" style="-fx-background-color: #B15837;" text="Ajouter" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
                      </children></AnchorPane>
-              </content>
-            </Tab>
-            <Tab fx:id="Tabstat" text="statistique">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
             </Tab>
          </tabs>

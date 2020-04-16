@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.controller.StatistiquesanteController">
+   
+   <children>
+      <ImageView fitHeight="617.0" fitWidth="811.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ressources/img/backoffice.jpg" />
+         </image>
+      </ImageView>
+      <PieChart fx:id="piechartID" layoutX="91.0" layoutY="89.0" prefHeight="465.0" prefWidth="621.0" />
+      <Label layoutX="203.0" layoutY="30.0" opacity="0.67" text="Statistique selon la spécialité ">
+         <font>
+            <Font name="System Bold Italic" size="34.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="back_menu" layoutX="43.0" layoutY="26.0"   ripplerFill="#7cbba4" text=" ">
+         <graphic>
+            <ImageView fitHeight="48.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ressources/img/previous.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

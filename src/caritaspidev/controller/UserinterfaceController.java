@@ -5,6 +5,8 @@
  */
 package caritaspidev.controller;
 
+ 
+import caritaspidev.entityUser.user;
 import caritaspidev.services.Serviceuser;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
@@ -17,11 +19,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 /**
@@ -50,6 +54,8 @@ public class UserinterfaceController implements Initializable {
     @FXML
     private AnchorPane AnchorPane;
     private static Serviceuser myServices = new Serviceuser();
+      public static String username;
+        public static Integer userid;
 
     @FXML
     void hebergement(MouseEvent event) throws IOException{
@@ -74,9 +80,27 @@ public class UserinterfaceController implements Initializable {
         ft.setAutoReverse(true);
         ft.play();
     }
+      public static void loadWindow(URL loc, String title, Stage parentStage) {
+        try {
+            Parent parent = FXMLLoader.load(loc);
+            Stage stage = null;
+            if (parentStage != null) {
+                stage = parentStage;
+            } else {
+                stage = new Stage(StageStyle.DECORATED);
+            }
+            Scene scene = new Scene(parent);
+
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
 
     @FXML
-    void profil(MouseEvent event) {
+    void profil(MouseEvent event) throws IOException {
+              setNode(FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/ProfileMembre.fxml")));
 
     }
 
@@ -96,6 +120,13 @@ public class UserinterfaceController implements Initializable {
 
     }
      @FXML
+    void accueil(MouseEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/caritaspidev/GUI/Front.fxml"));
+        Parent root = loader.load();
+        categorie.getScene().setRoot(root);
+
+    }
+     @FXML
     void doctorrequest(MouseEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/caritaspidev/GUI/ListeDoctorrequests.fxml"));
         Parent root = loader.load();
@@ -103,6 +134,9 @@ public class UserinterfaceController implements Initializable {
 
     }
      @Override
-    public void initialize(URL url, ResourceBundle rb) {}
+    public void initialize(URL url, ResourceBundle rb) {
+        
+ 
+    }
 
 }

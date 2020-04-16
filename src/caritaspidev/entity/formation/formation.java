@@ -33,6 +33,12 @@ public class formation {
 
     public formation() {
     }
+    
+    
+
+    public formation(int id, String titre, String image, Date datedebut, int nbplaces, String lieu, String description, int repliesnumber, int likesnumber, int idUser, ImageView photo) {
+    public formation() {
+    }
 
     public formation(int id, String titre, String image, Date datedebut, int nbplaces, String lieu, String description, int repliesnumber, int likesnumber, int idUser) {
         this.id = id;
@@ -42,6 +48,9 @@ public class formation {
         this.nbplaces = nbplaces;
         this.lieu = lieu;
         this.description = description;
+        this.repliesnumber = repliesnumber;
+        this.likesnumber = likesnumber;
+        this.idUser = idUser;
         this.repliesnumber = repliesnumber;
         this.likesnumber = likesnumber;
         this.idUser = idUser;

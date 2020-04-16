@@ -8,6 +8,8 @@ package caritaspidev.services;
 import caritaspidev.connectionBD.DataSource;
 import caritaspidev.entityUser.user;
 import caritaspidev.entityHebergement.hebergement;
+import java.awt.AWTException;
+import java.awt.SystemTray;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +17,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,7 +39,7 @@ public class Serviceuser {
         try {
             System.out.println(u.toString());
             String requete = "INSERT INTO user (username,email,enabled,password,"
-                    + "roles,firstname,lastname,profile_picture) VALUES (?,?,?,?,?,?,?,?)";
+                    + "roles,firstname,lastname,profile_picture,phone,id_facebook) VALUES (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(requete);
             pst.setString(1, u.getUsername());
             //pst.setString(2, u.getUsername());
@@ -47,6 +51,8 @@ public class Serviceuser {
             pst.setString(6, u.getFirstname());
             pst.setString(7, u.getLastname());
            pst.setString(8, u.getImage());
+            pst.setString(9, u.getPhone());
+            pst.setString(10, u.getId_facebook());
             
             pst.executeUpdate();
             System.out.println("Insertion effectué avec succés");
@@ -220,6 +226,7 @@ public class Serviceuser {
                 p.setFirstname(ResListe.getString(13));
                 p.setLastname(ResListe.getString(14));
                 p.setImage(ResListe.getString(15));
+                p.setId_facebook(ResListe.getString(16));
                 myListe.add(p);
             }
 
@@ -275,7 +282,8 @@ public class Serviceuser {
                         resultSet.getString("enabled"),
                         resultSet.getString("roles"),
                         resultSet.getString("Firstname"),
-                        resultSet.getString("Lastname"));
+                        resultSet.getString("Lastname"),
+                        resultSet.getString("phone"));
                       
             }
         } catch (SQLException ex) {
@@ -299,14 +307,17 @@ public class Serviceuser {
                  user = new user(
                         resultSet.getInt("id"),
                         resultSet.getString("username"),
-                        resultSet.getString("username_canonical"),
+                       // resultSet.getString("username_canonical"),
                         resultSet.getString("email"),
-                        resultSet.getString("email_canonical"),
+                       // resultSet.getString("email_canonical"),
                         resultSet.getString("password"),
-                        resultSet.getString("enabled"),
+                     //   resultSet.getString("enabled"),
                         resultSet.getString("roles"),
                         resultSet.getString("firstname"),
-                        resultSet.getString("lastname"));
+                        resultSet.getString("lastname"),
+                        resultSet.getString("profile_picture"),
+                        resultSet.getString("phone"));
+                 
                 }
         } catch (SQLException ex) {
 
@@ -328,9 +339,9 @@ public class Serviceuser {
                 user = new user( 
                         resultSet.getInt("id"),
                         resultSet.getString("username"),
-                        resultSet.getString("username_canonical"),
+                       // resultSet.getString("username_canonical"),
                         resultSet.getString("email"),
-                        resultSet.getString("email_canonical"),
+                        //resultSet.getString("email_canonical"),
                         resultSet.getString("password"),
                          
                         
@@ -338,14 +349,50 @@ public class Serviceuser {
                         resultSet.getString("roles"),
                         resultSet.getString("firstname"),
                         resultSet.getString("lastname"),
-                        resultSet.getString("profile_picture"));
+                         resultSet.getString("profile_picture"),
+                        resultSet.getString("phone"));
                 }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return user;
     }
+      
     
+      public user chercherUtilisateurByPhoneUsername(String r,String username) {
+        user user = null;
+        String req = "select * from user where phone =? and username=?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = con.prepareStatement(req);
+            preparedStatement.setString(1, r);
+            preparedStatement.setString(2, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+        
+            while (resultSet.next()) {
+                user = new user(
+                        resultSet.getInt("id"),
+                        resultSet.getString("username"),
+                       
+                        resultSet.getString("email"),
+                      
+                        resultSet.getString("password"),
+            
+                        resultSet.getString("roles"),
+                        resultSet.getString("firstname"),
+                        resultSet.getString("lastname"),
+                        resultSet.getString("profile_picture"),
+                        resultSet.getString("phone"));
+                   
+                     
+                    
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return user;
+    }
+
      public boolean chercherUtilisateurBylogin(String s) {
         user user = null;
         String req = "select * from user where username =?";
@@ -365,7 +412,8 @@ public class Serviceuser {
                         resultSet.getString("enabled"),
                         resultSet.getString("roles"),
                         resultSet.getString("firstname"),
-                        resultSet.getString("lastname"));
+                        resultSet.getString("lastname"),
+                        resultSet.getString("phone"));
                         
               }
         } catch (SQLException ex) {
@@ -397,7 +445,8 @@ public class Serviceuser {
                         resultSet.getString("enabled"),
                         resultSet.getString("roles"),
                         resultSet.getString("firstname"),
-                        resultSet.getString("lastname"));
+                        resultSet.getString("lastname"),
+                        resultSet.getString("phone"));
                        
                     
             }
@@ -436,7 +485,8 @@ public class Serviceuser {
                         resultSet.getString("enabled"),
                         resultSet.getString("roles"),
                         resultSet.getString("firstname"),
-                        resultSet.getString("lastname"));
+                        resultSet.getString("lastname"),
+                       resultSet.getString("phone"));
                         
                     
             }
@@ -448,7 +498,34 @@ public class Serviceuser {
         }
         return true;
     }
-     
+      public boolean add(user User){
+String req = "insert into user (username,email,password,roles,firstname,lastname,profile_picture,phone,id_facebook) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+       
+   PreparedStatement ps;
+try{
+            ps = con.prepareStatement(req);
+            ps.setString(1, User.getUsername());
+            ps.setString(2, User.getEmail());
+           ps.setString(3, User.getPassword());
+            ps.setString(4, User.getRoles());
+            ps.setString(5,User.getFirstname());
+            ps.setString(6, User.getLastname());
+            ps.setString(7, User.getImage());
+            ps.setString(8, User.getPhone());
+           
+            ps.setString(9, User.getId_facebook());
+           if (ps.executeUpdate()==1) {
+            return true;
+        }else return false;
+            
+        } catch (SQLException ex) {
+            System.err.println("Error Code: " +
+                    (ex).getErrorCode());
+            System.err.println("Message: " + ex.getMessage());
+        }return false;
+          
+} 
+
      
       public String Gettype(String s) {
         String s1 = "";
@@ -510,7 +587,7 @@ public class Serviceuser {
         List<hebergement> myList = new ArrayList<hebergement>();
         String requete = null;
  
-        try { // LES var declaré dans le try ne sont vue que dans le try, et inversement pour en dhors du try
+        try { 
             if (type.equals("adresse")) {
                 requete = "SELECT * from hebergement where adresse like '%" + valeur + "%'";
             } else if (type.equals("nbplaces")) {
@@ -578,6 +655,32 @@ public class Serviceuser {
         return myListe;
 
     }
+     
+     
+     
+      public void deleteUser(user u) {
+
+        String requete2 = "DELETE FROM user WHERE id= ?";
+
+        try {
+
+            PreparedStatement pst = con.prepareStatement(requete2);
+            pst.setInt(1, u.getId());
+
+            pst.executeUpdate();
+            System.out.println("User deleted");
+            //if (SystemTray.isSupported()) {
+              //  TrayIconDemo td = new TrayIconDemo();
+                //td.displayTraysupprimerUser();
+            //} else {
+             //   System.err.println("Erreur!!!!");
+         //   }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+     
      
      public user getuser(user u) throws SQLException {   
         user us = new user();

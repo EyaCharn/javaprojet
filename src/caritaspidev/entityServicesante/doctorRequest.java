@@ -17,6 +17,7 @@ public class doctorRequest {
     private String adresse ;
     private String id_cart ;
     private String document ;
+    private Integer idUser;
     private String validation ;
 public doctorRequest(Integer id, String description , String adresse, String id_cart, String document ,  String validation)
 {   this.id=id;
@@ -118,6 +119,14 @@ public doctorRequest( String description , String adresse, String id_cart, Strin
 
     public void setDocument(String decription) {
         this.description = description;
+    }
+    
+       public Integer getIduser() {
+        return idUser;
+    }
+
+    public void setIduser(Integer idUser) {
+        this.idUser = idUser;
     }
      public String getValidation() {
         return validation;

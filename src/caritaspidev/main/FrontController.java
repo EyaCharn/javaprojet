@@ -6,6 +6,7 @@
 package caritaspidev.main;
 
 import caritaspidev.connectionBD.DataSource;
+import caritaspidev.entityUser.UserSession;
 import caritaspidev.controller.UserSession;
 import caritaspidev.entityPublicite.likepublicite;
 import caritaspidev.entityPublicite.publicite;
@@ -142,11 +143,15 @@ List<String> type;
     }
 
     @FXML
-    private void gererhybergement(ActionEvent event) {
+    private void gererhybergement(ActionEvent event) throws IOException {
+      AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/AfficherHeb.fxml"));
+        ap.getChildren().setAll(pane); 
     }
 
     @FXML
-    private void gerersante(ActionEvent event) {
+    private void gerersante(ActionEvent event)throws IOException  {
+        AnchorPane pane=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/servicesante.fxml"));
+        ap.getChildren().setAll(pane); 
     }
 
     @FXML

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1094.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.GUI.addevenementController">
+<AnchorPane fx:id="page" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1094.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="caritaspidev.GUI.addevenementController">
    <children>
-      <VBox layoutX="31.0" layoutY="37.0" prefHeight="674.0" prefWidth="442.0">
+      <VBox layoutY="11.0" prefHeight="711.0" prefWidth="555.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="93.0" prefWidth="507.0">
                <children>
                   <Label text="Gerer evenment">
                      <font>
@@ -21,55 +21,134 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="99.0" prefWidth="442.0">
+            <HBox prefHeight="81.0" prefWidth="531.0">
                <children>
-                  <Label text="NomEvenement" />
-                  <TextField fx:id="enom" />
-                  <Label fx:id="error_name" prefHeight="17.0" prefWidth="189.0" text="Label">
-                     <HBox.margin>
-                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                     </HBox.margin>
+                  <Label text="Nom Evenement  :">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
                   </Label>
+                  <Label fx:id="error_name" prefHeight="70.0" prefWidth="89.0" text="Label">
+                     <HBox.margin>
+                        <Insets bottom="50.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="enom" />
                </children>
             </HBox>
-            <HBox prefHeight="96.0" prefWidth="440.0">
+            <HBox prefHeight="76.0" prefWidth="531.0">
                <children>
-                  <Label text="image" />
-                  <Button fx:id="imagee" mnemonicParsing="false" text="import" />
-                  <ImageView fx:id="imageview" fitHeight="107.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="error_img" text="Label" />
+                  <Label text="Choisir id _theme:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="etheme">
+                     <HBox.margin>
+                        <Insets bottom="50.0" left="120.0" />
+                     </HBox.margin>
+                  </TextField>
                </children>
             </HBox>
-            <HBox prefHeight="91.0" prefWidth="442.0">
+            <HBox prefHeight="78.0" prefWidth="531.0">
                <children>
-                  <Label text="description" />
-                  <Label fx:id="error_des" text="Label" />
-                  <TextField fx:id="edes" />
+                  <Label text="Image:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="imagee" mnemonicParsing="false" onAction="#importer" text="import">
+                     <HBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <ImageView fx:id="imageview" fitHeight="112.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
-            <HBox prefHeight="93.0" prefWidth="442.0">
+            <HBox prefHeight="70.0" prefWidth="555.0">
                <children>
-                  <Label text="nbdeparticipants" />
-                  <Label fx:id="error_nb" text="Label" />
-                  <TextField fx:id="enb" />
+                  <Label text="description:">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="error_des" prefHeight="17.0" prefWidth="56.0" text="Label">
+                     <HBox.margin>
+                        <Insets bottom="60.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="edes" promptText="description">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="140.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="67.0" prefWidth="531.0">
                <children>
-                  <DatePicker fx:id="edate" />
-                  <Label text="date evnement" />
+                  <Label text="NombreDeParticipants:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="enb" promptText="Nombre">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </TextField>
                </children>
             </HBox>
-            <HBox prefHeight="75.0" prefWidth="442.0">
+            <HBox prefHeight="71.0" prefWidth="531.0">
                <children>
-                  <Button fx:id="eaj" mnemonicParsing="false" onAction="#ajoutere" text="Button" />
-                  <Button fx:id="emod" mnemonicParsing="false" onAction="#modifiere" text="Button" />
-                  <Button fx:id="esup" mnemonicParsing="false" onAction="#supprimere" text="Button" />
+                  <Label text="Date Evenement:">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="edate" promptText="date">
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin>
+                  </DatePicker>
+               </children>
+            </HBox>
+            <HBox prefHeight="62.0" prefWidth="496.0">
+               <children>
+                  <Button fx:id="eaj" mnemonicParsing="false" onAction="#ajoutere" text="Ajouter">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="50.0" top="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="emod" mnemonicParsing="false" onAction="#modifiere" text="modifier">
+                     <HBox.margin>
+                        <Insets right="50.0" top="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="esup" mnemonicParsing="false" onAction="#supprimere" text="supprimer">
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </HBox>
          </children>
       </VBox>
-      <TableView fx:id="table_event" layoutX="547.0" layoutY="45.0" prefHeight="602.0" prefWidth="546.0">
+      <TableView fx:id="table_event" layoutX="614.0" layoutY="45.0" prefHeight="573.0" prefWidth="479.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="75.0" text="id" />
           <TableColumn fx:id="eenom" prefWidth="75.0" text="Nom Evenement" />
@@ -77,9 +156,10 @@
             <TableColumn fx:id="eedes" prefWidth="75.0" text="description" />
             <TableColumn fx:id="eenb" prefWidth="75.0" text="nb" />
             <TableColumn fx:id="eedate" prefWidth="75.0" text="date" />
+            <TableColumn fx:id="eetheme" prefWidth="75.0" text="theme" />
         </columns>
       </TableView>
       <Button fx:id="tri" layoutX="1030.0" layoutY="14.0" mnemonicParsing="false" onAction="#trier" prefHeight="25.0" prefWidth="59.0" text="tri" />
-      <TextField fx:id="search" layoutX="558.0" layoutY="14.0" onAction="#rechercher" />
+      <Button fx:id="gerer" layoutX="805.0" layoutY="634.0" mnemonicParsing="false" onAction="#gerer" prefHeight="36.0" prefWidth="98.0" text="Gerer Participe " />
    </children>
 </AnchorPane>

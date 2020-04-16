@@ -6,6 +6,13 @@
 package caritaspidev.controller;
 
 import caritaspidev.entityUser.user;
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.types.User;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import caritaspidev.entityUser.UserSession;
 
 import caritaspidev.controller.UserSession;
 import caritaspidev.services.Serviceuser;
@@ -14,7 +21,9 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -37,6 +46,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 /**
  *
@@ -65,12 +75,24 @@ public class LoginController implements Initializable {
 
     @FXML
     private JFXButton btnlogin;
+      @FXML
+    private Label message;
 
     @FXML
     private ImageView imgProgress;
       private user loggedUser;
        private static LoginController instance;
  public static final Map<Integer, user> USERS = new HashMap<>();
+    private static int idCnx;
+
+    public static int getIdCnx() {
+         return idCnx;
+    }
+      private static String usernameCnx;
+
+    public static String getUsernameCnx() {
+        return usernameCnx;
+    }
     
      public static void loadWindow(URL loc, String title, Stage parentStage) {
         try {
@@ -139,6 +161,9 @@ public class LoginController implements Initializable {
     }
 
     @FXML
+    void Pageregister(ActionEvent event) {
+        
+          loadWindow(getClass().getResource("/caritaspidev/GUI/Registration.fxml"), "Registration", null);
    
  void Pageregister(ActionEvent event) throws IOException {
         AnchorPane page=FXMLLoader.load(getClass().getResource("/caritaspidev/GUI/Registration.fxml"));
@@ -196,6 +221,8 @@ public class LoginController implements Initializable {
                 
                 
                 user userConnecter=myServices.chercherUtilisateurByUsername(username);
+                  UserSession.getInstace(userConnecter.getUsername(),userConnecter.getImage()); 
+              loadWindow(getClass().getResource("/caritaspidev/GUI/UserInterface.fxml"), "Dashboard", null);
                   UserSession.getInstace(userConnecter.getUsername(),userConnecter.getImage()); 
               loadWindow(getClass().getResource("/caritaspidev/main/Back.fxml"), "Dashboard", null);
                 
@@ -303,6 +330,82 @@ public class LoginController implements Initializable {
          }
     
 
+    }
+    
+   @FXML
+    void AuthUser(ActionEvent event) throws IOException {
+        String domain = "https://google.com";
+        String appId = "2514990381939040";
+       // String appSecret="fd680e1b441e26a328a8554a8e494153";
+        //String authUrl = "https://www.facebook.com/dialog/oauth?type=user_agent&client_id=" + appId + "&client_secret "+appSecret+ "&redirect_uri=" + domain + "&scope=public_profile";
+          String authURL="https://graph.facebook.com/oauth/authorize?type=user_agent&client_id="+appId+"&redirect_uri="+domain
+                 +"&scope=ads_management,publish_actions";
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        	ChromeOptions options = new ChromeOptions();
+		options.addArguments("disable-infobars");
+		
+
+        WebDriver driver = new ChromeDriver ();
+        driver.get(authURL);
+        String accessToken="fd680e1b441e26a328a8554a8e494153";
+        while (true) {
+
+            if (!driver.getCurrentUrl().contains("facebook.com")) {
+                String url = driver.getCurrentUrl();
+                  System.out.println(accessToken);
+
+                driver.quit();
+
+                FacebookClient fbClient = new DefaultFacebookClient(accessToken);
+                User user = fbClient.fetchObject("me", User.class);
+
+                message.setText(user.getName());
+                //changescene("/GUI/Menu_General.fxml",event); 
+                Serviceuser MS = new Serviceuser();
+                List<user> la = MS.afficherlisteUtilisateurs();
+                Boolean test = false;
+                for (user d : la) {
+                    if (user.getId().equals(d.getId_facebook())) {
+                       
+                        UserSession.setId_Connected_Member(d.getId());
+                        System.out.println(UserSession.getId_Connected_Member());
+                        test = true;
+
+                        Stage stage = new Stage();
+                        Parent root = FXMLLoader.load(getClass().getResource("caritaspidev/GUI/Registration.fxml"));
+                        Scene scene = new Scene(root);
+                        //scene.getStylesheets().add("/CSS/register.css");
+                       // stage = (Stage) RegisterButton.getScene().getWindow();
+                        stage.close();
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                    if (!test) {
+
+                        user M = new user(user.getFirstName());
+                        MS.add(M);
+                        List<user> la2 = MS.afficherlisteUtilisateurs();
+                        for (user d2 : la2) {
+                            if (user.getId().equals(d2.getId_facebook())) {
+                                UserSession.setId_Connected_Member(d2.getId());
+                            }
+                        }
+                        System.out.println(UserSession.getId_Connected_Member());
+
+                        Stage stage = new Stage();
+                        Parent root = FXMLLoader.load(getClass().getResource("caritaspidev/GUI/Registration.fxml"));
+                        Scene scene = new Scene(root);
+                       // scene.getStylesheets().add("/CSS/register.css");
+                        //stage = (Stage) RegisterButton.getScene().getWindow();
+                        stage.close();
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+
+                }
+
+            }
+        }
     }
     
   
